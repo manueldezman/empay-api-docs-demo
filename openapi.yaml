@@ -48,7 +48,7 @@ paths:
     post:
       tags: [Auth]
       summary: Register a user
-      description: Requires the `admin` or `hr_officer` role.
+      description: Creates a user account with employee details and an assigned role; requires the `admin` or `hr_officer` role.
       operationId: registerUser
       security:
         - bearerAuth: []
@@ -79,7 +79,7 @@ paths:
                   id: 1
                   full_name: "Ada Okafor"
                   email: "ada@example.com"
-                  role: "admin"
+                  role: "employee"
                   department: "Engineering"
                   designation: "Software Engineer"
                   phone: "+234 800 000 0000"
@@ -139,6 +139,7 @@ paths:
     post:
       tags: [Auth]
       summary: Log in
+      description: Authenticates an active user with an email address and password and returns a signed access token with the user profile.
       operationId: login
       requestBody:
         description: Payload supplied to this operation.
@@ -159,12 +160,12 @@ paths:
                 success: true
                 message: "Login successful"
                 data:
-                  token: "string"
+                  token: "eyJhbGciOiJIUzI1NiJ9.demo.signature"
                   user:
                     id: 1
                     full_name: "Ada Okafor"
                     email: "ada@example.com"
-                    role: "admin"
+                    role: "employee"
                     department: "Engineering"
                     designation: "Software Engineer"
                     phone: "+234 800 000 0000"
@@ -184,15 +185,36 @@ paths:
                         properties:
                           token: { type: string, description: Signed JWT }
                           user: { $ref: '#/components/schemas/User' }
-        '400': { $ref: '#/components/responses/BadRequest' }
-        '401': { $ref: '#/components/responses/Unauthorized' }
-        '403': { $ref: '#/components/responses/Forbidden' }
-        '500': { $ref: '#/components/responses/ServerError' }
+        '400':
+          description: Email or password has an invalid type
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+              example: { success: false, message: "Email and password must be strings" }
+        '401':
+          description: Email or password is incorrect
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+              example: { success: false, message: "Invalid email or password" }
+        '403':
+          description: Account is inactive
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+              example: { success: false, message: "Account is deactivated. Contact your administrator." }
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+              example: { success: false, message: "Internal server error" }
 
   /api/auth/me:
     get:
       tags: [Auth]
       summary: Get the authenticated user's profile
+      description: Returns the profile associated with the authenticated user's access token.
       operationId: getCurrentUser
       security:
         - bearerAuth: []
@@ -208,7 +230,7 @@ paths:
                   id: 1
                   full_name: "Ada Okafor"
                   email: "ada@example.com"
-                  role: "admin"
+                  role: "employee"
                   department: "Engineering"
                   designation: "Software Engineer"
                   phone: "+234 800 000 0000"
@@ -224,13 +246,24 @@ paths:
                     properties:
                       data: { $ref: '#/components/schemas/User' }
         '401': { $ref: '#/components/responses/Unauthorized' }
-        '404': { $ref: '#/components/responses/NotFound' }
-        '500': { $ref: '#/components/responses/ServerError' }
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+              example: { success: false, message: "User not found" }
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+              example: { success: false, message: "Internal server error" }
 
   /api/auth/forgot-password:
     post:
       tags: [Auth]
       summary: Request a password reset
+      description: Sends a password-reset link when the supplied email belongs to an account while returning the same response when no account exists.
       operationId: forgotPassword
       requestBody:
         description: Payload supplied to this operation.
@@ -253,13 +286,24 @@ paths:
                 success: true
                 message: "If an account exists, a reset link has been sent"
               schema: { $ref: '#/components/schemas/MessageResponse' }
-        '400': { $ref: '#/components/responses/BadRequest' }
-        '500': { $ref: '#/components/responses/ServerError' }
+        '400':
+          description: Email is missing
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+              example: { success: false, message: "Email is required" }
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+              example: { success: false, message: "Internal server error" }
 
   /api/auth/reset-password:
     post:
       tags: [Auth]
       summary: Reset a password
+      description: Replaces the account password when supplied with a valid, unexpired password-reset token.
       operationId: resetPassword
       requestBody:
         description: Payload supplied to this operation.
@@ -284,14 +328,30 @@ paths:
                 success: true
                 message: "Password reset successfully"
               schema: { $ref: '#/components/schemas/MessageResponse' }
-        '400': { $ref: '#/components/responses/BadRequest' }
-        '500': { $ref: '#/components/responses/ServerError' }
+        '400':
+          description: Reset details are missing or invalid
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+              examples:
+                missingDetails:
+                  summary: Required reset details are missing
+                  value: { success: false, message: "Token and new password required" }
+                invalidToken:
+                  summary: Reset token is invalid or expired
+                  value: { success: false, message: "Invalid or expired password reset token" }
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+              example: { success: false, message: "Internal server error" }
 
   /api/auth/test-email:
     post:
       tags: [Auth]
       summary: Send an SMTP test email
-      description: Requires the `admin` role. If `email` is omitted, the authenticated user's email is used.
+      description: Sends a test email to verify SMTP configuration; requires the `admin` role and defaults to the authenticated user's email when `email` is omitted.
       operationId: testEmail
       security:
         - bearerAuth: []
@@ -317,13 +377,21 @@ paths:
               schema: { $ref: '#/components/schemas/MessageResponse' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
-        '500': { $ref: '#/components/responses/ServerError' }
+        '500':
+          description: Test email could not be sent
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/TestEmailErrorResponse' }
+              example:
+                success: false
+                message: "Failed to send test email"
+                hint: "Ensure you are using a 16-character Google App Password, not your regular password."
 
   /api/users:
     get:
       tags: [Users]
       summary: List users
-      description: Available to all authenticated roles.
+      description: Returns users matching the optional role, department, name, email, and active-status filters; available to all authenticated roles.
       operationId: listUsers
       security:
         - bearerAuth: []
@@ -372,6 +440,7 @@ paths:
     post:
       tags: [Users]
       summary: Upload the authenticated user's avatar
+      description: Uploads an image and stores its URL as the authenticated user's profile picture.
       operationId: uploadAvatar
       security:
         - bearerAuth: []
@@ -417,7 +486,7 @@ paths:
     get:
       tags: [Users]
       summary: Get a user
-      description: Employees may only view their own profile.
+      description: Returns a user profile by ID, while employees may access only their own profile.
       operationId: getUser
       security:
         - bearerAuth: []
@@ -455,7 +524,7 @@ paths:
     put:
       tags: [Users]
       summary: Update a user
-      description: Employees and payroll officers may update only themselves; HR officers may update themselves or employees; only admins may change `role` or `password`.
+      description: Updates permitted profile fields according to the authenticated user's role; only admins may change another user's role or password.
       operationId: updateUser
       security:
         - bearerAuth: []
@@ -505,7 +574,7 @@ paths:
     delete:
       tags: [Users]
       summary: Deactivate a user
-      description: Requires the `admin` role. This is a soft delete that sets `is_active` to false.
+      description: Deactivates a user without deleting the database record by setting `is_active` to false; requires the `admin` role.
       operationId: deleteUser
       security:
         - bearerAuth: []
@@ -545,7 +614,7 @@ paths:
     patch:
       tags: [Users]
       summary: Toggle a user's active status
-      description: Requires the `admin` role.
+      description: Switches a user between active and inactive states; requires the `admin` role.
       operationId: toggleUserActive
       security:
         - bearerAuth: []
@@ -587,7 +656,7 @@ paths:
     post:
       tags: [Attendance]
       summary: Check in or check out
-      description: Marks attendance for the authenticated user. Repeated calls alternate between check-in and check-out behavior.
+      description: Records a check-in or check-out for the authenticated user according to their attendance state for the current day.
       operationId: markAttendance
       security:
         - bearerAuth: []
@@ -633,6 +702,7 @@ paths:
     get:
       tags: [Attendance]
       summary: Get the authenticated user's monthly attendance
+      description: Returns the authenticated user's attendance records for the requested month and year.
       operationId: getMyAttendance
       security:
         - bearerAuth: []
@@ -677,7 +747,7 @@ paths:
     get:
       tags: [Attendance]
       summary: Get a monthly attendance summary
-      description: Defaults to the authenticated user when `employee_id` is omitted.
+      description: Returns monthly attendance totals for the selected employee, defaulting to the authenticated user when `employee_id` is omitted.
       operationId: getMonthlyAttendanceSummary
       security:
         - bearerAuth: []
@@ -712,7 +782,7 @@ paths:
     get:
       tags: [Attendance]
       summary: List monthly attendance for all employees
-      description: Requires the `admin`, `hr_officer`, or `payroll_officer` role.
+      description: Returns employee attendance for a month with optional department and employee filters; requires an administrative, HR, or payroll role.
       operationId: listAllAttendance
       security:
         - bearerAuth: []
@@ -760,7 +830,7 @@ paths:
     get:
       tags: [Attendance]
       summary: List today's attendance
-      description: Requires the `admin`, `hr_officer`, or `payroll_officer` role.
+      description: Returns attendance records for the current day; requires an administrative, HR, or payroll role.
       operationId: getTodayAttendance
       security:
         - bearerAuth: []
@@ -803,6 +873,7 @@ paths:
     get:
       tags: [Leave]
       summary: List leave types
+      description: Returns the configured leave categories and their default annual day allowances.
       operationId: listLeaveTypes
       security:
         - bearerAuth: []
@@ -833,7 +904,7 @@ paths:
     post:
       tags: [Leave]
       summary: Create a leave type
-      description: Requires the `admin` role.
+      description: Creates a leave category with its default annual allowance; requires the `admin` role.
       operationId: createLeaveType
       security:
         - bearerAuth: []
@@ -881,7 +952,7 @@ paths:
     get:
       tags: [Leave]
       summary: Get the authenticated user's leave allocations
-      description: The route is intended to use the authenticated user but currently passes a missing path parameter to the service.
+      description: Returns leave allocations intended for the authenticated user; the current route passes a missing employee parameter to the service.
       operationId: getMyLeaveAllocations
       security:
         - bearerAuth: []
@@ -918,7 +989,7 @@ paths:
     get:
       tags: [Leave]
       summary: Get an employee's leave allocations
-      description: Requires the `admin` or `hr_officer` role.
+      description: Returns leave balances allocated to the selected employee; requires the `admin` or `hr_officer` role.
       operationId: getEmployeeLeaveAllocations
       security:
         - bearerAuth: []
@@ -958,7 +1029,7 @@ paths:
     post:
       tags: [Leave]
       summary: Create or update a leave allocation
-      description: Requires the `admin` or `hr_officer` role.
+      description: Creates or updates an employee's yearly allocation for a leave type; requires the `admin` or `hr_officer` role.
       operationId: upsertLeaveAllocation
       security:
         - bearerAuth: []
@@ -1012,6 +1083,7 @@ paths:
     post:
       tags: [Leave]
       summary: Submit a leave request
+      description: Submits a dated leave request for the authenticated employee after validating the date range and available balance.
       operationId: createLeaveRequest
       security:
         - bearerAuth: []
@@ -1073,6 +1145,7 @@ paths:
     get:
       tags: [Leave]
       summary: List the authenticated user's leave requests
+      description: Returns leave requests submitted by the authenticated employee.
       operationId: listMyLeaveRequests
       security:
         - bearerAuth: []
@@ -1117,7 +1190,7 @@ paths:
     get:
       tags: [Leave]
       summary: List all leave requests
-      description: Requires the `admin`, `hr_officer`, or `payroll_officer` role.
+      description: Returns leave requests across employees with optional status, department, and date filters; requires an administrative, HR, or payroll role.
       operationId: listAllLeaveRequests
       security:
         - bearerAuth: []
@@ -1169,7 +1242,7 @@ paths:
     patch:
       tags: [Leave]
       summary: Approve a leave request
-      description: Requires the `payroll_officer` role.
+      description: Approves a pending leave request and records the payroll officer who reviewed it; requires the `payroll_officer` role.
       operationId: approveLeaveRequest
       security:
         - bearerAuth: []
@@ -1217,7 +1290,7 @@ paths:
     patch:
       tags: [Leave]
       summary: Reject a leave request
-      description: Requires the `payroll_officer` role.
+      description: Rejects a pending leave request with an optional reason and records the reviewer; requires the `payroll_officer` role.
       operationId: rejectLeaveRequest
       security:
         - bearerAuth: []
@@ -1265,7 +1338,7 @@ paths:
     post:
       tags: [Payroll]
       summary: Create or update a salary structure
-      description: Requires the `admin` or `payroll_officer` role.
+      description: Creates or updates an employee's salary components and effective date; requires the `admin` or `payroll_officer` role.
       operationId: upsertSalaryStructure
       security:
         - bearerAuth: []
@@ -1314,7 +1387,7 @@ paths:
     get:
       tags: [Payroll]
       summary: List salary structures
-      description: Requires the `admin` or `payroll_officer` role.
+      description: Returns salary structures for all employees; requires the `admin` or `payroll_officer` role.
       operationId: listSalaryStructures
       security:
         - bearerAuth: []
@@ -1354,7 +1427,7 @@ paths:
     get:
       tags: [Payroll]
       summary: Get an employee's salary structure
-      description: Requires the `admin` or `payroll_officer` role.
+      description: Returns the salary structure assigned to the selected employee; requires the `admin` or `payroll_officer` role.
       operationId: getSalaryStructure
       security:
         - bearerAuth: []
@@ -1395,7 +1468,7 @@ paths:
     post:
       tags: [Payroll]
       summary: Generate or regenerate a pay run
-      description: Requires the `payroll_officer` role.
+      description: Generates or recalculates the pay run and employee payslips for the supplied month and year; requires the `payroll_officer` role.
       operationId: generatePayrun
       security:
         - bearerAuth: []
@@ -1443,7 +1516,7 @@ paths:
     get:
       tags: [Payroll]
       summary: List pay runs
-      description: Requires the `admin` or `payroll_officer` role.
+      description: Returns generated pay runs ordered by payroll period; requires the `admin` or `payroll_officer` role.
       operationId: listPayruns
       security:
         - bearerAuth: []
@@ -1481,7 +1554,7 @@ paths:
     get:
       tags: [Payroll]
       summary: List payslips in a pay run
-      description: Requires the `admin` or `payroll_officer` role.
+      description: Returns all employee payslips generated for the selected pay run; requires the `admin` or `payroll_officer` role.
       operationId: listPayrunPayslips
       security:
         - bearerAuth: []
@@ -1539,6 +1612,7 @@ paths:
     get:
       tags: [Payroll]
       summary: List the authenticated user's payslips
+      description: Returns payslips belonging to the authenticated employee.
       operationId: listMyPayslips
       security:
         - bearerAuth: []
@@ -1593,7 +1667,7 @@ paths:
     get:
       tags: [Payroll]
       summary: Get a payslip
-      description: Employees may only access their own payslips.
+      description: Returns one payslip by ID, while employees may access only their own payslips.
       operationId: getPayslip
       security:
         - bearerAuth: []
@@ -1650,7 +1724,7 @@ paths:
     get:
       tags: [Payroll]
       summary: Download a payslip PDF
-      description: Employees may only download their own payslips.
+      description: Generates and downloads a payslip as a PDF file, while employees may download only their own payslips.
       operationId: downloadPayslipPdf
       security:
         - bearerAuth: []
@@ -1675,7 +1749,7 @@ paths:
     get:
       tags: [Dashboard]
       summary: Get the admin dashboard
-      description: Requires the `admin` role.
+      description: Returns organization-wide workforce, attendance, leave, payroll, and recent-activity metrics; requires the `admin` role.
       operationId: getAdminDashboard
       security: [{ bearerAuth: [] }]
       responses:
@@ -1696,6 +1770,7 @@ paths:
     get:
       tags: [Dashboard]
       summary: Get the authenticated employee dashboard
+      description: Returns personal attendance, leave, payslip, notification, and profile information for the authenticated employee.
       operationId: getEmployeeDashboard
       security: [{ bearerAuth: [] }]
       responses:
@@ -1715,7 +1790,7 @@ paths:
     get:
       tags: [Dashboard]
       summary: Get the HR dashboard
-      description: Requires the `admin` or `hr_officer` role.
+      description: Returns workforce, attendance, leave, and recent-joiner metrics for HR operations; requires the `admin` or `hr_officer` role.
       operationId: getHrDashboard
       security: [{ bearerAuth: [] }]
       responses:
@@ -1736,7 +1811,7 @@ paths:
     get:
       tags: [Dashboard]
       summary: Get the payroll dashboard
-      description: Requires the `admin` or `payroll_officer` role.
+      description: Returns payroll totals, pay-run status, salary coverage, and recent payslip metrics; requires the `admin` or `payroll_officer` role.
       operationId: getPayrollDashboard
       security: [{ bearerAuth: [] }]
       responses:
@@ -1757,6 +1832,7 @@ paths:
     get:
       tags: [Notifications]
       summary: List the authenticated user's notifications
+      description: Returns notifications addressed to the authenticated user, including their read status.
       operationId: listNotifications
       security: [{ bearerAuth: [] }]
       responses:
@@ -1790,6 +1866,7 @@ paths:
     put:
       tags: [Notifications]
       summary: Mark a notification as read
+      description: Marks one notification belonging to the authenticated user as read.
       operationId: markNotificationRead
       security: [{ bearerAuth: [] }]
       parameters:
@@ -1824,6 +1901,7 @@ paths:
     put:
       tags: [Notifications]
       summary: Mark all notifications as read
+      description: Marks every unread notification belonging to the authenticated user as read.
       operationId: markAllNotificationsRead
       security: [{ bearerAuth: [] }]
       responses:
@@ -1842,6 +1920,7 @@ paths:
     get:
       tags: [Settings]
       summary: Get application settings
+      description: Returns the current application settings as key-value pairs.
       operationId: getSettings
       security: [{ bearerAuth: [] }]
       responses:
@@ -1868,7 +1947,7 @@ paths:
     put:
       tags: [Settings]
       summary: Update application settings
-      description: Requires the `admin` role. Each supplied key is stored as a setting.
+      description: Stores each supplied key as an application setting; requires the `admin` role.
       operationId: updateSettings
       security: [{ bearerAuth: [] }]
       requestBody:
@@ -1911,7 +1990,7 @@ paths:
     get:
       tags: [Settings]
       summary: Get database statistics
-      description: Requires the `admin` role.
+      description: Returns database size, connection, and table statistics; requires the `admin` role.
       operationId: getDatabaseStats
       security: [{ bearerAuth: [] }]
       responses:
@@ -1939,7 +2018,7 @@ paths:
     get:
       tags: [Search]
       summary: Search users
-      description: Queries shorter than two characters return an empty array.
+      description: Searches users by name or email and returns no matches when the query is shorter than two characters.
       operationId: searchUsers
       security: [{ bearerAuth: [] }]
       parameters:
@@ -1989,7 +2068,7 @@ paths:
     get:
       tags: [Audit]
       summary: List audit logs
-      description: Requires the `admin` role.
+      description: Returns paginated audit events with optional action, entity, user, and date filters; requires the `admin` role.
       operationId: listAuditLogs
       security: [{ bearerAuth: [] }]
       parameters:
@@ -2126,15 +2205,28 @@ components:
         application/json:
           schema: { $ref: '#/components/schemas/ErrorResponse' }
     Unauthorized:
-      description: Missing, expired, or invalid bearer token, or invalid login credentials
+      description: Missing, expired, or invalid bearer token
       content:
         application/json:
           schema: { $ref: '#/components/schemas/ErrorResponse' }
+          examples:
+            missingToken:
+              summary: Token not provided
+              value: { success: false, message: "Access denied. No token provided." }
+            expiredToken:
+              summary: Token expired
+              value: { success: false, message: "Token expired. Please login again." }
+            invalidToken:
+              summary: Token invalid
+              value: { success: false, message: "Invalid token." }
     Forbidden:
       description: Authenticated user lacks permission
       content:
         application/json:
           schema: { $ref: '#/components/schemas/ErrorResponse' }
+          example:
+            success: false
+            message: "Access denied. Insufficient permissions."
     NotFound:
       description: Resource not found
       content:
@@ -2168,8 +2260,14 @@ components:
       properties:
         success: { type: boolean, enum: [false], description: "Indicates whether the request completed successfully." }
         message: { type: string, description: "Message returned by the endpoint." }
-        error: { type: string, description: "Underlying error detail when available." }
-        hint: { type: string, description: "Suggested corrective action when available." }
+    TestEmailErrorResponse:
+      type: object
+      required: [success, message, error, hint]
+      properties:
+        success: { type: boolean, enum: [false], description: "Indicates whether the request completed successfully." }
+        message: { type: string, enum: ["Failed to send test email"], description: "Message returned by the endpoint." }
+        error: { type: string, description: "Error detail returned by the mailer." }
+        hint: { type: string, enum: ["Ensure you are using a 16-character Google App Password, not your regular password."], description: "Configuration guidance returned by the endpoint." }
     HealthResponse:
       type: object
       required: [success, message, timestamp]
