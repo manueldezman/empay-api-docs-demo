@@ -434,7 +434,7 @@ paths:
                         items: { $ref: '#/components/schemas/User' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
-        '500': { $ref: '#/components/responses/ServerError' }
+        '500': { $ref: '#/components/responses/InternalServerError' }
 
   /api/users/me/avatar:
     post:
@@ -476,9 +476,15 @@ paths:
                         type: object
                         properties:
                           profile_pic: { type: string, format: uri, nullable: true, description: "Profile-picture URL.", example: "https://cdn.example.com/avatars/ada.jpg" }
-        '400': { $ref: '#/components/responses/BadRequest' }
+        '400':
+          description: Avatar image is missing
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+              example: { success: false, message: "No image file provided" }
         '401': { $ref: '#/components/responses/Unauthorized' }
-        '500': { $ref: '#/components/responses/ServerError' }
+        '404': { $ref: '#/components/responses/UserNotFound' }
+        '500': { $ref: '#/components/responses/InternalServerError' }
 
   /api/users/{id}:
     parameters:
@@ -518,9 +524,14 @@ paths:
                     properties:
                       data: { $ref: '#/components/schemas/User' }
         '401': { $ref: '#/components/responses/Unauthorized' }
-        '403': { $ref: '#/components/responses/Forbidden' }
-        '404': { $ref: '#/components/responses/NotFound' }
-        '500': { $ref: '#/components/responses/ServerError' }
+        '403':
+          description: Employee attempted to access another user's profile
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+              example: { success: false, message: "Access denied" }
+        '404': { $ref: '#/components/responses/UserNotFound' }
+        '500': { $ref: '#/components/responses/InternalServerError' }
     put:
       tags: [Users]
       summary: Update a user
@@ -566,11 +577,30 @@ paths:
                   - type: object
                     properties:
                       data: { $ref: '#/components/schemas/User' }
-        '400': { $ref: '#/components/responses/BadRequest' }
+        '400':
+          description: No permitted update fields were supplied
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+              example: { success: false, message: "No fields to update" }
         '401': { $ref: '#/components/responses/Unauthorized' }
-        '403': { $ref: '#/components/responses/Forbidden' }
-        '404': { $ref: '#/components/responses/NotFound' }
-        '500': { $ref: '#/components/responses/ServerError' }
+        '403':
+          description: Authenticated role cannot update the selected user
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+              examples:
+                employeeRestriction:
+                  summary: Employee attempted to update another profile
+                  value: { success: false, message: "You can only update your own profile" }
+                hrRestriction:
+                  summary: HR officer attempted to edit a non-employee profile
+                  value: { success: false, message: "HR officers can only edit employee profiles" }
+                payrollRestriction:
+                  summary: Payroll officer attempted to modify employee data
+                  value: { success: false, message: "Payroll officers cannot modify employee data" }
+        '404': { $ref: '#/components/responses/UserNotFound' }
+        '500': { $ref: '#/components/responses/InternalServerError' }
     delete:
       tags: [Users]
       summary: Deactivate a user
@@ -607,8 +637,8 @@ paths:
                       data: { $ref: '#/components/schemas/User' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
-        '404': { $ref: '#/components/responses/NotFound' }
-        '500': { $ref: '#/components/responses/ServerError' }
+        '404': { $ref: '#/components/responses/UserNotFound' }
+        '500': { $ref: '#/components/responses/InternalServerError' }
 
   /api/users/{id}/toggle-active:
     patch:
@@ -649,8 +679,8 @@ paths:
                       data: { $ref: '#/components/schemas/User' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
-        '404': { $ref: '#/components/responses/NotFound' }
-        '500': { $ref: '#/components/responses/ServerError' }
+        '404': { $ref: '#/components/responses/UserNotFound' }
+        '500': { $ref: '#/components/responses/InternalServerError' }
 
   /api/attendance/mark:
     post:
@@ -696,7 +726,7 @@ paths:
                           action: { type: string, enum: [checked_in, checked_out], description: "Attendance action performed by this request.", example: "checked_in" }
                           record: { $ref: '#/components/schemas/AttendanceRecord' }
         '401': { $ref: '#/components/responses/Unauthorized' }
-        '500': { $ref: '#/components/responses/ServerError' }
+        '500': { $ref: '#/components/responses/InternalServerError' }
 
   /api/attendance/my:
     get:
@@ -741,7 +771,7 @@ paths:
                         type: array
                         items: { $ref: '#/components/schemas/AttendanceRecord' }
         '401': { $ref: '#/components/responses/Unauthorized' }
-        '500': { $ref: '#/components/responses/ServerError' }
+        '500': { $ref: '#/components/responses/InternalServerError' }
 
   /api/attendance/monthly-summary:
     get:
@@ -776,7 +806,7 @@ paths:
                     properties:
                       data: { $ref: '#/components/schemas/AttendanceSummary' }
         '401': { $ref: '#/components/responses/Unauthorized' }
-        '500': { $ref: '#/components/responses/ServerError' }
+        '500': { $ref: '#/components/responses/InternalServerError' }
 
   /api/attendance/all:
     get:
@@ -824,7 +854,7 @@ paths:
                         items: { $ref: '#/components/schemas/AttendanceRecord' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
-        '500': { $ref: '#/components/responses/ServerError' }
+        '500': { $ref: '#/components/responses/InternalServerError' }
 
   /api/attendance/today:
     get:
@@ -867,7 +897,7 @@ paths:
                         items: { $ref: '#/components/schemas/AttendanceRecord' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
-        '500': { $ref: '#/components/responses/ServerError' }
+        '500': { $ref: '#/components/responses/InternalServerError' }
 
   /api/leave/types:
     get:
@@ -1137,7 +1167,18 @@ paths:
                   - type: object
                     properties:
                       data: { $ref: '#/components/schemas/LeaveRequest' }
-        '400': { $ref: '#/components/responses/BadRequest' }
+        '400':
+          description: Leave dates or available balance are invalid
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+              examples:
+                invalidDates:
+                  summary: End date precedes start date
+                  value: { success: false, message: "Invalid date range" }
+                insufficientBalance:
+                  summary: Requested days exceed the remaining allocation
+                  value: { success: false, message: "Insufficient leave balance. Available: 5 days, Requested: 7 days" }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '500': { $ref: '#/components/responses/ServerError' }
 
@@ -1280,10 +1321,15 @@ paths:
                   - type: object
                     properties:
                       data: { $ref: '#/components/schemas/LeaveRequest' }
-        '400': { $ref: '#/components/responses/BadRequest' }
+        '400':
+          description: Leave request has already been reviewed
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+              example: { success: false, message: "Request is already approved" }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
-        '404': { $ref: '#/components/responses/NotFound' }
+        '404': { $ref: '#/components/responses/LeaveRequestNotFound' }
         '500': { $ref: '#/components/responses/ServerError' }
 
   /api/leave/requests/{id}/reject:
@@ -1328,10 +1374,15 @@ paths:
                   - type: object
                     properties:
                       data: { $ref: '#/components/schemas/LeaveRequest' }
-        '400': { $ref: '#/components/responses/BadRequest' }
+        '400':
+          description: Leave request has already been reviewed
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+              example: { success: false, message: "Request is already rejected" }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
-        '404': { $ref: '#/components/responses/NotFound' }
+        '404': { $ref: '#/components/responses/LeaveRequestNotFound' }
         '500': { $ref: '#/components/responses/ServerError' }
 
   /api/payroll/salary-structure:
@@ -1461,7 +1512,7 @@ paths:
                       data: { $ref: '#/components/schemas/SalaryStructure' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
-        '404': { $ref: '#/components/responses/NotFound' }
+        '404': { $ref: '#/components/responses/SalaryStructureNotFound' }
         '500': { $ref: '#/components/responses/ServerError' }
 
   /api/payroll/payrun/generate:
@@ -1507,7 +1558,12 @@ paths:
                         properties:
                           payrun_id: { type: integer, description: "Identifier of the pay run." }
                           payslips_generated_count: { type: integer, description: "Number of payslips produced by the pay run." }
-        '400': { $ref: '#/components/responses/BadRequest' }
+        '400':
+          description: Payroll period is missing
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+              example: { success: false, message: "Month and year are required" }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
         '500': { $ref: '#/components/responses/ServerError' }
@@ -1716,8 +1772,13 @@ paths:
                     properties:
                       data: { $ref: '#/components/schemas/Payslip' }
         '401': { $ref: '#/components/responses/Unauthorized' }
-        '403': { $ref: '#/components/responses/Forbidden' }
-        '404': { $ref: '#/components/responses/NotFound' }
+        '403':
+          description: Employee attempted to access another employee's payslip
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+              example: { success: false, message: "Access denied" }
+        '404': { $ref: '#/components/responses/PayslipNotFound' }
         '500': { $ref: '#/components/responses/ServerError' }
 
   /api/payroll/payslips/{id}/pdf:
@@ -1741,8 +1802,13 @@ paths:
             application/pdf:
               schema: { type: string, format: binary }
         '401': { $ref: '#/components/responses/Unauthorized' }
-        '403': { $ref: '#/components/responses/Forbidden' }
-        '404': { $ref: '#/components/responses/NotFound' }
+        '403':
+          description: Employee attempted to download another employee's payslip
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+              example: { success: false, message: "Access denied" }
+        '404': { $ref: '#/components/responses/PayslipNotFound' }
         '500': { $ref: '#/components/responses/ServerError' }
 
   /api/dashboard/admin:
@@ -1860,7 +1926,7 @@ paths:
                         type: array
                         items: { $ref: '#/components/schemas/Notification' }
         '401': { $ref: '#/components/responses/Unauthorized' }
-        '500': { $ref: '#/components/responses/ServerError' }
+        '500': { $ref: '#/components/responses/InternalServerError' }
 
   /api/notifications/{id}/read:
     put:
@@ -1894,8 +1960,8 @@ paths:
                     properties:
                       data: { $ref: '#/components/schemas/Notification' }
         '401': { $ref: '#/components/responses/Unauthorized' }
-        '404': { $ref: '#/components/responses/NotFound' }
-        '500': { $ref: '#/components/responses/ServerError' }
+        '404': { $ref: '#/components/responses/NotificationNotFound' }
+        '500': { $ref: '#/components/responses/InternalServerError' }
 
   /api/notifications/read-all:
     put:
@@ -1914,7 +1980,7 @@ paths:
                 message: "All notifications marked as read"
               schema: { $ref: '#/components/schemas/MessageResponse' }
         '401': { $ref: '#/components/responses/Unauthorized' }
-        '500': { $ref: '#/components/responses/ServerError' }
+        '500': { $ref: '#/components/responses/InternalServerError' }
 
   /api/settings:
     get:
@@ -1943,7 +2009,12 @@ paths:
                     properties:
                       data: { $ref: '#/components/schemas/Settings' }
         '401': { $ref: '#/components/responses/Unauthorized' }
-        '500': { $ref: '#/components/responses/ServerError' }
+        '500':
+          description: Settings could not be loaded
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+              example: { success: false, message: "Failed to load settings" }
     put:
       tags: [Settings]
       summary: Update application settings
@@ -1984,7 +2055,12 @@ paths:
                       data: { $ref: '#/components/schemas/Settings' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
-        '500': { $ref: '#/components/responses/ServerError' }
+        '500':
+          description: Settings could not be updated
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+              example: { success: false, message: "Failed to update settings" }
 
   /api/settings/db-stats:
     get:
@@ -2012,7 +2088,12 @@ paths:
                         additionalProperties: true
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
-        '500': { $ref: '#/components/responses/ServerError' }
+        '500':
+          description: Database statistics could not be fetched
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+              example: { success: false, message: "Failed to fetch database stats" }
 
   /api/search:
     get:
@@ -2062,7 +2143,12 @@ paths:
                               properties:
                                 type: { type: string, enum: [user], description: "Category of the returned record." }
         '401': { $ref: '#/components/responses/Unauthorized' }
-        '500': { $ref: '#/components/responses/ServerError' }
+        '500':
+          description: Search failed
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+              example: { success: false, message: "Search failed" }
 
   /api/admin/audit-logs:
     get:
@@ -2138,7 +2224,12 @@ paths:
                   totalPages: { type: integer, description: "Total number of available pages." }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
-        '500': { $ref: '#/components/responses/ServerError' }
+        '500':
+          description: Audit logs could not be fetched
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+              example: { success: false, message: "Failed to fetch audit logs" }
 
 components:
   securitySchemes:
@@ -2237,6 +2328,42 @@ components:
       content:
         application/json:
           schema: { $ref: '#/components/schemas/ErrorResponse' }
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ErrorResponse' }
+          example: { success: false, message: "Internal server error" }
+    UserNotFound:
+      description: User not found
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ErrorResponse' }
+          example: { success: false, message: "User not found" }
+    LeaveRequestNotFound:
+      description: Leave request not found
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ErrorResponse' }
+          example: { success: false, message: "Leave request not found" }
+    SalaryStructureNotFound:
+      description: Salary structure not found
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ErrorResponse' }
+          example: { success: false, message: "Salary structure not found for this employee" }
+    PayslipNotFound:
+      description: Payslip not found
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ErrorResponse' }
+          example: { success: false, message: "Payslip not found" }
+    NotificationNotFound:
+      description: Notification not found
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ErrorResponse' }
+          example: { success: false, message: "Notification not found" }
   schemas:
     UserRole:
       type: string
