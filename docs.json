@@ -1,0 +1,29 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "EmPay HRMS API",
+  "colors": {
+    "primary": "#E8390E"
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Getting Started",
+        "pages": ["getting-started"]
+      },
+      {
+        "tab": "API Reference",
+        "openapi": "openapi.yaml"
+      }
+    ]
+  },
+  "api": {
+    "playground": {
+      "display": "simple"
+    },
+    "examples": {
+      "languages": ["curl", "javascript", "python"],
+      "defaults": "required"
+    }
+  }
+}
