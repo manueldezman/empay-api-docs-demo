@@ -6,14 +6,129 @@
     "primary": "#E8390E"
   },
   "navigation": {
-    "tabs": [
+    "groups": [
       {
-        "tab": "Getting Started",
+        "group": "Getting Started",
         "pages": ["getting-started"]
       },
       {
-        "tab": "API Reference",
-        "openapi": "openapi.yaml"
+        "group": "API Reference",
+        "pages": [
+          {
+            "group": "Auth",
+            "expanded": false,
+            "openapi": "openapi.yaml",
+            "pages": [
+          "POST /api/auth/register",
+          "POST /api/auth/login",
+          "GET /api/auth/me",
+          "POST /api/auth/forgot-password",
+          "POST /api/auth/reset-password",
+          "POST /api/auth/test-email"
+            ]
+          },
+          {
+        "group": "Users",
+        "expanded": false,
+        "openapi": "openapi.yaml",
+        "pages": [
+          "GET /api/users",
+          "POST /api/users/me/avatar",
+          "GET /api/users/{id}",
+          "PUT /api/users/{id}",
+          "DELETE /api/users/{id}",
+          "PATCH /api/users/{id}/toggle-active"
+        ]
+          },
+          {
+        "group": "Attendance",
+        "expanded": false,
+        "openapi": "openapi.yaml",
+        "pages": [
+          "POST /api/attendance/mark",
+          "api-reference/attendance/my",
+          "GET /api/attendance/monthly-summary",
+          "GET /api/attendance/all",
+          "GET /api/attendance/today"
+        ]
+          },
+          {
+        "group": "Leave",
+        "expanded": false,
+        "openapi": "openapi.yaml",
+        "pages": [
+          "GET /api/leave/types",
+          "POST /api/leave/types",
+          "GET /api/leave/allocation/my",
+          "GET /api/leave/allocation/{employee_id}",
+          "POST /api/leave/allocation",
+          "POST /api/leave/request",
+          "GET /api/leave/requests/my",
+          "GET /api/leave/requests/all",
+          "PATCH /api/leave/requests/{id}/approve",
+          "PATCH /api/leave/requests/{id}/reject"
+        ]
+          },
+          {
+        "group": "Payroll",
+        "expanded": false,
+        "openapi": "openapi.yaml",
+        "pages": [
+          "POST /api/payroll/salary-structure",
+          "GET /api/payroll/salary-structure",
+          "GET /api/payroll/salary-structure/{employee_id}",
+          "POST /api/payroll/payrun/generate",
+          "GET /api/payroll/payruns",
+          "GET /api/payroll/payruns/{id}/payslips",
+          "GET /api/payroll/payslips/my",
+          "GET /api/payroll/payslips/{id}",
+          "GET /api/payroll/payslips/{id}/pdf"
+        ]
+          },
+          {
+        "group": "Dashboard",
+        "expanded": false,
+        "openapi": "openapi.yaml",
+        "pages": [
+          "GET /api/dashboard/admin",
+          "GET /api/dashboard/employee",
+          "GET /api/dashboard/hr",
+          "GET /api/dashboard/payroll"
+        ]
+          },
+          {
+        "group": "Notifications",
+        "expanded": false,
+        "openapi": "openapi.yaml",
+        "pages": [
+          "GET /api/notifications",
+          "PUT /api/notifications/{id}/read",
+          "PUT /api/notifications/read-all"
+        ]
+          },
+          {
+        "group": "Settings",
+        "expanded": false,
+        "openapi": "openapi.yaml",
+        "pages": [
+          "GET /api/settings",
+          "PUT /api/settings",
+          "GET /api/settings/db-stats"
+        ]
+          },
+          {
+        "group": "Search",
+        "expanded": false,
+        "openapi": "openapi.yaml",
+        "pages": ["GET /api/search"]
+          },
+          {
+        "group": "Audit",
+        "expanded": false,
+        "openapi": "openapi.yaml",
+        "pages": ["GET /api/admin/audit-logs"]
+          }
+        ]
       }
     ]
   },

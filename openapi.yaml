@@ -95,14 +95,45 @@ paths:
                     properties:
                       data:
                         $ref: '#/components/schemas/User'
-        '401': { $ref: '#/components/responses/Unauthorized' }
-        '403': { $ref: '#/components/responses/Forbidden' }
+        '401':
+          description: Missing, expired, or invalid bearer token
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+              examples:
+                missingToken:
+                  summary: Token not provided
+                  value: { success: false, message: "Access denied. No token provided." }
+                expiredToken:
+                  summary: Token expired
+                  value: { success: false, message: "Token expired. Please login again." }
+                invalidToken:
+                  summary: Token invalid
+                  value: { success: false, message: "Invalid token." }
+        '403':
+          description: Authenticated user lacks permission
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+              example:
+                success: false
+                message: "Access denied. Insufficient permissions."
         '409':
           description: Email already exists
           content:
             application/json:
               schema: { $ref: '#/components/schemas/ErrorResponse' }
-        '500': { $ref: '#/components/responses/ServerError' }
+              example:
+                success: false
+                message: "User with this email already exists"
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+              example:
+                success: false
+                message: "Internal server error"
 
   /api/auth/login:
     post:

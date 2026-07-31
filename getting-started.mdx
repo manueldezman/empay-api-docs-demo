@@ -1,0 +1,53 @@
+---
+title: "Getting Started With the EmPay HRMS API"
+description: "This page will help you get started with the EmPay HRMS API."
+---
+
+Welcome to the EmPay HRMS API. The API enables developers to integrate employee management, attendance, leave, payroll, and other HR workflows into their applications.
+
+## Base URL
+
+```text
+https://empay-api-docs-demo.vercel.app
+```
+
+## Authentication
+
+Protected endpoints use bearer authentication. Include the access token in the `Authorization` header of each request:
+
+```http
+Authorization: Bearer YOUR_ACCESS_TOKEN
+```
+
+Access tokens are returned after a successful request to the login endpoint. Keep production tokens private and do not commit them to source control.
+
+## Making requests
+
+The API uses HTTP methods such as `GET`, `POST`, `PUT`, `PATCH`, and `DELETE`. Request and response bodies use JSON, except for the payslip download endpoint, which returns a PDF file.
+
+## Error handling
+
+The API uses standard HTTP status codes to communicate request outcomes.
+
+| Status code | Status name | Description |
+| --- | --- | --- |
+| `400` | Bad Request | The request was malformed or contained invalid parameters. |
+| `401` | Unauthorized | The request lacks valid authentication credentials. |
+| `403` | Forbidden | The authenticated user does not have permission to access the requested resource. |
+| `404` | Not Found | The requested resource was not found. |
+| `500` | Internal Server Error | An unexpected error occurred on the server. |
+
+Error responses use the following structure:
+
+```json
+{
+  "success": false,
+  "message": "Invalid token."
+}
+```
+
+## Try it out
+
+Use the interactive attendance reference to send a request and inspect the response.
+
+[Try the attendance endpoint →](/api-reference/attendance/my)
