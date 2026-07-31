@@ -11,8 +11,8 @@ info:
     name: EmPay Support
     email: support@empay.com
 servers:
-  - url: http://localhost:5000
-    description: Local development
+  - url: https://empay-api-docs-demo.vercel.app
+    description: Simulated portfolio environment
 tags:
   - name: Health
   - name: Auth
