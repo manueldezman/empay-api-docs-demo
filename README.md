@@ -4,7 +4,7 @@ A docs-as-code portfolio project for the EmPay HRMS REST API. It combines an Ope
 
 ## Live documentation
 
-- [Open the simulated API server](https://empay-api-docs-demo.vercel.app)
+- [Open the API reference](https://empay-sample.mintlify.site/getting-started)
 
 The Vercel deployment is a simulated portfolio environment. It does not connect to the EmPay production backend or expose production data.
 
