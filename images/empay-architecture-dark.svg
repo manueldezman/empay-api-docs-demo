@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">EmPay HRMS API system architecture</title>
+  <desc id="desc">Admin and HR officers, employees, and payroll officers use web applications or external integrations that communicate with the EmPay HRMS API. The API uses supporting email, notification, and PDF services and connects to PostgreSQL, Cloudinary, and an SMTP provider.</desc>
+  <defs>
+    <style>
+      .canvas{fill:#111315}.section{fill:#1a1a1a;stroke:#3b3f42;stroke-width:2}.api{fill:#271914;stroke:#ff6038;stroke-width:2}.item{fill:#202326;stroke:#3b3f42;stroke-width:1.5}.service{fill:#1a1a1a;stroke:#ff6038;stroke-width:1.8}.iconbg{fill:#381d16}.icon{fill:none;stroke:#ff6038;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}.flow{fill:none;stroke:#ff6038;stroke-width:3;marker-start:url(#back);marker-end:url(#next)}.support{fill:none;stroke:#6f767b;stroke-width:2.5;stroke-dasharray:6 6}.heading{fill:#ffffff;font:700 25px Inter,Arial,sans-serif}.section-title{fill:#ff6038;font:700 12px Inter,Arial,sans-serif;letter-spacing:1px}.title{fill:#ffffff;font:700 16px Inter,Arial,sans-serif}.body{fill:#b7bdc2;font:500 13px Inter,Arial,sans-serif}.small{fill:#b7bdc2;font:600 12px Inter,Arial,sans-serif}
+    </style>
+    <marker id="next" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0l9 5-9 5z" fill="#ff6038"/></marker>
+    <marker id="back" markerWidth="10" markerHeight="10" refX="1" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M9 0 0 5l9 5z" fill="#ff6038"/></marker>
+  </defs>
+
+  <rect class="canvas" width="1200" height="720" rx="28"/>
+  <text class="heading" x="38" y="48">EmPay HRMS API architecture</text>
+  <text class="body" x="38" y="73">How people and applications interact with the API and its supporting systems.</text>
+
+  <text class="section-title" x="505" y="112">SUPPORTING SERVICES</text>
+  <g transform="translate(505 128)">
+    <rect class="service" width="178" height="74" rx="18"/>
+    <circle class="iconbg" cx="38" cy="37" r="22"/>
+    <path class="icon" d="M26 31h24v17H26zM26 32l12 9 12-9"/>
+    <text class="title" x="70" y="31">Email and</text><text class="body" x="70" y="52">notifications</text>
+  </g>
+  <g transform="translate(714 128)">
+    <rect class="service" width="178" height="74" rx="18"/>
+    <circle class="iconbg" cx="38" cy="37" r="22"/>
+    <path class="icon" d="M28 22h15l8 8v23H28zM43 22v9h8M33 39h13M33 46h10"/>
+    <text class="title" x="70" y="31">Payslip PDF</text><text class="body" x="70" y="52">generation</text>
+  </g>
+  <path class="support" d="M594 202v34"/><path class="support" d="M803 202v34"/>
+
+  <path class="flow" d="M209 420h45"/><path class="flow" d="M454 420h45"/><path class="flow" d="M901 420h43"/>
+
+  <g transform="translate(34 246)">
+    <rect class="section" width="175" height="350" rx="28"/>
+    <text class="section-title" x="22" y="34">API USERS</text>
+    <g transform="translate(20 58)"><circle class="iconbg" cx="26" cy="26" r="24"/><path class="icon" d="M18 25a8 8 0 1 0 16 0 8 8 0 0 0-16 0Zm-6 20c3-9 25-9 28 0M42 19v14M35 26h14"/><text class="title" x="58" y="23">Admin / HR</text><text class="body" x="58" y="43">officer</text></g>
+    <g transform="translate(20 146)"><circle class="iconbg" cx="26" cy="26" r="24"/><circle class="icon" cx="26" cy="20" r="8"/><path class="icon" d="M12 45c3-11 25-11 28 0"/><text class="title" x="58" y="31">Employee</text></g>
+    <g transform="translate(20 234)"><circle class="iconbg" cx="26" cy="26" r="24"/><path class="icon" d="M15 16h22v24H15zM20 22h12M20 28h4M28 28h4M20 34h12"/><text class="title" x="58" y="23">Payroll</text><text class="body" x="58" y="43">officer</text></g>
+  </g>
+
+  <g transform="translate(254 246)">
+    <rect class="section" width="200" height="350" rx="28"/>
+    <text class="section-title" x="22" y="34">CLIENT INTERFACES</text>
+    <g transform="translate(20 60)"><rect class="item" width="160" height="70" rx="15"/><path class="icon" d="M18 18h30v22H18zM14 47h38M27 40v7M39 40v7"/><text class="title" x="62" y="29">EmPay web</text><text class="body" x="62" y="50">application</text></g>
+    <g transform="translate(20 145)"><rect class="item" width="160" height="70" rx="15"/><circle class="icon" cx="32" cy="25" r="8"/><path class="icon" d="M19 49c3-11 23-11 26 0"/><text class="title" x="62" y="29">Employee</text><text class="body" x="62" y="50">portal</text></g>
+    <g transform="translate(20 230)"><rect class="item" width="160" height="70" rx="15"/><path class="icon" d="M18 21h30v24H18zM23 29l5 4-5 4M34 38h8"/><text class="title" x="62" y="29">External API</text><text class="body" x="62" y="50">integrations</text></g>
+  </g>
+
+  <g transform="translate(499 236)">
+    <rect class="api" width="402" height="380" rx="30"/>
+    <text class="section-title" x="24" y="34">EMPAY HRMS REST API</text>
+    <g transform="translate(24 52)"><rect class="service" width="354" height="62" rx="15"/><circle class="iconbg" cx="32" cy="31" r="20"/><path class="icon" d="M24 33a8 8 0 1 1 8 8H22v-6h6M32 33h13M41 33v6"/><text class="title" x="64" y="26">Authentication and RBAC</text><text class="body" x="64" y="46">JWT verification and role permissions</text></g>
+    <g transform="translate(24 132)"><rect class="item" width="170" height="72" rx="15"/><text class="title" x="18" y="30">Users</text><text class="body" x="18" y="51">Accounts and profiles</text></g>
+    <g transform="translate(208 132)"><rect class="item" width="170" height="72" rx="15"/><text class="title" x="18" y="30">Attendance</text><text class="body" x="18" y="51">Time and records</text></g>
+    <g transform="translate(24 218)"><rect class="item" width="170" height="72" rx="15"/><text class="title" x="18" y="30">Leave</text><text class="body" x="18" y="51">Allocations and requests</text></g>
+    <g transform="translate(208 218)"><rect class="item" width="170" height="72" rx="15"/><text class="title" x="18" y="30">Payroll</text><text class="body" x="18" y="51">Pay runs and payslips</text></g>
+    <g transform="translate(24 304)"><rect class="item" width="354" height="52" rx="14"/><text class="small" x="177" y="32" text-anchor="middle">Dashboard · Notifications · Settings · Search · Audit</text></g>
+  </g>
+
+  <g transform="translate(944 246)">
+    <rect class="section" width="222" height="350" rx="28"/>
+    <text class="section-title" x="22" y="34">BACK-END SYSTEMS</text>
+    <g transform="translate(20 60)"><rect class="item" width="182" height="70" rx="15"/><path class="icon" d="M18 20c0-7 30-7 30 0v25c0 7-30 7-30 0V20Zm0 0c0 7 30 7 30 0M18 32c0 7 30 7 30 0"/><text class="title" x="62" y="29">PostgreSQL</text><text class="body" x="62" y="50">HRMS records</text></g>
+    <g transform="translate(20 145)"><rect class="item" width="182" height="70" rx="15"/><path class="icon" d="M20 40l9-17 8 13 5-8 7 12zM17 45h35"/><text class="title" x="62" y="29">Cloudinary</text><text class="body" x="62" y="50">Profile images</text></g>
+    <g transform="translate(20 230)"><rect class="item" width="182" height="70" rx="15"/><path class="icon" d="M18 22h32v23H18zM18 23l16 12 16-12"/><text class="title" x="62" y="29">SMTP provider</text><text class="body" x="62" y="50">Email delivery</text></g>
+  </g>
+
+  <text class="body" x="38" y="676">Orange arrows show request and response boundaries. Dashed lines connect supporting services to the API.</text>
+</svg>

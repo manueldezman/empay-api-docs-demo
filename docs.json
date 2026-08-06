@@ -3,16 +3,36 @@
   "theme": "mint",
   "name": "EmPay HRMS API",
   "colors": {
-    "primary": "#E8390E"
+    "primary": "#E8390E",
+    "light": "#E8390E",
+    "dark": "#E8390E"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Support",
+        "href": "mailto:support@empay.example"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "View API Reference",
+      "href": "/api-reference/auth/register-a-user"
+    }
   },
   "navigation": {
-    "groups": [
+    "tabs": [
       {
-        "group": "Getting Started",
-        "pages": ["getting-started"]
+        "tab": "Documentation",
+        "pages": [
+          {
+            "group": "Getting Started",
+            "pages": ["product-overview", "getting-started"]
+          }
+        ]
       },
       {
-        "group": "API Reference",
+        "tab": "API Reference",
         "pages": [
           {
             "group": "Auth",
@@ -129,6 +149,10 @@
             "pages": ["GET /api/admin/audit-logs"]
           }
         ]
+      },
+      {
+        "tab": "Changelog",
+        "pages": ["changelog"]
       }
     ]
   },

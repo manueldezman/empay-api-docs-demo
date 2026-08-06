@@ -1,0 +1,78 @@
+---
+title: "Overview"
+description: "Discover what you can build with the EmPay HRMS API."
+---
+
+The EmPay HRMS API lets developers integrate employee management, attendance tracking, leave administration, and payroll operations into their applications through a single REST API.
+
+Whether you’re building an employee self-service portal, an internal HR dashboard, or connecting HR workflows to another business system, the API provides role-based access to the operations needed by administrators, HR officers, payroll officers, and employees.
+
+<Info>
+  EmPay HRMS API Documentation is a portfolio project created to demonstrate API
+  documentation engineering. It uses a simulated API environment and does not
+  connect to the production EmPay backend or expose production data.
+</Info>
+
+## What you can do
+
+<Columns cols={2}>
+  <Card
+    title="Manage employees"
+    icon="users"
+    color="#E8390E"
+    href="/api-reference/auth/register-a-user"
+  >
+    Create employee accounts and manage profile and access details.
+  </Card>
+  <Card
+    title="Track attendance"
+    icon="clock"
+    color="#E8390E"
+    href="/api-reference/attendance/my"
+  >
+    Record and retrieve employee attendance information.
+  </Card>
+  <Card
+    title="Manage leave"
+    icon="calendar-check"
+    color="#E8390E"
+    href="/api-reference/leave/submit-a-leave-request"
+  >
+    Allocate leave, submit requests, and review decisions.
+  </Card>
+  <Card
+    title="Run payroll"
+    icon="calculator"
+    color="#E8390E"
+    href="/api-reference/payroll/generate-or-regenerate-a-pay-run"
+  >
+    Configure salaries, generate pay runs, and provide payslips.
+  </Card>
+</Columns>
+
+### Understand the architecture
+
+See how API users access EmPay through client interfaces, how the REST API organizes HRMS capabilities, and which supporting and back-end services it uses.
+
+<img
+  className="block w-full dark:hidden"
+  src="/images/empay-architecture-light.svg"
+  alt="EmPay HRMS architecture showing API users, client interfaces, API modules, supporting services, and back-end systems."
+/>
+
+<img
+  className="hidden w-full dark:block"
+  src="/images/empay-architecture-dark.svg"
+  alt="EmPay HRMS architecture showing API users, client interfaces, API modules, supporting services, and back-end systems."
+/>
+
+<Card
+  title="Get started with the API"
+  icon="arrow-right"
+  color="#E8390E"
+  href="/getting-started"
+  arrow="true"
+>
+  Learn how to authenticate, make requests, handle errors, and try the simulated
+  attendance endpoint.
+</Card>
