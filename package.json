@@ -4,11 +4,12 @@
   "private": true,
   "description": "Docs-as-code validation for the EmPay HRMS API portfolio reference.",
   "scripts": {
+    "test": "node --test tests/**/*.test.js",
     "validate": "npm run validate:openapi && npm run validate:content && npm run validate:mintlify && npm run format:check",
     "validate:openapi": "redocly lint openapi.yaml demo-openapi.yaml --extends=spec",
     "validate:content": "node scripts/validate-docs.mjs",
     "validate:mintlify": "mint validate && mint broken-links",
-    "format:check": "prettier --check docs.json package.json \"*.mdx\" \"api-reference/**/*.mdx\" \"api/**/*.js\" \"scripts/**/*.mjs\" \".github/**/*.yml\""
+    "format:check": "prettier --check docs.json package.json \"*.mdx\" \"api-reference/**/*.mdx\" \"api/**/*.js\" \"lib/**/*.js\" \"tests/**/*.js\" \"scripts/**/*.mjs\" \".github/**/*.yml\""
   },
   "engines": {
     "node": ">=20.17.0"
