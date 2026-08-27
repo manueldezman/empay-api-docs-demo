@@ -44,9 +44,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `hr@empay.example` (HR officer)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Creates a user account with employee details and an assigned role; requires the `admin` or `hr_officer` role.
       operationId: registerUser
@@ -150,7 +148,14 @@ paths:
       tags:
         - Authentication
       summary: Log in
-      description: Authenticates an active user with an email address and password and returns a signed access token with the user profile.
+      description: |-
+        > **Try this operation**
+        >
+        > Account email: `employee@empay.example`
+        >
+        > The password is prefilled in the request.
+
+        Authenticates an active user with an email address and password and returns a signed access token with the user profile.
       operationId: login
       requestBody:
         description: Payload supplied to this operation.
@@ -160,8 +165,8 @@ paths:
             schema:
               $ref: "#/components/schemas/LoginRequest"
             example:
-              email: employee@example.com
-              password: Password@123
+              email: employee@empay.example
+              password: EmpayDemo123!
       responses:
         "200":
           description: Login successful
@@ -245,9 +250,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `employee@empay.example` (Employee)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Returns the profile associated with the authenticated user's access token.
       operationId: getCurrentUser
@@ -428,9 +431,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `admin@empay.example` (Administrator)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Sends a test email to verify SMTP configuration; requires the `admin` role and defaults to the authenticated user's email when `email` is omitted.
       operationId: testEmail
@@ -484,9 +485,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `employee@empay.example` (Employee)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Returns users matching the optional role, department, name, email, and active-status filters; available to all authenticated roles.
       operationId: listUsers
@@ -546,9 +545,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `employee@empay.example` (Employee)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Uploads an image and stores its URL as the authenticated user's profile picture.
       operationId: uploadAvatar
@@ -618,9 +615,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `employee@empay.example` (Employee)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Returns a user profile by ID, while employees may access only their own profile.
       operationId: getUser
@@ -677,9 +672,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `employee@empay.example` (Employee)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Updates permitted profile fields according to the authenticated user's role; only admins may change another user's role or password.
       operationId: updateUser
@@ -770,9 +763,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `admin@empay.example` (Administrator)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Deactivates a user without deleting the database record by setting `is_active` to false; requires the `admin` role.
       operationId: deleteUser
@@ -823,9 +814,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `admin@empay.example` (Administrator)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Switches a user between active and inactive states; requires the `admin` role.
       operationId: toggleUserActive
@@ -878,9 +867,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `employee@empay.example` (Employee)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Records a check-in or check-out for the authenticated user according to their attendance state for the current day.
       operationId: markAttendance
@@ -941,9 +928,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `employee@empay.example` (Employee)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Returns the authenticated user's attendance records for the requested month and year.
       operationId: getMyAttendance
@@ -997,9 +982,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `employee@empay.example` (Employee)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Returns monthly attendance totals for the selected employee, defaulting to the authenticated user when `employee_id` is omitted.
       operationId: getMonthlyAttendanceSummary
@@ -1043,9 +1026,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `hr@empay.example` (HR officer)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Returns employee attendance for a month with optional department and employee filters; requires an administrative, HR, or payroll role.
       operationId: listAllAttendance
@@ -1103,9 +1084,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `hr@empay.example` (HR officer)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Returns attendance records for the current day; requires an administrative, HR, or payroll role.
       operationId: getTodayAttendance
@@ -1158,9 +1137,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `employee@empay.example` (Employee)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Returns the configured leave categories and their default annual day allowances.
       operationId: listLeaveTypes
@@ -1201,9 +1178,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `admin@empay.example` (Administrator)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Creates a leave category with its default annual allowance; requires the `admin` role.
       operationId: createLeaveType
@@ -1275,9 +1250,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `employee@empay.example` (Employee)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Returns leave allocations intended for the authenticated user; the current route passes a missing employee parameter to the service.
       operationId: getMyLeaveAllocations
@@ -1323,9 +1296,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `hr@empay.example` (HR officer)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Returns leave balances allocated to the selected employee; requires the `admin` or `hr_officer` role.
       operationId: getEmployeeLeaveAllocations
@@ -1375,9 +1346,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `hr@empay.example` (HR officer)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Creates or updates an employee's yearly allocation for a leave type; requires the `admin` or `hr_officer` role.
       operationId: upsertLeaveAllocation
@@ -1455,9 +1424,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `employee@empay.example` (Employee)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Submits a dated leave request for the authenticated employee after validating the date range and available balance.
       operationId: createLeaveRequest
@@ -1562,9 +1529,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `employee@empay.example` (Employee)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Returns leave requests submitted by the authenticated employee.
       operationId: listMyLeaveRequests
@@ -1618,9 +1583,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `hr@empay.example` (HR officer)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Returns leave requests across employees with optional status, department, and date filters; requires an administrative, HR, or payroll role.
       operationId: listAllLeaveRequests
@@ -1687,9 +1650,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `payroll@empay.example` (Payroll officer)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Approves a pending leave request and records the payroll officer who reviewed it; requires the `payroll_officer` role.
       operationId: approveLeaveRequest
@@ -1756,9 +1717,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `payroll@empay.example` (Payroll officer)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Rejects a pending leave request with an optional reason and records the reviewer; requires the `payroll_officer` role.
       operationId: rejectLeaveRequest
@@ -1825,9 +1784,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `payroll@empay.example` (Payroll officer)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Creates or updates an employee's salary components and effective date; requires the `admin` or `payroll_officer` role.
       operationId: upsertSalaryStructure
@@ -1887,9 +1844,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `payroll@empay.example` (Payroll officer)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Returns salary structures for all employees; requires the `admin` or `payroll_officer` role.
       operationId: listSalaryStructures
@@ -1939,9 +1894,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `payroll@empay.example` (Payroll officer)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Returns the salary structure assigned to the selected employee; requires the `admin` or `payroll_officer` role.
       operationId: getSalaryStructure
@@ -1993,9 +1946,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `payroll@empay.example` (Payroll officer)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Generates or recalculates the pay run and employee payslips for the supplied month and year; requires the `payroll_officer` role.
       operationId: generatePayrun
@@ -2075,9 +2026,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `payroll@empay.example` (Payroll officer)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Returns generated pay runs ordered by payroll period; requires the `admin` or `payroll_officer` role.
       operationId: listPayruns
@@ -2125,9 +2074,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `payroll@empay.example` (Payroll officer)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Returns all employee payslips generated for the selected pay run; requires the `admin` or `payroll_officer` role.
       operationId: listPayrunPayslips
@@ -2195,9 +2142,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `employee@empay.example` (Employee)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Returns payslips belonging to the authenticated employee.
       operationId: listMyPayslips
@@ -2261,9 +2206,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `employee@empay.example` (Employee)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Returns one payslip by ID, while employees may access only their own payslips.
       operationId: getPayslip
@@ -2338,9 +2281,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `employee@empay.example` (Employee)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Generates and downloads a payslip as a PDF file, while employees may download only their own payslips.
       operationId: downloadPayslipPdf
@@ -2385,9 +2326,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `admin@empay.example` (Administrator)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Returns organization-wide workforce, attendance, leave, payroll, and recent-activity metrics; requires the `admin` role.
       operationId: getAdminDashboard
@@ -2419,9 +2358,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `employee@empay.example` (Employee)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Returns personal attendance, leave, payslip, notification, and profile information for the authenticated employee.
       operationId: getEmployeeDashboard
@@ -2451,9 +2388,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `hr@empay.example` (HR officer)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Returns workforce, attendance, leave, and recent-joiner metrics for HR operations; requires the `admin` or `hr_officer` role.
       operationId: getHrDashboard
@@ -2485,9 +2420,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `payroll@empay.example` (Payroll officer)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Returns payroll totals, pay-run status, salary coverage, and recent payslip metrics; requires the `admin` or `payroll_officer` role.
       operationId: getPayrollDashboard
@@ -2519,9 +2452,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `employee@empay.example` (Employee)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Returns notifications addressed to the authenticated user, including their read status.
       operationId: listNotifications
@@ -2565,9 +2496,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `employee@empay.example` (Employee)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Marks one notification belonging to the authenticated user as read.
       operationId: markNotificationRead
@@ -2613,9 +2542,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `employee@empay.example` (Employee)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Marks every unread notification belonging to the authenticated user as read.
       operationId: markAllNotificationsRead
@@ -2644,9 +2571,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `employee@empay.example` (Employee)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Returns the current application settings as key-value pairs.
       operationId: getSettings
@@ -2691,9 +2616,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `admin@empay.example` (Administrator)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Stores each supplied key as an application setting; requires the `admin` role.
       operationId: updateSettings
@@ -2755,9 +2678,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `admin@empay.example` (Administrator)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Returns database size, connection, and table statistics; requires the `admin` role.
       operationId: getDatabaseStats
@@ -2801,9 +2722,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `employee@empay.example` (Employee)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Searches users by name or email and returns no matches when the query is shorter than two characters.
       operationId: searchUsers
@@ -2874,9 +2793,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > Account: `admin@empay.example` (Administrator)
-        >
-        > Authentication is prefilled in the request.
+        > The JWT authentication token is prefilled in the request.
 
         Returns paginated audit events with optional action, entity, user, and date filters; requires the `admin` role.
       operationId: listAuditLogs
@@ -3391,12 +3308,12 @@ components:
           type: string
           format: email
           description: Email address of the user.
-          example: ada@example.com
+          example: employee@empay.example
         password:
           type: string
           format: password
           description: Plain-text password submitted for authentication or account setup.
-          example: Password@123
+          example: EmpayDemo123!
     UpdateUserRequest:
       type: object
       minProperties: 1

@@ -77,7 +77,7 @@
           "Authentication"
         ],
         "summary": "Register a user",
-        "description": "> **Try this operation**\n>\n> Account: `hr@empay.example` (HR officer)\n>\n> Authentication is prefilled in the request.\n\nCreates a user account with employee details and an assigned role; requires the `admin` or `hr_officer` role.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nCreates a user account with employee details and an assigned role; requires the `admin` or `hr_officer` role.",
         "operationId": "registerUser",
         "security": [
           {
@@ -230,7 +230,7 @@
           "Authentication"
         ],
         "summary": "Log in",
-        "description": "Authenticates an active user with an email address and password and returns a signed access token with the user profile.",
+        "description": "> **Try this operation**\n>\n> Account email: `employee@empay.example`\n>\n> The password is prefilled in the request.\n\nAuthenticates an active user with an email address and password and returns a signed access token with the user profile.",
         "operationId": "login",
         "requestBody": {
           "description": "Payload supplied to this operation.",
@@ -241,8 +241,8 @@
                 "$ref": "#/components/schemas/LoginRequest"
               },
               "example": {
-                "email": "employee@example.com",
-                "password": "Password@123"
+                "email": "employee@empay.example",
+                "password": "EmpayDemo123!"
               }
             }
           }
@@ -369,7 +369,7 @@
           "Authentication"
         ],
         "summary": "Get the authenticated user's profile",
-        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Authentication is prefilled in the request.\n\nReturns the profile associated with the authenticated user's access token.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nReturns the profile associated with the authenticated user's access token.",
         "operationId": "getCurrentUser",
         "security": [
           {
@@ -635,7 +635,7 @@
           "Authentication"
         ],
         "summary": "Send an SMTP test email",
-        "description": "> **Try this operation**\n>\n> Account: `admin@empay.example` (Administrator)\n>\n> Authentication is prefilled in the request.\n\nSends a test email to verify SMTP configuration; requires the `admin` role and defaults to the authenticated user's email when `email` is omitted.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nSends a test email to verify SMTP configuration; requires the `admin` role and defaults to the authenticated user's email when `email` is omitted.",
         "operationId": "testEmail",
         "security": [
           {
@@ -710,7 +710,7 @@
           "Users"
         ],
         "summary": "List users",
-        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Authentication is prefilled in the request.\n\nReturns users matching the optional role, department, name, email, and active-status filters; available to all authenticated roles.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nReturns users matching the optional role, department, name, email, and active-status filters; available to all authenticated roles.",
         "operationId": "listUsers",
         "security": [
           {
@@ -801,7 +801,7 @@
           "Users"
         ],
         "summary": "Upload the authenticated user's avatar",
-        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Authentication is prefilled in the request.\n\nUploads an image and stores its URL as the authenticated user's profile picture.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nUploads an image and stores its URL as the authenticated user's profile picture.",
         "operationId": "uploadAvatar",
         "security": [
           {
@@ -906,7 +906,7 @@
           "Users"
         ],
         "summary": "Get a user",
-        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Authentication is prefilled in the request.\n\nReturns a user profile by ID, while employees may access only their own profile.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nReturns a user profile by ID, while employees may access only their own profile.",
         "operationId": "getUser",
         "security": [
           {
@@ -985,7 +985,7 @@
           "Users"
         ],
         "summary": "Update a user",
-        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Authentication is prefilled in the request.\n\nUpdates permitted profile fields according to the authenticated user's role; only admins may change another user's role or password.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nUpdates permitted profile fields according to the authenticated user's role; only admins may change another user's role or password.",
         "operationId": "updateUser",
         "security": [
           {
@@ -1114,7 +1114,7 @@
           "Users"
         ],
         "summary": "Deactivate a user",
-        "description": "> **Try this operation**\n>\n> Account: `admin@empay.example` (Administrator)\n>\n> Authentication is prefilled in the request.\n\nDeactivates a user without deleting the database record by setting `is_active` to false; requires the `admin` role.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nDeactivates a user without deleting the database record by setting `is_active` to false; requires the `admin` role.",
         "operationId": "deleteUser",
         "security": [
           {
@@ -1184,7 +1184,7 @@
           "Users"
         ],
         "summary": "Toggle a user's active status",
-        "description": "> **Try this operation**\n>\n> Account: `admin@empay.example` (Administrator)\n>\n> Authentication is prefilled in the request.\n\nSwitches a user between active and inactive states; requires the `admin` role.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nSwitches a user between active and inactive states; requires the `admin` role.",
         "operationId": "toggleUserActive",
         "security": [
           {
@@ -1259,7 +1259,7 @@
           "Attendance"
         ],
         "summary": "Check in or check out",
-        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Authentication is prefilled in the request.\n\nRecords a check-in or check-out for the authenticated user according to their attendance state for the current day.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nRecords a check-in or check-out for the authenticated user according to their attendance state for the current day.",
         "operationId": "markAttendance",
         "security": [
           {
@@ -1342,7 +1342,7 @@
           "Attendance"
         ],
         "summary": "Get the authenticated user's monthly attendance",
-        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Authentication is prefilled in the request.\n\nReturns the authenticated user's attendance records for the requested month and year.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nReturns the authenticated user's attendance records for the requested month and year.",
         "operationId": "getMyAttendance",
         "security": [
           {
@@ -1421,7 +1421,7 @@
           "Attendance"
         ],
         "summary": "Get a monthly attendance summary",
-        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Authentication is prefilled in the request.\n\nReturns monthly attendance totals for the selected employee, defaulting to the authenticated user when `employee_id` is omitted.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nReturns monthly attendance totals for the selected employee, defaulting to the authenticated user when `employee_id` is omitted.",
         "operationId": "getMonthlyAttendanceSummary",
         "security": [
           {
@@ -1489,7 +1489,7 @@
           "Attendance"
         ],
         "summary": "List monthly attendance for all employees",
-        "description": "> **Try this operation**\n>\n> Account: `hr@empay.example` (HR officer)\n>\n> Authentication is prefilled in the request.\n\nReturns employee attendance for a month with optional department and employee filters; requires an administrative, HR, or payroll role.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nReturns employee attendance for a month with optional department and employee filters; requires an administrative, HR, or payroll role.",
         "operationId": "listAllAttendance",
         "security": [
           {
@@ -1577,7 +1577,7 @@
           "Attendance"
         ],
         "summary": "List today's attendance",
-        "description": "> **Try this operation**\n>\n> Account: `hr@empay.example` (HR officer)\n>\n> Authentication is prefilled in the request.\n\nReturns attendance records for the current day; requires an administrative, HR, or payroll role.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nReturns attendance records for the current day; requires an administrative, HR, or payroll role.",
         "operationId": "getTodayAttendance",
         "security": [
           {
@@ -1651,7 +1651,7 @@
           "Leave"
         ],
         "summary": "List leave types",
-        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Authentication is prefilled in the request.\n\nReturns the configured leave categories and their default annual day allowances.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nReturns the configured leave categories and their default annual day allowances.",
         "operationId": "listLeaveTypes",
         "security": [
           {
@@ -1711,7 +1711,7 @@
           "Leave"
         ],
         "summary": "Create a leave type",
-        "description": "> **Try this operation**\n>\n> Account: `admin@empay.example` (Administrator)\n>\n> Authentication is prefilled in the request.\n\nCreates a leave category with its default annual allowance; requires the `admin` role.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nCreates a leave category with its default annual allowance; requires the `admin` role.",
         "operationId": "createLeaveType",
         "security": [
           {
@@ -1811,7 +1811,7 @@
           "Leave"
         ],
         "summary": "Get the authenticated user's leave allocations",
-        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Authentication is prefilled in the request.\n\nReturns leave allocations intended for the authenticated user; the current route passes a missing employee parameter to the service.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nReturns leave allocations intended for the authenticated user; the current route passes a missing employee parameter to the service.",
         "operationId": "getMyLeaveAllocations",
         "security": [
           {
@@ -1877,7 +1877,7 @@
           "Leave"
         ],
         "summary": "Get an employee's leave allocations",
-        "description": "> **Try this operation**\n>\n> Account: `hr@empay.example` (HR officer)\n>\n> Authentication is prefilled in the request.\n\nReturns leave balances allocated to the selected employee; requires the `admin` or `hr_officer` role.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nReturns leave balances allocated to the selected employee; requires the `admin` or `hr_officer` role.",
         "operationId": "getEmployeeLeaveAllocations",
         "security": [
           {
@@ -1951,7 +1951,7 @@
           "Leave"
         ],
         "summary": "Create or update a leave allocation",
-        "description": "> **Try this operation**\n>\n> Account: `hr@empay.example` (HR officer)\n>\n> Authentication is prefilled in the request.\n\nCreates or updates an employee's yearly allocation for a leave type; requires the `admin` or `hr_officer` role.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nCreates or updates an employee's yearly allocation for a leave type; requires the `admin` or `hr_officer` role.",
         "operationId": "upsertLeaveAllocation",
         "security": [
           {
@@ -2058,7 +2058,7 @@
           "Leave"
         ],
         "summary": "Submit a leave request",
-        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Authentication is prefilled in the request.\n\nSubmits a dated leave request for the authenticated employee after validating the date range and available balance.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nSubmits a dated leave request for the authenticated employee after validating the date range and available balance.",
         "operationId": "createLeaveRequest",
         "security": [
           {
@@ -2200,7 +2200,7 @@
           "Leave"
         ],
         "summary": "List the authenticated user's leave requests",
-        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Authentication is prefilled in the request.\n\nReturns leave requests submitted by the authenticated employee.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nReturns leave requests submitted by the authenticated employee.",
         "operationId": "listMyLeaveRequests",
         "security": [
           {
@@ -2274,7 +2274,7 @@
           "Leave"
         ],
         "summary": "List all leave requests",
-        "description": "> **Try this operation**\n>\n> Account: `hr@empay.example` (HR officer)\n>\n> Authentication is prefilled in the request.\n\nReturns leave requests across employees with optional status, department, and date filters; requires an administrative, HR, or payroll role.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nReturns leave requests across employees with optional status, department, and date filters; requires an administrative, HR, or payroll role.",
         "operationId": "listAllLeaveRequests",
         "security": [
           {
@@ -2369,7 +2369,7 @@
           "Leave"
         ],
         "summary": "Approve a leave request",
-        "description": "> **Try this operation**\n>\n> Account: `payroll@empay.example` (Payroll officer)\n>\n> Authentication is prefilled in the request.\n\nApproves a pending leave request and records the payroll officer who reviewed it; requires the `payroll_officer` role.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nApproves a pending leave request and records the payroll officer who reviewed it; requires the `payroll_officer` role.",
         "operationId": "approveLeaveRequest",
         "security": [
           {
@@ -2463,7 +2463,7 @@
           "Leave"
         ],
         "summary": "Reject a leave request",
-        "description": "> **Try this operation**\n>\n> Account: `payroll@empay.example` (Payroll officer)\n>\n> Authentication is prefilled in the request.\n\nRejects a pending leave request with an optional reason and records the reviewer; requires the `payroll_officer` role.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nRejects a pending leave request with an optional reason and records the reviewer; requires the `payroll_officer` role.",
         "operationId": "rejectLeaveRequest",
         "security": [
           {
@@ -2557,7 +2557,7 @@
           "Payroll"
         ],
         "summary": "Create or update a salary structure",
-        "description": "> **Try this operation**\n>\n> Account: `payroll@empay.example` (Payroll officer)\n>\n> Authentication is prefilled in the request.\n\nCreates or updates an employee's salary components and effective date; requires the `admin` or `payroll_officer` role.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nCreates or updates an employee's salary components and effective date; requires the `admin` or `payroll_officer` role.",
         "operationId": "upsertSalaryStructure",
         "security": [
           {
@@ -2639,7 +2639,7 @@
           "Payroll"
         ],
         "summary": "List salary structures",
-        "description": "> **Try this operation**\n>\n> Account: `payroll@empay.example` (Payroll officer)\n>\n> Authentication is prefilled in the request.\n\nReturns salary structures for all employees; requires the `admin` or `payroll_officer` role.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nReturns salary structures for all employees; requires the `admin` or `payroll_officer` role.",
         "operationId": "listSalaryStructures",
         "security": [
           {
@@ -2710,7 +2710,7 @@
           "Payroll"
         ],
         "summary": "Get an employee's salary structure",
-        "description": "> **Try this operation**\n>\n> Account: `payroll@empay.example` (Payroll officer)\n>\n> Authentication is prefilled in the request.\n\nReturns the salary structure assigned to the selected employee; requires the `admin` or `payroll_officer` role.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nReturns the salary structure assigned to the selected employee; requires the `admin` or `payroll_officer` role.",
         "operationId": "getSalaryStructure",
         "security": [
           {
@@ -2784,7 +2784,7 @@
           "Payroll"
         ],
         "summary": "Generate or regenerate a pay run",
-        "description": "> **Try this operation**\n>\n> Account: `payroll@empay.example` (Payroll officer)\n>\n> Authentication is prefilled in the request.\n\nGenerates or recalculates the pay run and employee payslips for the supplied month and year; requires the `payroll_officer` role.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nGenerates or recalculates the pay run and employee payslips for the supplied month and year; requires the `payroll_officer` role.",
         "operationId": "generatePayrun",
         "security": [
           {
@@ -2899,7 +2899,7 @@
           "Payroll"
         ],
         "summary": "List pay runs",
-        "description": "> **Try this operation**\n>\n> Account: `payroll@empay.example` (Payroll officer)\n>\n> Authentication is prefilled in the request.\n\nReturns generated pay runs ordered by payroll period; requires the `admin` or `payroll_officer` role.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nReturns generated pay runs ordered by payroll period; requires the `admin` or `payroll_officer` role.",
         "operationId": "listPayruns",
         "security": [
           {
@@ -2968,7 +2968,7 @@
           "Payroll"
         ],
         "summary": "List payslips in a pay run",
-        "description": "> **Try this operation**\n>\n> Account: `payroll@empay.example` (Payroll officer)\n>\n> Authentication is prefilled in the request.\n\nReturns all employee payslips generated for the selected pay run; requires the `admin` or `payroll_officer` role.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nReturns all employee payslips generated for the selected pay run; requires the `admin` or `payroll_officer` role.",
         "operationId": "listPayrunPayslips",
         "security": [
           {
@@ -3060,7 +3060,7 @@
           "Payroll"
         ],
         "summary": "List the authenticated user's payslips",
-        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Authentication is prefilled in the request.\n\nReturns payslips belonging to the authenticated employee.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nReturns payslips belonging to the authenticated employee.",
         "operationId": "listMyPayslips",
         "security": [
           {
@@ -3144,7 +3144,7 @@
           "Payroll"
         ],
         "summary": "Get a payslip",
-        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Authentication is prefilled in the request.\n\nReturns one payslip by ID, while employees may access only their own payslips.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nReturns one payslip by ID, while employees may access only their own payslips.",
         "operationId": "getPayslip",
         "security": [
           {
@@ -3245,7 +3245,7 @@
           "Payroll"
         ],
         "summary": "Download a payslip PDF",
-        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Authentication is prefilled in the request.\n\nGenerates and downloads a payslip as a PDF file, while employees may download only their own payslips.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nGenerates and downloads a payslip as a PDF file, while employees may download only their own payslips.",
         "operationId": "downloadPayslipPdf",
         "security": [
           {
@@ -3310,7 +3310,7 @@
           "Dashboard"
         ],
         "summary": "Get the admin dashboard",
-        "description": "> **Try this operation**\n>\n> Account: `admin@empay.example` (Administrator)\n>\n> Authentication is prefilled in the request.\n\nReturns organization-wide workforce, attendance, leave, payroll, and recent-activity metrics; requires the `admin` role.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nReturns organization-wide workforce, attendance, leave, payroll, and recent-activity metrics; requires the `admin` role.",
         "operationId": "getAdminDashboard",
         "security": [
           {
@@ -3352,7 +3352,7 @@
           "Dashboard"
         ],
         "summary": "Get the authenticated employee dashboard",
-        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Authentication is prefilled in the request.\n\nReturns personal attendance, leave, payslip, notification, and profile information for the authenticated employee.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nReturns personal attendance, leave, payslip, notification, and profile information for the authenticated employee.",
         "operationId": "getEmployeeDashboard",
         "security": [
           {
@@ -3391,7 +3391,7 @@
           "Dashboard"
         ],
         "summary": "Get the HR dashboard",
-        "description": "> **Try this operation**\n>\n> Account: `hr@empay.example` (HR officer)\n>\n> Authentication is prefilled in the request.\n\nReturns workforce, attendance, leave, and recent-joiner metrics for HR operations; requires the `admin` or `hr_officer` role.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nReturns workforce, attendance, leave, and recent-joiner metrics for HR operations; requires the `admin` or `hr_officer` role.",
         "operationId": "getHrDashboard",
         "security": [
           {
@@ -3433,7 +3433,7 @@
           "Dashboard"
         ],
         "summary": "Get the payroll dashboard",
-        "description": "> **Try this operation**\n>\n> Account: `payroll@empay.example` (Payroll officer)\n>\n> Authentication is prefilled in the request.\n\nReturns payroll totals, pay-run status, salary coverage, and recent payslip metrics; requires the `admin` or `payroll_officer` role.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nReturns payroll totals, pay-run status, salary coverage, and recent payslip metrics; requires the `admin` or `payroll_officer` role.",
         "operationId": "getPayrollDashboard",
         "security": [
           {
@@ -3475,7 +3475,7 @@
           "Notifications"
         ],
         "summary": "List the authenticated user's notifications",
-        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Authentication is prefilled in the request.\n\nReturns notifications addressed to the authenticated user, including their read status.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nReturns notifications addressed to the authenticated user, including their read status.",
         "operationId": "listNotifications",
         "security": [
           {
@@ -3539,7 +3539,7 @@
           "Notifications"
         ],
         "summary": "Mark a notification as read",
-        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Authentication is prefilled in the request.\n\nMarks one notification belonging to the authenticated user as read.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nMarks one notification belonging to the authenticated user as read.",
         "operationId": "markNotificationRead",
         "security": [
           {
@@ -3606,7 +3606,7 @@
           "Notifications"
         ],
         "summary": "Mark all notifications as read",
-        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Authentication is prefilled in the request.\n\nMarks every unread notification belonging to the authenticated user as read.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nMarks every unread notification belonging to the authenticated user as read.",
         "operationId": "markAllNotificationsRead",
         "security": [
           {
@@ -3644,7 +3644,7 @@
           "Settings"
         ],
         "summary": "Get application settings",
-        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Authentication is prefilled in the request.\n\nReturns the current application settings as key-value pairs.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nReturns the current application settings as key-value pairs.",
         "operationId": "getSettings",
         "security": [
           {
@@ -3709,7 +3709,7 @@
           "Settings"
         ],
         "summary": "Update application settings",
-        "description": "> **Try this operation**\n>\n> Account: `admin@empay.example` (Administrator)\n>\n> Authentication is prefilled in the request.\n\nStores each supplied key as an application setting; requires the `admin` role.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nStores each supplied key as an application setting; requires the `admin` role.",
         "operationId": "updateSettings",
         "security": [
           {
@@ -3798,7 +3798,7 @@
           "Settings"
         ],
         "summary": "Get database statistics",
-        "description": "> **Try this operation**\n>\n> Account: `admin@empay.example` (Administrator)\n>\n> Authentication is prefilled in the request.\n\nReturns database size, connection, and table statistics; requires the `admin` role.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nReturns database size, connection, and table statistics; requires the `admin` role.",
         "operationId": "getDatabaseStats",
         "security": [
           {
@@ -3863,7 +3863,7 @@
           "Search"
         ],
         "summary": "Search users",
-        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Authentication is prefilled in the request.\n\nSearches users by name or email and returns no matches when the query is shorter than two characters.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nSearches users by name or email and returns no matches when the query is shorter than two characters.",
         "operationId": "searchUsers",
         "security": [
           {
@@ -3970,7 +3970,7 @@
           "Audit"
         ],
         "summary": "List audit logs",
-        "description": "> **Try this operation**\n>\n> Account: `admin@empay.example` (Administrator)\n>\n> Authentication is prefilled in the request.\n\nReturns paginated audit events with optional action, entity, user, and date filters; requires the `admin` role.",
+        "description": "> **Try this operation**\n>\n> The JWT authentication token is prefilled in the request.\n\nReturns paginated audit events with optional action, entity, user, and date filters; requires the `admin` role.",
         "operationId": "listAuditLogs",
         "security": [
           {
@@ -4686,13 +4686,13 @@
             "type": "string",
             "format": "email",
             "description": "Email address of the user.",
-            "example": "ada@example.com"
+            "example": "employee@empay.example"
           },
           "password": {
             "type": "string",
             "format": "password",
             "description": "Plain-text password submitted for authentication or account setup.",
-            "example": "Password@123"
+            "example": "EmpayDemo123!"
           }
         }
       },
