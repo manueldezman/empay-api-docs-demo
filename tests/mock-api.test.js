@@ -110,6 +110,28 @@ test("every operation returns a controlled response for a permitted account", ()
     );
   }
 });
+
+test("Vercel rewrite dispatches every operation through the shared router", () => {
+  for (const op of operations) {
+    const path = concrete(op.path).replace(/^\/api\//, "");
+    const response = invoke({
+      method: op.method,
+      path: "/api/router",
+      query: { path },
+      token: op.roles ? TOKENS[op.roles[0]] : undefined,
+      body: {
+        email: ACCOUNTS[0].email,
+        password: DEMO_PASSWORD,
+        month: 8,
+        year: 2026,
+      },
+    });
+    assert.ok(
+      [200, 201].includes(response.status),
+      `${op.method} ${op.path} returned ${response.status}`,
+    );
+  }
+});
 test("filters and pagination are honored", () => {
   const r = invoke({
     path: "/api/users",
