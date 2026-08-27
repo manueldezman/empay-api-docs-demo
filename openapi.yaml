@@ -151,7 +151,7 @@ paths:
       description: |-
         > **Try this operation**
         >
-        > For this portfolio demonstration, the login details are prefilled in the request.
+        > For this demonstration, the login details are prefilled in the request.
 
         Authenticates an active user with an email address and password and returns a signed access token with the user profile.
       operationId: login

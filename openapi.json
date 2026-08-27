@@ -230,7 +230,7 @@
           "Authentication"
         ],
         "summary": "Log in",
-        "description": "> **Try this operation**\n>\n> For this portfolio demonstration, the login details are prefilled in the request.\n\nAuthenticates an active user with an email address and password and returns a signed access token with the user profile.",
+        "description": "> **Try this operation**\n>\n> For this demonstration, the login details are prefilled in the request.\n\nAuthenticates an active user with an email address and password and returns a signed access token with the user profile.",
         "operationId": "login",
         "requestBody": {
           "description": "Payload supplied to this operation.",
