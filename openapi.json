@@ -77,7 +77,7 @@
           "Authentication"
         ],
         "summary": "Register a user",
-        "description": "> **Try this operation**  \n> Account: `hr@empay.example` (HR officer)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsInJvbGUiOiJocl9vZmZpY2VyIiwiaXNzIjoiZW1wYXktZGVtbyIsImF1ZCI6ImVtcGF5LWFwaSJ9.i37Vymg5nIFvyuEfsydyOSGSDyJCMbL7GxXJgAfUakTohtjQon57-nkmXQoPlzRb6rvJdhwEjhizXSF6ypkNC3oaKFZgGlcOg9o11HQbqEao_XllfyZwi5i9bCNDq0rSTTGFSb9OY1q-8l2OvtEOtyPJjIvO7xyiGnIxkWeV9ScFo7Qh_U_DzA0hUauTYUpdlvmSWfLajqFjyp-tiHN7LFgChyRPOCNAvVdLKWygFRVeTiFmAAPlHKvlh6lr8HkRDRjQhkHb870EC8zQN-iazwsKI9NlvpIAfuN6w6ZXGW4Df7eq5zxDurOtqOK1_662Ns7ZGf0om2rNBD0Zk5PLwQ`\n\nCreates a user account with employee details and an assigned role; requires the `admin` or `hr_officer` role.",
+        "description": "> **Try this operation**\n>\n> Account: `hr@empay.example` (HR officer)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsInJvbGUiOiJocl9vZmZpY2VyIiwiaXNzIjoiZW1wYXktZGVtbyIsImF1ZCI6ImVtcGF5LWFwaSJ9.i37Vymg5nIFvyuEfsydyOSGSDyJCMbL7GxXJgAfUakTohtjQon57-nkmXQoPlzRb6rvJdhwEjhizXSF6ypkNC3oaKFZgGlcOg9o11HQbqEao_XllfyZwi5i9bCNDq0rSTTGFSb9OY1q-8l2OvtEOtyPJjIvO7xyiGnIxkWeV9ScFo7Qh_U_DzA0hUauTYUpdlvmSWfLajqFjyp-tiHN7LFgChyRPOCNAvVdLKWygFRVeTiFmAAPlHKvlh6lr8HkRDRjQhkHb870EC8zQN-iazwsKI9NlvpIAfuN6w6ZXGW4Df7eq5zxDurOtqOK1_662Ns7ZGf0om2rNBD0Zk5PLwQ\n> ```\n\nCreates a user account with employee details and an assigned role; requires the `admin` or `hr_officer` role.",
         "operationId": "registerUser",
         "security": [
           {
@@ -368,7 +368,7 @@
           "Authentication"
         ],
         "summary": "Get the authenticated user's profile",
-        "description": "> **Try this operation**  \n> Account: `employee@empay.example` (Employee)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng`\n\nReturns the profile associated with the authenticated user's access token.",
+        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng\n> ```\n\nReturns the profile associated with the authenticated user's access token.",
         "operationId": "getCurrentUser",
         "security": [
           {
@@ -633,7 +633,7 @@
           "Authentication"
         ],
         "summary": "Send an SMTP test email",
-        "description": "> **Try this operation**  \n> Account: `admin@empay.example` (Administrator)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbGUiOiJhZG1pbiIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.KWkziz-CXBt1B8uZOUbi-phza74DQ0ubwHJjF2KPWa4PNo3Jz4yR7Pdbzd7LgyNjmqtISz199vDqrhNvyVI3jC38ZXLq27iVMQaoN2Q48CYzCQUfdV1AIANW7nLuYnu0ORDqldjw9Cvd0LixsP7f7IdR2iysZaE-VNRiHZYTBd6-lTMp7l3qikyx4l45gUfw-KesQjbczuJYVs-9Q-4pip9vv2lcMQZBCQRTFHCMoDbTVXWODF3lzaU7GNStpVOEtDJghQonrfAs1XvFz0ncuydOGO5bX_c61I2FiyZKyKASJjcCqg30FnDaTIjQeC1hG1q8jVjyD5xSlKyrtv18gg`\n\nSends a test email to verify SMTP configuration; requires the `admin` role and defaults to the authenticated user's email when `email` is omitted.",
+        "description": "> **Try this operation**\n>\n> Account: `admin@empay.example` (Administrator)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbGUiOiJhZG1pbiIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.KWkziz-CXBt1B8uZOUbi-phza74DQ0ubwHJjF2KPWa4PNo3Jz4yR7Pdbzd7LgyNjmqtISz199vDqrhNvyVI3jC38ZXLq27iVMQaoN2Q48CYzCQUfdV1AIANW7nLuYnu0ORDqldjw9Cvd0LixsP7f7IdR2iysZaE-VNRiHZYTBd6-lTMp7l3qikyx4l45gUfw-KesQjbczuJYVs-9Q-4pip9vv2lcMQZBCQRTFHCMoDbTVXWODF3lzaU7GNStpVOEtDJghQonrfAs1XvFz0ncuydOGO5bX_c61I2FiyZKyKASJjcCqg30FnDaTIjQeC1hG1q8jVjyD5xSlKyrtv18gg\n> ```\n\nSends a test email to verify SMTP configuration; requires the `admin` role and defaults to the authenticated user's email when `email` is omitted.",
         "operationId": "testEmail",
         "security": [
           {
@@ -707,7 +707,7 @@
           "Users"
         ],
         "summary": "List users",
-        "description": "> **Try this operation**  \n> Account: `employee@empay.example` (Employee)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng`\n\nReturns users matching the optional role, department, name, email, and active-status filters; available to all authenticated roles.",
+        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng\n> ```\n\nReturns users matching the optional role, department, name, email, and active-status filters; available to all authenticated roles.",
         "operationId": "listUsers",
         "security": [
           {
@@ -797,7 +797,7 @@
           "Users"
         ],
         "summary": "Upload the authenticated user's avatar",
-        "description": "> **Try this operation**  \n> Account: `employee@empay.example` (Employee)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng`\n\nUploads an image and stores its URL as the authenticated user's profile picture.",
+        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng\n> ```\n\nUploads an image and stores its URL as the authenticated user's profile picture.",
         "operationId": "uploadAvatar",
         "security": [
           {
@@ -901,7 +901,7 @@
           "Users"
         ],
         "summary": "Get a user",
-        "description": "> **Try this operation**  \n> Account: `employee@empay.example` (Employee)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng`\n\nReturns a user profile by ID, while employees may access only their own profile.",
+        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng\n> ```\n\nReturns a user profile by ID, while employees may access only their own profile.",
         "operationId": "getUser",
         "security": [
           {
@@ -979,7 +979,7 @@
           "Users"
         ],
         "summary": "Update a user",
-        "description": "> **Try this operation**  \n> Account: `employee@empay.example` (Employee)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng`\n\nUpdates permitted profile fields according to the authenticated user's role; only admins may change another user's role or password.",
+        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng\n> ```\n\nUpdates permitted profile fields according to the authenticated user's role; only admins may change another user's role or password.",
         "operationId": "updateUser",
         "security": [
           {
@@ -1107,7 +1107,7 @@
           "Users"
         ],
         "summary": "Deactivate a user",
-        "description": "> **Try this operation**  \n> Account: `admin@empay.example` (Administrator)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbGUiOiJhZG1pbiIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.KWkziz-CXBt1B8uZOUbi-phza74DQ0ubwHJjF2KPWa4PNo3Jz4yR7Pdbzd7LgyNjmqtISz199vDqrhNvyVI3jC38ZXLq27iVMQaoN2Q48CYzCQUfdV1AIANW7nLuYnu0ORDqldjw9Cvd0LixsP7f7IdR2iysZaE-VNRiHZYTBd6-lTMp7l3qikyx4l45gUfw-KesQjbczuJYVs-9Q-4pip9vv2lcMQZBCQRTFHCMoDbTVXWODF3lzaU7GNStpVOEtDJghQonrfAs1XvFz0ncuydOGO5bX_c61I2FiyZKyKASJjcCqg30FnDaTIjQeC1hG1q8jVjyD5xSlKyrtv18gg`\n\nDeactivates a user without deleting the database record by setting `is_active` to false; requires the `admin` role.",
+        "description": "> **Try this operation**\n>\n> Account: `admin@empay.example` (Administrator)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbGUiOiJhZG1pbiIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.KWkziz-CXBt1B8uZOUbi-phza74DQ0ubwHJjF2KPWa4PNo3Jz4yR7Pdbzd7LgyNjmqtISz199vDqrhNvyVI3jC38ZXLq27iVMQaoN2Q48CYzCQUfdV1AIANW7nLuYnu0ORDqldjw9Cvd0LixsP7f7IdR2iysZaE-VNRiHZYTBd6-lTMp7l3qikyx4l45gUfw-KesQjbczuJYVs-9Q-4pip9vv2lcMQZBCQRTFHCMoDbTVXWODF3lzaU7GNStpVOEtDJghQonrfAs1XvFz0ncuydOGO5bX_c61I2FiyZKyKASJjcCqg30FnDaTIjQeC1hG1q8jVjyD5xSlKyrtv18gg\n> ```\n\nDeactivates a user without deleting the database record by setting `is_active` to false; requires the `admin` role.",
         "operationId": "deleteUser",
         "security": [
           {
@@ -1176,7 +1176,7 @@
           "Users"
         ],
         "summary": "Toggle a user's active status",
-        "description": "> **Try this operation**  \n> Account: `admin@empay.example` (Administrator)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbGUiOiJhZG1pbiIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.KWkziz-CXBt1B8uZOUbi-phza74DQ0ubwHJjF2KPWa4PNo3Jz4yR7Pdbzd7LgyNjmqtISz199vDqrhNvyVI3jC38ZXLq27iVMQaoN2Q48CYzCQUfdV1AIANW7nLuYnu0ORDqldjw9Cvd0LixsP7f7IdR2iysZaE-VNRiHZYTBd6-lTMp7l3qikyx4l45gUfw-KesQjbczuJYVs-9Q-4pip9vv2lcMQZBCQRTFHCMoDbTVXWODF3lzaU7GNStpVOEtDJghQonrfAs1XvFz0ncuydOGO5bX_c61I2FiyZKyKASJjcCqg30FnDaTIjQeC1hG1q8jVjyD5xSlKyrtv18gg`\n\nSwitches a user between active and inactive states; requires the `admin` role.",
+        "description": "> **Try this operation**\n>\n> Account: `admin@empay.example` (Administrator)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbGUiOiJhZG1pbiIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.KWkziz-CXBt1B8uZOUbi-phza74DQ0ubwHJjF2KPWa4PNo3Jz4yR7Pdbzd7LgyNjmqtISz199vDqrhNvyVI3jC38ZXLq27iVMQaoN2Q48CYzCQUfdV1AIANW7nLuYnu0ORDqldjw9Cvd0LixsP7f7IdR2iysZaE-VNRiHZYTBd6-lTMp7l3qikyx4l45gUfw-KesQjbczuJYVs-9Q-4pip9vv2lcMQZBCQRTFHCMoDbTVXWODF3lzaU7GNStpVOEtDJghQonrfAs1XvFz0ncuydOGO5bX_c61I2FiyZKyKASJjcCqg30FnDaTIjQeC1hG1q8jVjyD5xSlKyrtv18gg\n> ```\n\nSwitches a user between active and inactive states; requires the `admin` role.",
         "operationId": "toggleUserActive",
         "security": [
           {
@@ -1250,7 +1250,7 @@
           "Attendance"
         ],
         "summary": "Check in or check out",
-        "description": "> **Try this operation**  \n> Account: `employee@empay.example` (Employee)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng`\n\nRecords a check-in or check-out for the authenticated user according to their attendance state for the current day.",
+        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng\n> ```\n\nRecords a check-in or check-out for the authenticated user according to their attendance state for the current day.",
         "operationId": "markAttendance",
         "security": [
           {
@@ -1332,7 +1332,7 @@
           "Attendance"
         ],
         "summary": "Get the authenticated user's monthly attendance",
-        "description": "> **Try this operation**  \n> Account: `employee@empay.example` (Employee)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng`\n\nReturns the authenticated user's attendance records for the requested month and year.",
+        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng\n> ```\n\nReturns the authenticated user's attendance records for the requested month and year.",
         "operationId": "getMyAttendance",
         "security": [
           {
@@ -1410,7 +1410,7 @@
           "Attendance"
         ],
         "summary": "Get a monthly attendance summary",
-        "description": "> **Try this operation**  \n> Account: `employee@empay.example` (Employee)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng`\n\nReturns monthly attendance totals for the selected employee, defaulting to the authenticated user when `employee_id` is omitted.",
+        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng\n> ```\n\nReturns monthly attendance totals for the selected employee, defaulting to the authenticated user when `employee_id` is omitted.",
         "operationId": "getMonthlyAttendanceSummary",
         "security": [
           {
@@ -1477,7 +1477,7 @@
           "Attendance"
         ],
         "summary": "List monthly attendance for all employees",
-        "description": "> **Try this operation**  \n> Account: `hr@empay.example` (HR officer)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsInJvbGUiOiJocl9vZmZpY2VyIiwiaXNzIjoiZW1wYXktZGVtbyIsImF1ZCI6ImVtcGF5LWFwaSJ9.i37Vymg5nIFvyuEfsydyOSGSDyJCMbL7GxXJgAfUakTohtjQon57-nkmXQoPlzRb6rvJdhwEjhizXSF6ypkNC3oaKFZgGlcOg9o11HQbqEao_XllfyZwi5i9bCNDq0rSTTGFSb9OY1q-8l2OvtEOtyPJjIvO7xyiGnIxkWeV9ScFo7Qh_U_DzA0hUauTYUpdlvmSWfLajqFjyp-tiHN7LFgChyRPOCNAvVdLKWygFRVeTiFmAAPlHKvlh6lr8HkRDRjQhkHb870EC8zQN-iazwsKI9NlvpIAfuN6w6ZXGW4Df7eq5zxDurOtqOK1_662Ns7ZGf0om2rNBD0Zk5PLwQ`\n\nReturns employee attendance for a month with optional department and employee filters; requires an administrative, HR, or payroll role.",
+        "description": "> **Try this operation**\n>\n> Account: `hr@empay.example` (HR officer)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsInJvbGUiOiJocl9vZmZpY2VyIiwiaXNzIjoiZW1wYXktZGVtbyIsImF1ZCI6ImVtcGF5LWFwaSJ9.i37Vymg5nIFvyuEfsydyOSGSDyJCMbL7GxXJgAfUakTohtjQon57-nkmXQoPlzRb6rvJdhwEjhizXSF6ypkNC3oaKFZgGlcOg9o11HQbqEao_XllfyZwi5i9bCNDq0rSTTGFSb9OY1q-8l2OvtEOtyPJjIvO7xyiGnIxkWeV9ScFo7Qh_U_DzA0hUauTYUpdlvmSWfLajqFjyp-tiHN7LFgChyRPOCNAvVdLKWygFRVeTiFmAAPlHKvlh6lr8HkRDRjQhkHb870EC8zQN-iazwsKI9NlvpIAfuN6w6ZXGW4Df7eq5zxDurOtqOK1_662Ns7ZGf0om2rNBD0Zk5PLwQ\n> ```\n\nReturns employee attendance for a month with optional department and employee filters; requires an administrative, HR, or payroll role.",
         "operationId": "listAllAttendance",
         "security": [
           {
@@ -1564,7 +1564,7 @@
           "Attendance"
         ],
         "summary": "List today's attendance",
-        "description": "> **Try this operation**  \n> Account: `hr@empay.example` (HR officer)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsInJvbGUiOiJocl9vZmZpY2VyIiwiaXNzIjoiZW1wYXktZGVtbyIsImF1ZCI6ImVtcGF5LWFwaSJ9.i37Vymg5nIFvyuEfsydyOSGSDyJCMbL7GxXJgAfUakTohtjQon57-nkmXQoPlzRb6rvJdhwEjhizXSF6ypkNC3oaKFZgGlcOg9o11HQbqEao_XllfyZwi5i9bCNDq0rSTTGFSb9OY1q-8l2OvtEOtyPJjIvO7xyiGnIxkWeV9ScFo7Qh_U_DzA0hUauTYUpdlvmSWfLajqFjyp-tiHN7LFgChyRPOCNAvVdLKWygFRVeTiFmAAPlHKvlh6lr8HkRDRjQhkHb870EC8zQN-iazwsKI9NlvpIAfuN6w6ZXGW4Df7eq5zxDurOtqOK1_662Ns7ZGf0om2rNBD0Zk5PLwQ`\n\nReturns attendance records for the current day; requires an administrative, HR, or payroll role.",
+        "description": "> **Try this operation**\n>\n> Account: `hr@empay.example` (HR officer)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsInJvbGUiOiJocl9vZmZpY2VyIiwiaXNzIjoiZW1wYXktZGVtbyIsImF1ZCI6ImVtcGF5LWFwaSJ9.i37Vymg5nIFvyuEfsydyOSGSDyJCMbL7GxXJgAfUakTohtjQon57-nkmXQoPlzRb6rvJdhwEjhizXSF6ypkNC3oaKFZgGlcOg9o11HQbqEao_XllfyZwi5i9bCNDq0rSTTGFSb9OY1q-8l2OvtEOtyPJjIvO7xyiGnIxkWeV9ScFo7Qh_U_DzA0hUauTYUpdlvmSWfLajqFjyp-tiHN7LFgChyRPOCNAvVdLKWygFRVeTiFmAAPlHKvlh6lr8HkRDRjQhkHb870EC8zQN-iazwsKI9NlvpIAfuN6w6ZXGW4Df7eq5zxDurOtqOK1_662Ns7ZGf0om2rNBD0Zk5PLwQ\n> ```\n\nReturns attendance records for the current day; requires an administrative, HR, or payroll role.",
         "operationId": "getTodayAttendance",
         "security": [
           {
@@ -1637,7 +1637,7 @@
           "Leave"
         ],
         "summary": "List leave types",
-        "description": "> **Try this operation**  \n> Account: `employee@empay.example` (Employee)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng`\n\nReturns the configured leave categories and their default annual day allowances.",
+        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng\n> ```\n\nReturns the configured leave categories and their default annual day allowances.",
         "operationId": "listLeaveTypes",
         "security": [
           {
@@ -1696,7 +1696,7 @@
           "Leave"
         ],
         "summary": "Create a leave type",
-        "description": "> **Try this operation**  \n> Account: `admin@empay.example` (Administrator)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbGUiOiJhZG1pbiIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.KWkziz-CXBt1B8uZOUbi-phza74DQ0ubwHJjF2KPWa4PNo3Jz4yR7Pdbzd7LgyNjmqtISz199vDqrhNvyVI3jC38ZXLq27iVMQaoN2Q48CYzCQUfdV1AIANW7nLuYnu0ORDqldjw9Cvd0LixsP7f7IdR2iysZaE-VNRiHZYTBd6-lTMp7l3qikyx4l45gUfw-KesQjbczuJYVs-9Q-4pip9vv2lcMQZBCQRTFHCMoDbTVXWODF3lzaU7GNStpVOEtDJghQonrfAs1XvFz0ncuydOGO5bX_c61I2FiyZKyKASJjcCqg30FnDaTIjQeC1hG1q8jVjyD5xSlKyrtv18gg`\n\nCreates a leave category with its default annual allowance; requires the `admin` role.",
+        "description": "> **Try this operation**\n>\n> Account: `admin@empay.example` (Administrator)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbGUiOiJhZG1pbiIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.KWkziz-CXBt1B8uZOUbi-phza74DQ0ubwHJjF2KPWa4PNo3Jz4yR7Pdbzd7LgyNjmqtISz199vDqrhNvyVI3jC38ZXLq27iVMQaoN2Q48CYzCQUfdV1AIANW7nLuYnu0ORDqldjw9Cvd0LixsP7f7IdR2iysZaE-VNRiHZYTBd6-lTMp7l3qikyx4l45gUfw-KesQjbczuJYVs-9Q-4pip9vv2lcMQZBCQRTFHCMoDbTVXWODF3lzaU7GNStpVOEtDJghQonrfAs1XvFz0ncuydOGO5bX_c61I2FiyZKyKASJjcCqg30FnDaTIjQeC1hG1q8jVjyD5xSlKyrtv18gg\n> ```\n\nCreates a leave category with its default annual allowance; requires the `admin` role.",
         "operationId": "createLeaveType",
         "security": [
           {
@@ -1795,7 +1795,7 @@
           "Leave"
         ],
         "summary": "Get the authenticated user's leave allocations",
-        "description": "> **Try this operation**  \n> Account: `employee@empay.example` (Employee)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng`\n\nReturns leave allocations intended for the authenticated user; the current route passes a missing employee parameter to the service.",
+        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng\n> ```\n\nReturns leave allocations intended for the authenticated user; the current route passes a missing employee parameter to the service.",
         "operationId": "getMyLeaveAllocations",
         "security": [
           {
@@ -1860,7 +1860,7 @@
           "Leave"
         ],
         "summary": "Get an employee's leave allocations",
-        "description": "> **Try this operation**  \n> Account: `hr@empay.example` (HR officer)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsInJvbGUiOiJocl9vZmZpY2VyIiwiaXNzIjoiZW1wYXktZGVtbyIsImF1ZCI6ImVtcGF5LWFwaSJ9.i37Vymg5nIFvyuEfsydyOSGSDyJCMbL7GxXJgAfUakTohtjQon57-nkmXQoPlzRb6rvJdhwEjhizXSF6ypkNC3oaKFZgGlcOg9o11HQbqEao_XllfyZwi5i9bCNDq0rSTTGFSb9OY1q-8l2OvtEOtyPJjIvO7xyiGnIxkWeV9ScFo7Qh_U_DzA0hUauTYUpdlvmSWfLajqFjyp-tiHN7LFgChyRPOCNAvVdLKWygFRVeTiFmAAPlHKvlh6lr8HkRDRjQhkHb870EC8zQN-iazwsKI9NlvpIAfuN6w6ZXGW4Df7eq5zxDurOtqOK1_662Ns7ZGf0om2rNBD0Zk5PLwQ`\n\nReturns leave balances allocated to the selected employee; requires the `admin` or `hr_officer` role.",
+        "description": "> **Try this operation**\n>\n> Account: `hr@empay.example` (HR officer)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsInJvbGUiOiJocl9vZmZpY2VyIiwiaXNzIjoiZW1wYXktZGVtbyIsImF1ZCI6ImVtcGF5LWFwaSJ9.i37Vymg5nIFvyuEfsydyOSGSDyJCMbL7GxXJgAfUakTohtjQon57-nkmXQoPlzRb6rvJdhwEjhizXSF6ypkNC3oaKFZgGlcOg9o11HQbqEao_XllfyZwi5i9bCNDq0rSTTGFSb9OY1q-8l2OvtEOtyPJjIvO7xyiGnIxkWeV9ScFo7Qh_U_DzA0hUauTYUpdlvmSWfLajqFjyp-tiHN7LFgChyRPOCNAvVdLKWygFRVeTiFmAAPlHKvlh6lr8HkRDRjQhkHb870EC8zQN-iazwsKI9NlvpIAfuN6w6ZXGW4Df7eq5zxDurOtqOK1_662Ns7ZGf0om2rNBD0Zk5PLwQ\n> ```\n\nReturns leave balances allocated to the selected employee; requires the `admin` or `hr_officer` role.",
         "operationId": "getEmployeeLeaveAllocations",
         "security": [
           {
@@ -1933,7 +1933,7 @@
           "Leave"
         ],
         "summary": "Create or update a leave allocation",
-        "description": "> **Try this operation**  \n> Account: `hr@empay.example` (HR officer)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsInJvbGUiOiJocl9vZmZpY2VyIiwiaXNzIjoiZW1wYXktZGVtbyIsImF1ZCI6ImVtcGF5LWFwaSJ9.i37Vymg5nIFvyuEfsydyOSGSDyJCMbL7GxXJgAfUakTohtjQon57-nkmXQoPlzRb6rvJdhwEjhizXSF6ypkNC3oaKFZgGlcOg9o11HQbqEao_XllfyZwi5i9bCNDq0rSTTGFSb9OY1q-8l2OvtEOtyPJjIvO7xyiGnIxkWeV9ScFo7Qh_U_DzA0hUauTYUpdlvmSWfLajqFjyp-tiHN7LFgChyRPOCNAvVdLKWygFRVeTiFmAAPlHKvlh6lr8HkRDRjQhkHb870EC8zQN-iazwsKI9NlvpIAfuN6w6ZXGW4Df7eq5zxDurOtqOK1_662Ns7ZGf0om2rNBD0Zk5PLwQ`\n\nCreates or updates an employee's yearly allocation for a leave type; requires the `admin` or `hr_officer` role.",
+        "description": "> **Try this operation**\n>\n> Account: `hr@empay.example` (HR officer)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsInJvbGUiOiJocl9vZmZpY2VyIiwiaXNzIjoiZW1wYXktZGVtbyIsImF1ZCI6ImVtcGF5LWFwaSJ9.i37Vymg5nIFvyuEfsydyOSGSDyJCMbL7GxXJgAfUakTohtjQon57-nkmXQoPlzRb6rvJdhwEjhizXSF6ypkNC3oaKFZgGlcOg9o11HQbqEao_XllfyZwi5i9bCNDq0rSTTGFSb9OY1q-8l2OvtEOtyPJjIvO7xyiGnIxkWeV9ScFo7Qh_U_DzA0hUauTYUpdlvmSWfLajqFjyp-tiHN7LFgChyRPOCNAvVdLKWygFRVeTiFmAAPlHKvlh6lr8HkRDRjQhkHb870EC8zQN-iazwsKI9NlvpIAfuN6w6ZXGW4Df7eq5zxDurOtqOK1_662Ns7ZGf0om2rNBD0Zk5PLwQ\n> ```\n\nCreates or updates an employee's yearly allocation for a leave type; requires the `admin` or `hr_officer` role.",
         "operationId": "upsertLeaveAllocation",
         "security": [
           {
@@ -2039,7 +2039,7 @@
           "Leave"
         ],
         "summary": "Submit a leave request",
-        "description": "> **Try this operation**  \n> Account: `employee@empay.example` (Employee)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng`\n\nSubmits a dated leave request for the authenticated employee after validating the date range and available balance.",
+        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng\n> ```\n\nSubmits a dated leave request for the authenticated employee after validating the date range and available balance.",
         "operationId": "createLeaveRequest",
         "security": [
           {
@@ -2180,7 +2180,7 @@
           "Leave"
         ],
         "summary": "List the authenticated user's leave requests",
-        "description": "> **Try this operation**  \n> Account: `employee@empay.example` (Employee)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng`\n\nReturns leave requests submitted by the authenticated employee.",
+        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng\n> ```\n\nReturns leave requests submitted by the authenticated employee.",
         "operationId": "listMyLeaveRequests",
         "security": [
           {
@@ -2253,7 +2253,7 @@
           "Leave"
         ],
         "summary": "List all leave requests",
-        "description": "> **Try this operation**  \n> Account: `hr@empay.example` (HR officer)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsInJvbGUiOiJocl9vZmZpY2VyIiwiaXNzIjoiZW1wYXktZGVtbyIsImF1ZCI6ImVtcGF5LWFwaSJ9.i37Vymg5nIFvyuEfsydyOSGSDyJCMbL7GxXJgAfUakTohtjQon57-nkmXQoPlzRb6rvJdhwEjhizXSF6ypkNC3oaKFZgGlcOg9o11HQbqEao_XllfyZwi5i9bCNDq0rSTTGFSb9OY1q-8l2OvtEOtyPJjIvO7xyiGnIxkWeV9ScFo7Qh_U_DzA0hUauTYUpdlvmSWfLajqFjyp-tiHN7LFgChyRPOCNAvVdLKWygFRVeTiFmAAPlHKvlh6lr8HkRDRjQhkHb870EC8zQN-iazwsKI9NlvpIAfuN6w6ZXGW4Df7eq5zxDurOtqOK1_662Ns7ZGf0om2rNBD0Zk5PLwQ`\n\nReturns leave requests across employees with optional status, department, and date filters; requires an administrative, HR, or payroll role.",
+        "description": "> **Try this operation**\n>\n> Account: `hr@empay.example` (HR officer)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsInJvbGUiOiJocl9vZmZpY2VyIiwiaXNzIjoiZW1wYXktZGVtbyIsImF1ZCI6ImVtcGF5LWFwaSJ9.i37Vymg5nIFvyuEfsydyOSGSDyJCMbL7GxXJgAfUakTohtjQon57-nkmXQoPlzRb6rvJdhwEjhizXSF6ypkNC3oaKFZgGlcOg9o11HQbqEao_XllfyZwi5i9bCNDq0rSTTGFSb9OY1q-8l2OvtEOtyPJjIvO7xyiGnIxkWeV9ScFo7Qh_U_DzA0hUauTYUpdlvmSWfLajqFjyp-tiHN7LFgChyRPOCNAvVdLKWygFRVeTiFmAAPlHKvlh6lr8HkRDRjQhkHb870EC8zQN-iazwsKI9NlvpIAfuN6w6ZXGW4Df7eq5zxDurOtqOK1_662Ns7ZGf0om2rNBD0Zk5PLwQ\n> ```\n\nReturns leave requests across employees with optional status, department, and date filters; requires an administrative, HR, or payroll role.",
         "operationId": "listAllLeaveRequests",
         "security": [
           {
@@ -2347,7 +2347,7 @@
           "Leave"
         ],
         "summary": "Approve a leave request",
-        "description": "> **Try this operation**  \n> Account: `payroll@empay.example` (Payroll officer)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInJvbGUiOiJwYXlyb2xsX29mZmljZXIiLCJpc3MiOiJlbXBheS1kZW1vIiwiYXVkIjoiZW1wYXktYXBpIn0.CnJUMVPqMgXXUG8QfKA4-5cFVPr2KP2HXV5TQNOGZRt9xJvOfHNSJIKM24iQh1aohnQ1nCOHpZdP_z9fb3LFoKS5d8kCej2dz85WoFn31UOjqEUZE6q0nqEYDuPDyozr8GjX8QAyoOw0ttILWhN0GwYAtyfoHnNS8udYqqCLKI8DKH0TDhS3jr8Y8O-Yh0_1hUxDrz-EVSmu2oIXIAreERW-3S7xjbHist0kv8mP0nej-7qKuIfiDn5g8R2wAQggWzm7JwzhjzvHC82F_8uyz_71wpG9oOdhfyrnnOodvWpVMh6APUj1rjLN87ysA6farRCMvtnr6c9Qatq50GCp8w`\n\nApproves a pending leave request and records the payroll officer who reviewed it; requires the `payroll_officer` role.",
+        "description": "> **Try this operation**\n>\n> Account: `payroll@empay.example` (Payroll officer)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInJvbGUiOiJwYXlyb2xsX29mZmljZXIiLCJpc3MiOiJlbXBheS1kZW1vIiwiYXVkIjoiZW1wYXktYXBpIn0.CnJUMVPqMgXXUG8QfKA4-5cFVPr2KP2HXV5TQNOGZRt9xJvOfHNSJIKM24iQh1aohnQ1nCOHpZdP_z9fb3LFoKS5d8kCej2dz85WoFn31UOjqEUZE6q0nqEYDuPDyozr8GjX8QAyoOw0ttILWhN0GwYAtyfoHnNS8udYqqCLKI8DKH0TDhS3jr8Y8O-Yh0_1hUxDrz-EVSmu2oIXIAreERW-3S7xjbHist0kv8mP0nej-7qKuIfiDn5g8R2wAQggWzm7JwzhjzvHC82F_8uyz_71wpG9oOdhfyrnnOodvWpVMh6APUj1rjLN87ysA6farRCMvtnr6c9Qatq50GCp8w\n> ```\n\nApproves a pending leave request and records the payroll officer who reviewed it; requires the `payroll_officer` role.",
         "operationId": "approveLeaveRequest",
         "security": [
           {
@@ -2440,7 +2440,7 @@
           "Leave"
         ],
         "summary": "Reject a leave request",
-        "description": "> **Try this operation**  \n> Account: `payroll@empay.example` (Payroll officer)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInJvbGUiOiJwYXlyb2xsX29mZmljZXIiLCJpc3MiOiJlbXBheS1kZW1vIiwiYXVkIjoiZW1wYXktYXBpIn0.CnJUMVPqMgXXUG8QfKA4-5cFVPr2KP2HXV5TQNOGZRt9xJvOfHNSJIKM24iQh1aohnQ1nCOHpZdP_z9fb3LFoKS5d8kCej2dz85WoFn31UOjqEUZE6q0nqEYDuPDyozr8GjX8QAyoOw0ttILWhN0GwYAtyfoHnNS8udYqqCLKI8DKH0TDhS3jr8Y8O-Yh0_1hUxDrz-EVSmu2oIXIAreERW-3S7xjbHist0kv8mP0nej-7qKuIfiDn5g8R2wAQggWzm7JwzhjzvHC82F_8uyz_71wpG9oOdhfyrnnOodvWpVMh6APUj1rjLN87ysA6farRCMvtnr6c9Qatq50GCp8w`\n\nRejects a pending leave request with an optional reason and records the reviewer; requires the `payroll_officer` role.",
+        "description": "> **Try this operation**\n>\n> Account: `payroll@empay.example` (Payroll officer)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInJvbGUiOiJwYXlyb2xsX29mZmljZXIiLCJpc3MiOiJlbXBheS1kZW1vIiwiYXVkIjoiZW1wYXktYXBpIn0.CnJUMVPqMgXXUG8QfKA4-5cFVPr2KP2HXV5TQNOGZRt9xJvOfHNSJIKM24iQh1aohnQ1nCOHpZdP_z9fb3LFoKS5d8kCej2dz85WoFn31UOjqEUZE6q0nqEYDuPDyozr8GjX8QAyoOw0ttILWhN0GwYAtyfoHnNS8udYqqCLKI8DKH0TDhS3jr8Y8O-Yh0_1hUxDrz-EVSmu2oIXIAreERW-3S7xjbHist0kv8mP0nej-7qKuIfiDn5g8R2wAQggWzm7JwzhjzvHC82F_8uyz_71wpG9oOdhfyrnnOodvWpVMh6APUj1rjLN87ysA6farRCMvtnr6c9Qatq50GCp8w\n> ```\n\nRejects a pending leave request with an optional reason and records the reviewer; requires the `payroll_officer` role.",
         "operationId": "rejectLeaveRequest",
         "security": [
           {
@@ -2533,7 +2533,7 @@
           "Payroll"
         ],
         "summary": "Create or update a salary structure",
-        "description": "> **Try this operation**  \n> Account: `payroll@empay.example` (Payroll officer)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInJvbGUiOiJwYXlyb2xsX29mZmljZXIiLCJpc3MiOiJlbXBheS1kZW1vIiwiYXVkIjoiZW1wYXktYXBpIn0.CnJUMVPqMgXXUG8QfKA4-5cFVPr2KP2HXV5TQNOGZRt9xJvOfHNSJIKM24iQh1aohnQ1nCOHpZdP_z9fb3LFoKS5d8kCej2dz85WoFn31UOjqEUZE6q0nqEYDuPDyozr8GjX8QAyoOw0ttILWhN0GwYAtyfoHnNS8udYqqCLKI8DKH0TDhS3jr8Y8O-Yh0_1hUxDrz-EVSmu2oIXIAreERW-3S7xjbHist0kv8mP0nej-7qKuIfiDn5g8R2wAQggWzm7JwzhjzvHC82F_8uyz_71wpG9oOdhfyrnnOodvWpVMh6APUj1rjLN87ysA6farRCMvtnr6c9Qatq50GCp8w`\n\nCreates or updates an employee's salary components and effective date; requires the `admin` or `payroll_officer` role.",
+        "description": "> **Try this operation**\n>\n> Account: `payroll@empay.example` (Payroll officer)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInJvbGUiOiJwYXlyb2xsX29mZmljZXIiLCJpc3MiOiJlbXBheS1kZW1vIiwiYXVkIjoiZW1wYXktYXBpIn0.CnJUMVPqMgXXUG8QfKA4-5cFVPr2KP2HXV5TQNOGZRt9xJvOfHNSJIKM24iQh1aohnQ1nCOHpZdP_z9fb3LFoKS5d8kCej2dz85WoFn31UOjqEUZE6q0nqEYDuPDyozr8GjX8QAyoOw0ttILWhN0GwYAtyfoHnNS8udYqqCLKI8DKH0TDhS3jr8Y8O-Yh0_1hUxDrz-EVSmu2oIXIAreERW-3S7xjbHist0kv8mP0nej-7qKuIfiDn5g8R2wAQggWzm7JwzhjzvHC82F_8uyz_71wpG9oOdhfyrnnOodvWpVMh6APUj1rjLN87ysA6farRCMvtnr6c9Qatq50GCp8w\n> ```\n\nCreates or updates an employee's salary components and effective date; requires the `admin` or `payroll_officer` role.",
         "operationId": "upsertSalaryStructure",
         "security": [
           {
@@ -2614,7 +2614,7 @@
           "Payroll"
         ],
         "summary": "List salary structures",
-        "description": "> **Try this operation**  \n> Account: `payroll@empay.example` (Payroll officer)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInJvbGUiOiJwYXlyb2xsX29mZmljZXIiLCJpc3MiOiJlbXBheS1kZW1vIiwiYXVkIjoiZW1wYXktYXBpIn0.CnJUMVPqMgXXUG8QfKA4-5cFVPr2KP2HXV5TQNOGZRt9xJvOfHNSJIKM24iQh1aohnQ1nCOHpZdP_z9fb3LFoKS5d8kCej2dz85WoFn31UOjqEUZE6q0nqEYDuPDyozr8GjX8QAyoOw0ttILWhN0GwYAtyfoHnNS8udYqqCLKI8DKH0TDhS3jr8Y8O-Yh0_1hUxDrz-EVSmu2oIXIAreERW-3S7xjbHist0kv8mP0nej-7qKuIfiDn5g8R2wAQggWzm7JwzhjzvHC82F_8uyz_71wpG9oOdhfyrnnOodvWpVMh6APUj1rjLN87ysA6farRCMvtnr6c9Qatq50GCp8w`\n\nReturns salary structures for all employees; requires the `admin` or `payroll_officer` role.",
+        "description": "> **Try this operation**\n>\n> Account: `payroll@empay.example` (Payroll officer)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInJvbGUiOiJwYXlyb2xsX29mZmljZXIiLCJpc3MiOiJlbXBheS1kZW1vIiwiYXVkIjoiZW1wYXktYXBpIn0.CnJUMVPqMgXXUG8QfKA4-5cFVPr2KP2HXV5TQNOGZRt9xJvOfHNSJIKM24iQh1aohnQ1nCOHpZdP_z9fb3LFoKS5d8kCej2dz85WoFn31UOjqEUZE6q0nqEYDuPDyozr8GjX8QAyoOw0ttILWhN0GwYAtyfoHnNS8udYqqCLKI8DKH0TDhS3jr8Y8O-Yh0_1hUxDrz-EVSmu2oIXIAreERW-3S7xjbHist0kv8mP0nej-7qKuIfiDn5g8R2wAQggWzm7JwzhjzvHC82F_8uyz_71wpG9oOdhfyrnnOodvWpVMh6APUj1rjLN87ysA6farRCMvtnr6c9Qatq50GCp8w\n> ```\n\nReturns salary structures for all employees; requires the `admin` or `payroll_officer` role.",
         "operationId": "listSalaryStructures",
         "security": [
           {
@@ -2684,7 +2684,7 @@
           "Payroll"
         ],
         "summary": "Get an employee's salary structure",
-        "description": "> **Try this operation**  \n> Account: `payroll@empay.example` (Payroll officer)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInJvbGUiOiJwYXlyb2xsX29mZmljZXIiLCJpc3MiOiJlbXBheS1kZW1vIiwiYXVkIjoiZW1wYXktYXBpIn0.CnJUMVPqMgXXUG8QfKA4-5cFVPr2KP2HXV5TQNOGZRt9xJvOfHNSJIKM24iQh1aohnQ1nCOHpZdP_z9fb3LFoKS5d8kCej2dz85WoFn31UOjqEUZE6q0nqEYDuPDyozr8GjX8QAyoOw0ttILWhN0GwYAtyfoHnNS8udYqqCLKI8DKH0TDhS3jr8Y8O-Yh0_1hUxDrz-EVSmu2oIXIAreERW-3S7xjbHist0kv8mP0nej-7qKuIfiDn5g8R2wAQggWzm7JwzhjzvHC82F_8uyz_71wpG9oOdhfyrnnOodvWpVMh6APUj1rjLN87ysA6farRCMvtnr6c9Qatq50GCp8w`\n\nReturns the salary structure assigned to the selected employee; requires the `admin` or `payroll_officer` role.",
+        "description": "> **Try this operation**\n>\n> Account: `payroll@empay.example` (Payroll officer)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInJvbGUiOiJwYXlyb2xsX29mZmljZXIiLCJpc3MiOiJlbXBheS1kZW1vIiwiYXVkIjoiZW1wYXktYXBpIn0.CnJUMVPqMgXXUG8QfKA4-5cFVPr2KP2HXV5TQNOGZRt9xJvOfHNSJIKM24iQh1aohnQ1nCOHpZdP_z9fb3LFoKS5d8kCej2dz85WoFn31UOjqEUZE6q0nqEYDuPDyozr8GjX8QAyoOw0ttILWhN0GwYAtyfoHnNS8udYqqCLKI8DKH0TDhS3jr8Y8O-Yh0_1hUxDrz-EVSmu2oIXIAreERW-3S7xjbHist0kv8mP0nej-7qKuIfiDn5g8R2wAQggWzm7JwzhjzvHC82F_8uyz_71wpG9oOdhfyrnnOodvWpVMh6APUj1rjLN87ysA6farRCMvtnr6c9Qatq50GCp8w\n> ```\n\nReturns the salary structure assigned to the selected employee; requires the `admin` or `payroll_officer` role.",
         "operationId": "getSalaryStructure",
         "security": [
           {
@@ -2757,7 +2757,7 @@
           "Payroll"
         ],
         "summary": "Generate or regenerate a pay run",
-        "description": "> **Try this operation**  \n> Account: `payroll@empay.example` (Payroll officer)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInJvbGUiOiJwYXlyb2xsX29mZmljZXIiLCJpc3MiOiJlbXBheS1kZW1vIiwiYXVkIjoiZW1wYXktYXBpIn0.CnJUMVPqMgXXUG8QfKA4-5cFVPr2KP2HXV5TQNOGZRt9xJvOfHNSJIKM24iQh1aohnQ1nCOHpZdP_z9fb3LFoKS5d8kCej2dz85WoFn31UOjqEUZE6q0nqEYDuPDyozr8GjX8QAyoOw0ttILWhN0GwYAtyfoHnNS8udYqqCLKI8DKH0TDhS3jr8Y8O-Yh0_1hUxDrz-EVSmu2oIXIAreERW-3S7xjbHist0kv8mP0nej-7qKuIfiDn5g8R2wAQggWzm7JwzhjzvHC82F_8uyz_71wpG9oOdhfyrnnOodvWpVMh6APUj1rjLN87ysA6farRCMvtnr6c9Qatq50GCp8w`\n\nGenerates or recalculates the pay run and employee payslips for the supplied month and year; requires the `payroll_officer` role.",
+        "description": "> **Try this operation**\n>\n> Account: `payroll@empay.example` (Payroll officer)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInJvbGUiOiJwYXlyb2xsX29mZmljZXIiLCJpc3MiOiJlbXBheS1kZW1vIiwiYXVkIjoiZW1wYXktYXBpIn0.CnJUMVPqMgXXUG8QfKA4-5cFVPr2KP2HXV5TQNOGZRt9xJvOfHNSJIKM24iQh1aohnQ1nCOHpZdP_z9fb3LFoKS5d8kCej2dz85WoFn31UOjqEUZE6q0nqEYDuPDyozr8GjX8QAyoOw0ttILWhN0GwYAtyfoHnNS8udYqqCLKI8DKH0TDhS3jr8Y8O-Yh0_1hUxDrz-EVSmu2oIXIAreERW-3S7xjbHist0kv8mP0nej-7qKuIfiDn5g8R2wAQggWzm7JwzhjzvHC82F_8uyz_71wpG9oOdhfyrnnOodvWpVMh6APUj1rjLN87ysA6farRCMvtnr6c9Qatq50GCp8w\n> ```\n\nGenerates or recalculates the pay run and employee payslips for the supplied month and year; requires the `payroll_officer` role.",
         "operationId": "generatePayrun",
         "security": [
           {
@@ -2871,7 +2871,7 @@
           "Payroll"
         ],
         "summary": "List pay runs",
-        "description": "> **Try this operation**  \n> Account: `payroll@empay.example` (Payroll officer)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInJvbGUiOiJwYXlyb2xsX29mZmljZXIiLCJpc3MiOiJlbXBheS1kZW1vIiwiYXVkIjoiZW1wYXktYXBpIn0.CnJUMVPqMgXXUG8QfKA4-5cFVPr2KP2HXV5TQNOGZRt9xJvOfHNSJIKM24iQh1aohnQ1nCOHpZdP_z9fb3LFoKS5d8kCej2dz85WoFn31UOjqEUZE6q0nqEYDuPDyozr8GjX8QAyoOw0ttILWhN0GwYAtyfoHnNS8udYqqCLKI8DKH0TDhS3jr8Y8O-Yh0_1hUxDrz-EVSmu2oIXIAreERW-3S7xjbHist0kv8mP0nej-7qKuIfiDn5g8R2wAQggWzm7JwzhjzvHC82F_8uyz_71wpG9oOdhfyrnnOodvWpVMh6APUj1rjLN87ysA6farRCMvtnr6c9Qatq50GCp8w`\n\nReturns generated pay runs ordered by payroll period; requires the `admin` or `payroll_officer` role.",
+        "description": "> **Try this operation**\n>\n> Account: `payroll@empay.example` (Payroll officer)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInJvbGUiOiJwYXlyb2xsX29mZmljZXIiLCJpc3MiOiJlbXBheS1kZW1vIiwiYXVkIjoiZW1wYXktYXBpIn0.CnJUMVPqMgXXUG8QfKA4-5cFVPr2KP2HXV5TQNOGZRt9xJvOfHNSJIKM24iQh1aohnQ1nCOHpZdP_z9fb3LFoKS5d8kCej2dz85WoFn31UOjqEUZE6q0nqEYDuPDyozr8GjX8QAyoOw0ttILWhN0GwYAtyfoHnNS8udYqqCLKI8DKH0TDhS3jr8Y8O-Yh0_1hUxDrz-EVSmu2oIXIAreERW-3S7xjbHist0kv8mP0nej-7qKuIfiDn5g8R2wAQggWzm7JwzhjzvHC82F_8uyz_71wpG9oOdhfyrnnOodvWpVMh6APUj1rjLN87ysA6farRCMvtnr6c9Qatq50GCp8w\n> ```\n\nReturns generated pay runs ordered by payroll period; requires the `admin` or `payroll_officer` role.",
         "operationId": "listPayruns",
         "security": [
           {
@@ -2939,7 +2939,7 @@
           "Payroll"
         ],
         "summary": "List payslips in a pay run",
-        "description": "> **Try this operation**  \n> Account: `payroll@empay.example` (Payroll officer)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInJvbGUiOiJwYXlyb2xsX29mZmljZXIiLCJpc3MiOiJlbXBheS1kZW1vIiwiYXVkIjoiZW1wYXktYXBpIn0.CnJUMVPqMgXXUG8QfKA4-5cFVPr2KP2HXV5TQNOGZRt9xJvOfHNSJIKM24iQh1aohnQ1nCOHpZdP_z9fb3LFoKS5d8kCej2dz85WoFn31UOjqEUZE6q0nqEYDuPDyozr8GjX8QAyoOw0ttILWhN0GwYAtyfoHnNS8udYqqCLKI8DKH0TDhS3jr8Y8O-Yh0_1hUxDrz-EVSmu2oIXIAreERW-3S7xjbHist0kv8mP0nej-7qKuIfiDn5g8R2wAQggWzm7JwzhjzvHC82F_8uyz_71wpG9oOdhfyrnnOodvWpVMh6APUj1rjLN87ysA6farRCMvtnr6c9Qatq50GCp8w`\n\nReturns all employee payslips generated for the selected pay run; requires the `admin` or `payroll_officer` role.",
+        "description": "> **Try this operation**\n>\n> Account: `payroll@empay.example` (Payroll officer)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInJvbGUiOiJwYXlyb2xsX29mZmljZXIiLCJpc3MiOiJlbXBheS1kZW1vIiwiYXVkIjoiZW1wYXktYXBpIn0.CnJUMVPqMgXXUG8QfKA4-5cFVPr2KP2HXV5TQNOGZRt9xJvOfHNSJIKM24iQh1aohnQ1nCOHpZdP_z9fb3LFoKS5d8kCej2dz85WoFn31UOjqEUZE6q0nqEYDuPDyozr8GjX8QAyoOw0ttILWhN0GwYAtyfoHnNS8udYqqCLKI8DKH0TDhS3jr8Y8O-Yh0_1hUxDrz-EVSmu2oIXIAreERW-3S7xjbHist0kv8mP0nej-7qKuIfiDn5g8R2wAQggWzm7JwzhjzvHC82F_8uyz_71wpG9oOdhfyrnnOodvWpVMh6APUj1rjLN87ysA6farRCMvtnr6c9Qatq50GCp8w\n> ```\n\nReturns all employee payslips generated for the selected pay run; requires the `admin` or `payroll_officer` role.",
         "operationId": "listPayrunPayslips",
         "security": [
           {
@@ -3030,7 +3030,7 @@
           "Payroll"
         ],
         "summary": "List the authenticated user's payslips",
-        "description": "> **Try this operation**  \n> Account: `employee@empay.example` (Employee)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng`\n\nReturns payslips belonging to the authenticated employee.",
+        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng\n> ```\n\nReturns payslips belonging to the authenticated employee.",
         "operationId": "listMyPayslips",
         "security": [
           {
@@ -3113,7 +3113,7 @@
           "Payroll"
         ],
         "summary": "Get a payslip",
-        "description": "> **Try this operation**  \n> Account: `employee@empay.example` (Employee)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng`\n\nReturns one payslip by ID, while employees may access only their own payslips.",
+        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng\n> ```\n\nReturns one payslip by ID, while employees may access only their own payslips.",
         "operationId": "getPayslip",
         "security": [
           {
@@ -3213,7 +3213,7 @@
           "Payroll"
         ],
         "summary": "Download a payslip PDF",
-        "description": "> **Try this operation**  \n> Account: `employee@empay.example` (Employee)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng`\n\nGenerates and downloads a payslip as a PDF file, while employees may download only their own payslips.",
+        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng\n> ```\n\nGenerates and downloads a payslip as a PDF file, while employees may download only their own payslips.",
         "operationId": "downloadPayslipPdf",
         "security": [
           {
@@ -3277,7 +3277,7 @@
           "Dashboard"
         ],
         "summary": "Get the admin dashboard",
-        "description": "> **Try this operation**  \n> Account: `admin@empay.example` (Administrator)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbGUiOiJhZG1pbiIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.KWkziz-CXBt1B8uZOUbi-phza74DQ0ubwHJjF2KPWa4PNo3Jz4yR7Pdbzd7LgyNjmqtISz199vDqrhNvyVI3jC38ZXLq27iVMQaoN2Q48CYzCQUfdV1AIANW7nLuYnu0ORDqldjw9Cvd0LixsP7f7IdR2iysZaE-VNRiHZYTBd6-lTMp7l3qikyx4l45gUfw-KesQjbczuJYVs-9Q-4pip9vv2lcMQZBCQRTFHCMoDbTVXWODF3lzaU7GNStpVOEtDJghQonrfAs1XvFz0ncuydOGO5bX_c61I2FiyZKyKASJjcCqg30FnDaTIjQeC1hG1q8jVjyD5xSlKyrtv18gg`\n\nReturns organization-wide workforce, attendance, leave, payroll, and recent-activity metrics; requires the `admin` role.",
+        "description": "> **Try this operation**\n>\n> Account: `admin@empay.example` (Administrator)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbGUiOiJhZG1pbiIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.KWkziz-CXBt1B8uZOUbi-phza74DQ0ubwHJjF2KPWa4PNo3Jz4yR7Pdbzd7LgyNjmqtISz199vDqrhNvyVI3jC38ZXLq27iVMQaoN2Q48CYzCQUfdV1AIANW7nLuYnu0ORDqldjw9Cvd0LixsP7f7IdR2iysZaE-VNRiHZYTBd6-lTMp7l3qikyx4l45gUfw-KesQjbczuJYVs-9Q-4pip9vv2lcMQZBCQRTFHCMoDbTVXWODF3lzaU7GNStpVOEtDJghQonrfAs1XvFz0ncuydOGO5bX_c61I2FiyZKyKASJjcCqg30FnDaTIjQeC1hG1q8jVjyD5xSlKyrtv18gg\n> ```\n\nReturns organization-wide workforce, attendance, leave, payroll, and recent-activity metrics; requires the `admin` role.",
         "operationId": "getAdminDashboard",
         "security": [
           {
@@ -3318,7 +3318,7 @@
           "Dashboard"
         ],
         "summary": "Get the authenticated employee dashboard",
-        "description": "> **Try this operation**  \n> Account: `employee@empay.example` (Employee)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng`\n\nReturns personal attendance, leave, payslip, notification, and profile information for the authenticated employee.",
+        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng\n> ```\n\nReturns personal attendance, leave, payslip, notification, and profile information for the authenticated employee.",
         "operationId": "getEmployeeDashboard",
         "security": [
           {
@@ -3356,7 +3356,7 @@
           "Dashboard"
         ],
         "summary": "Get the HR dashboard",
-        "description": "> **Try this operation**  \n> Account: `hr@empay.example` (HR officer)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsInJvbGUiOiJocl9vZmZpY2VyIiwiaXNzIjoiZW1wYXktZGVtbyIsImF1ZCI6ImVtcGF5LWFwaSJ9.i37Vymg5nIFvyuEfsydyOSGSDyJCMbL7GxXJgAfUakTohtjQon57-nkmXQoPlzRb6rvJdhwEjhizXSF6ypkNC3oaKFZgGlcOg9o11HQbqEao_XllfyZwi5i9bCNDq0rSTTGFSb9OY1q-8l2OvtEOtyPJjIvO7xyiGnIxkWeV9ScFo7Qh_U_DzA0hUauTYUpdlvmSWfLajqFjyp-tiHN7LFgChyRPOCNAvVdLKWygFRVeTiFmAAPlHKvlh6lr8HkRDRjQhkHb870EC8zQN-iazwsKI9NlvpIAfuN6w6ZXGW4Df7eq5zxDurOtqOK1_662Ns7ZGf0om2rNBD0Zk5PLwQ`\n\nReturns workforce, attendance, leave, and recent-joiner metrics for HR operations; requires the `admin` or `hr_officer` role.",
+        "description": "> **Try this operation**\n>\n> Account: `hr@empay.example` (HR officer)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsInJvbGUiOiJocl9vZmZpY2VyIiwiaXNzIjoiZW1wYXktZGVtbyIsImF1ZCI6ImVtcGF5LWFwaSJ9.i37Vymg5nIFvyuEfsydyOSGSDyJCMbL7GxXJgAfUakTohtjQon57-nkmXQoPlzRb6rvJdhwEjhizXSF6ypkNC3oaKFZgGlcOg9o11HQbqEao_XllfyZwi5i9bCNDq0rSTTGFSb9OY1q-8l2OvtEOtyPJjIvO7xyiGnIxkWeV9ScFo7Qh_U_DzA0hUauTYUpdlvmSWfLajqFjyp-tiHN7LFgChyRPOCNAvVdLKWygFRVeTiFmAAPlHKvlh6lr8HkRDRjQhkHb870EC8zQN-iazwsKI9NlvpIAfuN6w6ZXGW4Df7eq5zxDurOtqOK1_662Ns7ZGf0om2rNBD0Zk5PLwQ\n> ```\n\nReturns workforce, attendance, leave, and recent-joiner metrics for HR operations; requires the `admin` or `hr_officer` role.",
         "operationId": "getHrDashboard",
         "security": [
           {
@@ -3397,7 +3397,7 @@
           "Dashboard"
         ],
         "summary": "Get the payroll dashboard",
-        "description": "> **Try this operation**  \n> Account: `payroll@empay.example` (Payroll officer)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInJvbGUiOiJwYXlyb2xsX29mZmljZXIiLCJpc3MiOiJlbXBheS1kZW1vIiwiYXVkIjoiZW1wYXktYXBpIn0.CnJUMVPqMgXXUG8QfKA4-5cFVPr2KP2HXV5TQNOGZRt9xJvOfHNSJIKM24iQh1aohnQ1nCOHpZdP_z9fb3LFoKS5d8kCej2dz85WoFn31UOjqEUZE6q0nqEYDuPDyozr8GjX8QAyoOw0ttILWhN0GwYAtyfoHnNS8udYqqCLKI8DKH0TDhS3jr8Y8O-Yh0_1hUxDrz-EVSmu2oIXIAreERW-3S7xjbHist0kv8mP0nej-7qKuIfiDn5g8R2wAQggWzm7JwzhjzvHC82F_8uyz_71wpG9oOdhfyrnnOodvWpVMh6APUj1rjLN87ysA6farRCMvtnr6c9Qatq50GCp8w`\n\nReturns payroll totals, pay-run status, salary coverage, and recent payslip metrics; requires the `admin` or `payroll_officer` role.",
+        "description": "> **Try this operation**\n>\n> Account: `payroll@empay.example` (Payroll officer)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInJvbGUiOiJwYXlyb2xsX29mZmljZXIiLCJpc3MiOiJlbXBheS1kZW1vIiwiYXVkIjoiZW1wYXktYXBpIn0.CnJUMVPqMgXXUG8QfKA4-5cFVPr2KP2HXV5TQNOGZRt9xJvOfHNSJIKM24iQh1aohnQ1nCOHpZdP_z9fb3LFoKS5d8kCej2dz85WoFn31UOjqEUZE6q0nqEYDuPDyozr8GjX8QAyoOw0ttILWhN0GwYAtyfoHnNS8udYqqCLKI8DKH0TDhS3jr8Y8O-Yh0_1hUxDrz-EVSmu2oIXIAreERW-3S7xjbHist0kv8mP0nej-7qKuIfiDn5g8R2wAQggWzm7JwzhjzvHC82F_8uyz_71wpG9oOdhfyrnnOodvWpVMh6APUj1rjLN87ysA6farRCMvtnr6c9Qatq50GCp8w\n> ```\n\nReturns payroll totals, pay-run status, salary coverage, and recent payslip metrics; requires the `admin` or `payroll_officer` role.",
         "operationId": "getPayrollDashboard",
         "security": [
           {
@@ -3438,7 +3438,7 @@
           "Notifications"
         ],
         "summary": "List the authenticated user's notifications",
-        "description": "> **Try this operation**  \n> Account: `employee@empay.example` (Employee)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng`\n\nReturns notifications addressed to the authenticated user, including their read status.",
+        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng\n> ```\n\nReturns notifications addressed to the authenticated user, including their read status.",
         "operationId": "listNotifications",
         "security": [
           {
@@ -3501,7 +3501,7 @@
           "Notifications"
         ],
         "summary": "Mark a notification as read",
-        "description": "> **Try this operation**  \n> Account: `employee@empay.example` (Employee)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng`\n\nMarks one notification belonging to the authenticated user as read.",
+        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng\n> ```\n\nMarks one notification belonging to the authenticated user as read.",
         "operationId": "markNotificationRead",
         "security": [
           {
@@ -3567,7 +3567,7 @@
           "Notifications"
         ],
         "summary": "Mark all notifications as read",
-        "description": "> **Try this operation**  \n> Account: `employee@empay.example` (Employee)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng`\n\nMarks every unread notification belonging to the authenticated user as read.",
+        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng\n> ```\n\nMarks every unread notification belonging to the authenticated user as read.",
         "operationId": "markAllNotificationsRead",
         "security": [
           {
@@ -3604,7 +3604,7 @@
           "Settings"
         ],
         "summary": "Get application settings",
-        "description": "> **Try this operation**  \n> Account: `employee@empay.example` (Employee)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng`\n\nReturns the current application settings as key-value pairs.",
+        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng\n> ```\n\nReturns the current application settings as key-value pairs.",
         "operationId": "getSettings",
         "security": [
           {
@@ -3668,7 +3668,7 @@
           "Settings"
         ],
         "summary": "Update application settings",
-        "description": "> **Try this operation**  \n> Account: `admin@empay.example` (Administrator)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbGUiOiJhZG1pbiIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.KWkziz-CXBt1B8uZOUbi-phza74DQ0ubwHJjF2KPWa4PNo3Jz4yR7Pdbzd7LgyNjmqtISz199vDqrhNvyVI3jC38ZXLq27iVMQaoN2Q48CYzCQUfdV1AIANW7nLuYnu0ORDqldjw9Cvd0LixsP7f7IdR2iysZaE-VNRiHZYTBd6-lTMp7l3qikyx4l45gUfw-KesQjbczuJYVs-9Q-4pip9vv2lcMQZBCQRTFHCMoDbTVXWODF3lzaU7GNStpVOEtDJghQonrfAs1XvFz0ncuydOGO5bX_c61I2FiyZKyKASJjcCqg30FnDaTIjQeC1hG1q8jVjyD5xSlKyrtv18gg`\n\nStores each supplied key as an application setting; requires the `admin` role.",
+        "description": "> **Try this operation**\n>\n> Account: `admin@empay.example` (Administrator)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbGUiOiJhZG1pbiIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.KWkziz-CXBt1B8uZOUbi-phza74DQ0ubwHJjF2KPWa4PNo3Jz4yR7Pdbzd7LgyNjmqtISz199vDqrhNvyVI3jC38ZXLq27iVMQaoN2Q48CYzCQUfdV1AIANW7nLuYnu0ORDqldjw9Cvd0LixsP7f7IdR2iysZaE-VNRiHZYTBd6-lTMp7l3qikyx4l45gUfw-KesQjbczuJYVs-9Q-4pip9vv2lcMQZBCQRTFHCMoDbTVXWODF3lzaU7GNStpVOEtDJghQonrfAs1XvFz0ncuydOGO5bX_c61I2FiyZKyKASJjcCqg30FnDaTIjQeC1hG1q8jVjyD5xSlKyrtv18gg\n> ```\n\nStores each supplied key as an application setting; requires the `admin` role.",
         "operationId": "updateSettings",
         "security": [
           {
@@ -3756,7 +3756,7 @@
           "Settings"
         ],
         "summary": "Get database statistics",
-        "description": "> **Try this operation**  \n> Account: `admin@empay.example` (Administrator)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbGUiOiJhZG1pbiIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.KWkziz-CXBt1B8uZOUbi-phza74DQ0ubwHJjF2KPWa4PNo3Jz4yR7Pdbzd7LgyNjmqtISz199vDqrhNvyVI3jC38ZXLq27iVMQaoN2Q48CYzCQUfdV1AIANW7nLuYnu0ORDqldjw9Cvd0LixsP7f7IdR2iysZaE-VNRiHZYTBd6-lTMp7l3qikyx4l45gUfw-KesQjbczuJYVs-9Q-4pip9vv2lcMQZBCQRTFHCMoDbTVXWODF3lzaU7GNStpVOEtDJghQonrfAs1XvFz0ncuydOGO5bX_c61I2FiyZKyKASJjcCqg30FnDaTIjQeC1hG1q8jVjyD5xSlKyrtv18gg`\n\nReturns database size, connection, and table statistics; requires the `admin` role.",
+        "description": "> **Try this operation**\n>\n> Account: `admin@empay.example` (Administrator)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbGUiOiJhZG1pbiIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.KWkziz-CXBt1B8uZOUbi-phza74DQ0ubwHJjF2KPWa4PNo3Jz4yR7Pdbzd7LgyNjmqtISz199vDqrhNvyVI3jC38ZXLq27iVMQaoN2Q48CYzCQUfdV1AIANW7nLuYnu0ORDqldjw9Cvd0LixsP7f7IdR2iysZaE-VNRiHZYTBd6-lTMp7l3qikyx4l45gUfw-KesQjbczuJYVs-9Q-4pip9vv2lcMQZBCQRTFHCMoDbTVXWODF3lzaU7GNStpVOEtDJghQonrfAs1XvFz0ncuydOGO5bX_c61I2FiyZKyKASJjcCqg30FnDaTIjQeC1hG1q8jVjyD5xSlKyrtv18gg\n> ```\n\nReturns database size, connection, and table statistics; requires the `admin` role.",
         "operationId": "getDatabaseStats",
         "security": [
           {
@@ -3820,7 +3820,7 @@
           "Search"
         ],
         "summary": "Search users",
-        "description": "> **Try this operation**  \n> Account: `employee@empay.example` (Employee)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng`\n\nSearches users by name or email and returns no matches when the query is shorter than two characters.",
+        "description": "> **Try this operation**\n>\n> Account: `employee@empay.example` (Employee)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng\n> ```\n\nSearches users by name or email and returns no matches when the query is shorter than two characters.",
         "operationId": "searchUsers",
         "security": [
           {
@@ -3926,7 +3926,7 @@
           "Audit"
         ],
         "summary": "List audit logs",
-        "description": "> **Try this operation**  \n> Account: `admin@empay.example` (Administrator)  \n> Bearer token: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbGUiOiJhZG1pbiIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.KWkziz-CXBt1B8uZOUbi-phza74DQ0ubwHJjF2KPWa4PNo3Jz4yR7Pdbzd7LgyNjmqtISz199vDqrhNvyVI3jC38ZXLq27iVMQaoN2Q48CYzCQUfdV1AIANW7nLuYnu0ORDqldjw9Cvd0LixsP7f7IdR2iysZaE-VNRiHZYTBd6-lTMp7l3qikyx4l45gUfw-KesQjbczuJYVs-9Q-4pip9vv2lcMQZBCQRTFHCMoDbTVXWODF3lzaU7GNStpVOEtDJghQonrfAs1XvFz0ncuydOGO5bX_c61I2FiyZKyKASJjcCqg30FnDaTIjQeC1hG1q8jVjyD5xSlKyrtv18gg`\n\nReturns paginated audit events with optional action, entity, user, and date filters; requires the `admin` role.",
+        "description": "> **Try this operation**\n>\n> Account: `admin@empay.example` (Administrator)\n>\n> Copy the JWT below into the bearer-token field.\n>\n> ```text\n> eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbGUiOiJhZG1pbiIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.KWkziz-CXBt1B8uZOUbi-phza74DQ0ubwHJjF2KPWa4PNo3Jz4yR7Pdbzd7LgyNjmqtISz199vDqrhNvyVI3jC38ZXLq27iVMQaoN2Q48CYzCQUfdV1AIANW7nLuYnu0ORDqldjw9Cvd0LixsP7f7IdR2iysZaE-VNRiHZYTBd6-lTMp7l3qikyx4l45gUfw-KesQjbczuJYVs-9Q-4pip9vv2lcMQZBCQRTFHCMoDbTVXWODF3lzaU7GNStpVOEtDJghQonrfAs1XvFz0ncuydOGO5bX_c61I2FiyZKyKASJjcCqg30FnDaTIjQeC1hG1q8jVjyD5xSlKyrtv18gg\n> ```\n\nReturns paginated audit events with optional action, entity, user, and date filters; requires the `admin` role.",
         "operationId": "listAuditLogs",
         "security": [
           {
