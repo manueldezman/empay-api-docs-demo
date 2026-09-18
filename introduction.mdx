@@ -1,0 +1,173 @@
+---
+title: "Unified workforce operations"
+navTitle: "Unified workforce operations"
+description: "Learn how EmPay connects employee administration, attendance, leave, payroll, and workforce reporting as one service."
+---
+
+EmPay is a Human Resource Management System (HRMS) for managing employee
+operations through one role-aware application and REST API. It connects employee
+records, attendance, leave, payroll, reporting, notifications, and administrative
+controls so that each workflow uses the same workforce data.
+
+Use EmPay to build or operate employee self-service portals, internal HR tools,
+payroll workflows, and role-specific workforce dashboards.
+
+## Why EmPay
+
+Workforce processes often sit in separate tools, spreadsheets, and approval
+channels. Employee details must be copied between systems. Attendance and leave
+records reach payroll late. Staff cannot see the status of their requests, and
+administrators have limited visibility into who changed sensitive information.
+
+This fragmentation creates several recurring problems:
+
+- **Repeated administration:** teams maintain the same employee information in
+  multiple places.
+- **Disconnected workflows:** attendance, leave, and salary data require manual
+  reconciliation before payroll.
+- **Unclear access:** employees and operational teams need different permissions,
+  views, and actions.
+- **Limited traceability:** sensitive changes and approval decisions are difficult
+  to review without a shared audit history.
+- **Slow reporting:** workforce information must be assembled before teams can
+  understand attendance, leave usage, headcount, or payroll status.
+
+EmPay brings these workflows into one system with shared records, role-based
+access, and a consistent API.
+
+## What EmPay provides
+
+EmPay provides the application and API capabilities needed to manage common
+workforce operations:
+
+- **Employee administration:** create accounts, maintain profiles, organize
+  employees, and manage company settings.
+- **Role-based access:** assign administrator, HR officer, payroll officer, or
+  employee permissions and present role-specific navigation and dashboards.
+- **Attendance management:** record check-ins and check-outs, support re-check-in,
+  and review personal or organization-level attendance history.
+- **Leave management:** define leave types, allocate balances, submit requests,
+  and approve or reject requests.
+- **Payroll processing:** maintain salary structures, generate monthly pay runs,
+  apply supported deductions, finalize payroll, and generate PDF payslips.
+- **Operational visibility:** provide role-specific analytics, real-time
+  notifications, email updates, search, and audit records for sensitive actions.
+
+## How EmPay works
+
+1. **Centralizes workforce records.** EmPay stores employee, attendance, leave,
+   salary, payroll, notification, and company-setting data in PostgreSQL.
+2. **Authenticates each request.** The REST API issues JSON Web Tokens (JWTs) and
+   applies role-based access rules before protected operations run.
+3. **Coordinates workforce workflows.** Separate API modules handle employee,
+   attendance, leave, payroll, dashboard, notification, settings, search, and
+   audit operations against shared data.
+4. **Communicates changes.** Socket.IO delivers real-time notifications, while
+   email workflows communicate account, leave, and password-reset events.
+5. **Presents role-specific results.** The React application gives each role the
+   actions, dashboards, and records relevant to its responsibilities.
+
+## Core capabilities
+
+<Columns cols={2}>
+  <Card
+    title="Employee and access management"
+    icon="users"
+    color="#E8390E"
+    href="/concepts/roles-and-permissions"
+  >
+    Manage employee records and control what administrators, HR officers,
+    payroll officers, and employees can do.
+  </Card>
+  <Card title="Attendance" icon="clock" color="#E8390E" href="/getting-started">
+    Capture working sessions and retrieve attendance history for employee and HR
+    workflows.
+  </Card>
+  <Card
+    title="Leave"
+    icon="calendar-check"
+    color="#E8390E"
+    href="/guides/request-and-review-leave"
+  >
+    Allocate leave, track balances, submit requests, and record approval
+    decisions.
+  </Card>
+  <Card
+    title="Payroll"
+    icon="calculator"
+    color="#E8390E"
+    href="/guides/generate-payroll"
+  >
+    Configure salary structures, calculate pay runs and deductions, finalize
+    payroll, and generate payslips.
+  </Card>
+  <Card
+    title="Reporting and notifications"
+    icon="chart-line"
+    color="#E8390E"
+    href="/api-reference/overview"
+  >
+    Present role-specific dashboards and communicate workforce events through
+    application and email notifications.
+  </Card>
+  <Card
+    title="Audit and administration"
+    icon="shield-check"
+    color="#E8390E"
+    href="/api-reference/overview"
+  >
+    Manage company settings and review protected audit records for sensitive
+    actions.
+  </Card>
+</Columns>
+
+## When to use EmPay
+
+EmPay fits teams that need a connected system for recurring employee operations.
+Typical uses include:
+
+- Giving employees one place to check attendance, request leave, and retrieve
+  payslips.
+- Giving HR teams shared employee, attendance, leave, and workforce reporting
+  workflows.
+- Giving payroll teams controlled access to salary structures, pay runs,
+  deductions, and payslips.
+- Giving administrators role management, company settings, organizational
+  dashboards, and audit visibility.
+- Integrating selected HRMS operations into an internal portal or another
+  business system through a REST API.
+
+## Without EmPay vs. with EmPay
+
+| Workflow             | Without a connected HRMS                             | With EmPay                                            |
+| -------------------- | ---------------------------------------------------- | ----------------------------------------------------- |
+| Employee data        | Repeated across separate records and tools           | Maintained as shared workforce records                |
+| Access               | Managed informally or separately in each workflow    | Controlled through four defined roles                 |
+| Attendance and leave | Reconciled manually from disconnected records        | Available to related workflows in one system          |
+| Payroll preparation  | Assembled from salary, attendance, and leave sources | Calculated from connected salary and workforce data   |
+| Employee updates     | Communicated through separate channels               | Delivered through application and email notifications |
+| Sensitive changes    | Difficult to trace consistently                      | Recorded through protected audit events               |
+| Reporting            | Compiled manually for each operational team          | Presented through role-specific dashboards            |
+
+## Next steps
+
+<Columns cols={2}>
+  <Card
+    title="Complete the Getting Started guide"
+    icon="rocket"
+    color="#E8390E"
+    href="/getting-started"
+    arrow="true"
+  >
+    Retrieve monthly attendance data with a prefilled authenticated request.
+  </Card>
+  <Card
+    title="Explore the API reference"
+    icon="code"
+    color="#E8390E"
+    href="/api-reference/overview"
+    arrow="true"
+  >
+    Explore and try all 49 documented operations across the EmPay service.
+  </Card>
+</Columns>

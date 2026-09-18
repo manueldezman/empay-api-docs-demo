@@ -1,0 +1,31 @@
+---
+title: "Roles and permissions"
+description: "Understand how EmPay roles limit employee, HR, payroll, and administrative operations."
+---
+
+EmPay includes the authenticated user's role in the user profile and applies that
+role to protected operations. Authentication proves who the user is; authorization
+determines what that user can do.
+
+| Role              | Typical access                                                                                          |
+| ----------------- | ------------------------------------------------------------------------------------------------------- |
+| `employee`        | Personal profile, attendance, leave requests, notifications, dashboard, and own payslips                |
+| `hr_officer`      | Employee administration and leave allocation workflows where the operation permits HR access            |
+| `payroll_officer` | Salary structures, payroll generation, pay runs, and payroll reporting                                  |
+| `admin`           | Organization administration, settings, audit logs, and endpoints that explicitly include administrators |
+
+Each endpoint identifies the roles permitted to perform that operation.
+
+## Resolve a `403` response
+
+1. Confirm that login succeeded and the token is current.
+2. Read `data.user.role` from the login response or call `GET /api/auth/me`.
+3. Compare the role with the operation description in the [API
+   reference](/api-reference/overview).
+4. Use a token belonging to an authorized account; do not attempt to change the
+   role in the client.
+
+A missing or invalid token returns `401`, not `403`. See the [Error
+codes](/api-reference/error-codes) page for the full authorization error
+checklist and [Troubleshooting](/troubleshooting) for guidance on resolving the
+issue.

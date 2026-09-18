@@ -1,0 +1,112 @@
+---
+title: "System overview"
+description: "Understand the components that power EmPay workforce operations and how data moves between them."
+---
+
+## Introduction
+
+EmPay uses a layered architecture to connect role-specific workforce interfaces
+to employee, attendance, leave, payroll, reporting, and administrative services.
+Each layer has a defined responsibility, while shared authentication and data
+services keep related workflows consistent.
+
+The architecture supports four user roles: administrator, HR officer, payroll
+officer, and employee. Each role uses the same application and API but receives
+access only to the operations and records allowed by its permissions.
+
+<img
+  className="block w-full dark:hidden"
+  src="/images/empay-architecture-light.svg"
+  alt="EmPay architecture showing user roles, client interfaces, REST API modules, supporting services, and PostgreSQL."
+/>
+
+<img
+  className="hidden w-full dark:block"
+  src="/images/empay-architecture-dark.svg"
+  alt="EmPay architecture showing user roles, client interfaces, REST API modules, supporting services, and PostgreSQL."
+/>
+
+## Key components of EmPay architecture
+
+### 1. Users and role-specific interfaces
+
+Administrators, HR officers, payroll officers, and employees access EmPay through
+the React single-page application or an approved API client. The interface adapts
+its navigation, dashboards, and available actions to the authenticated user’s
+role.
+
+### 2. React application
+
+The React application provides employee self-service and operational dashboards.
+It sends HTTP requests to the REST API, maintains the authenticated session, and
+presents attendance, leave, payroll, notification, and reporting data returned by
+the server.
+
+### 3. Express.js REST API
+
+The Express.js API is the entry point for workforce operations. It validates
+requests, applies rate limits, authenticates JSON Web Tokens (JWTs), checks role
+permissions, and routes each request to the appropriate feature module.
+
+The API separates business operations into employee, attendance, leave, payroll,
+dashboard, notification, settings, search, and audit modules.
+
+### 4. Workforce service modules
+
+Each module owns a related set of business rules:
+
+- **Employee management:** maintains accounts, profiles, roles, and employee
+  records.
+- **Attendance:** records check-ins and check-outs and calculates attendance
+  history and statistics.
+- **Leave:** manages leave types, allocations, balances, requests, and approval
+  decisions.
+- **Payroll:** maintains salary structures, calculates pay runs and deductions,
+  finalizes payroll, and generates payslips.
+- **Dashboards and search:** retrieves role-specific summaries and searchable
+  workforce information.
+- **Settings and audit:** manages company configuration and records protected
+  administrative events.
+
+### 5. Supporting services
+
+Shared services handle functions used across multiple workforce modules:
+
+- **Authentication and authorization:** protect API operations and enforce role
+  permissions.
+- **Socket.IO:** delivers real-time application notifications.
+- **Email:** sends account, leave-status, and password-reset messages.
+- **Cloudinary and file handling:** store and retrieve profile images.
+- **PDF generation:** creates downloadable employee payslips.
+- **Audit logging:** records sensitive changes and approval actions for review.
+
+### 6. PostgreSQL database
+
+PostgreSQL stores the shared workforce records used by the application and API.
+These records include users, attendance, leave, salary structures, pay runs,
+payslips, notifications, company settings, and audit events.
+
+Using one relational data store allows attendance and leave information to inform
+payroll workflows without duplicating records across separate systems.
+
+## Request flow
+
+1. A user signs in through the React application or sends credentials to the API.
+2. EmPay issues a JWT that identifies the user and their role.
+3. The client includes that token with a protected API request.
+4. Authentication and role middleware validate the request.
+5. The relevant workforce module applies its business rules and reads or updates
+   PostgreSQL.
+6. The API returns the result, and supporting services send notifications, email,
+   audit events, files, or PDFs when the workflow requires them.
+
+<Card
+  title="Explore roles and permissions"
+  icon="shield-check"
+  color="#E8390E"
+  href="/concepts/roles-and-permissions"
+  arrow="true"
+>
+  Learn which operations administrators, HR officers, payroll officers, and
+  employees can access.
+</Card>

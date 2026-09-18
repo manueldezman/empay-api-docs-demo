@@ -1,0 +1,50 @@
+---
+title: "Request and review leave"
+description: "Submit an employee leave request and understand the review outcome."
+---
+
+Submit a dated leave request after confirming that the employee has an allocation
+for the selected leave type.
+
+## Before you begin
+
+You need a bearer token and a valid `leave_type_id`. The requested period must fit
+within the employee's remaining allocation.
+
+## Submit the request
+
+```bash
+curl --request POST \
+  --url https://empay-api-docs-demo.vercel.app/api/leave/request \
+  --header 'Authorization: Bearer YOUR_ACCESS_TOKEN' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "leave_type_id": 1,
+    "start_date": "2026-08-10",
+    "end_date": "2026-08-14",
+    "reason": "Family event"
+  }'
+```
+
+Success returns HTTP `201`. Confirm that the response has `status: "pending"`
+and retain the request `id` for review.
+
+## Check your requests
+
+```bash
+curl https://empay-api-docs-demo.vercel.app/api/leave/requests/my \
+  --header 'Authorization: Bearer YOUR_ACCESS_TOKEN'
+```
+
+The returned status shows whether the request is `pending`, `approved`, or
+`rejected`.
+
+## Review behavior
+
+Review endpoints accept a request ID and require the role documented by the API
+operation. A request that has already been reviewed returns `400`. An unknown ID
+returns `404`.
+
+If submission returns `Invalid date range`, ensure `end_date` is not earlier than
+`start_date`. If it returns an insufficient-balance message, shorten the period or
+ask an administrator or HR officer to update the allocation.

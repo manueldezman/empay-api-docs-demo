@@ -11,9 +11,6 @@
   },
   "tags": [
     {
-      "name": "Health"
-    },
-    {
       "name": "Authentication"
     },
     {
@@ -42,35 +39,12 @@
     },
     {
       "name": "Audit"
+    },
+    {
+      "name": "Health"
     }
   ],
   "paths": {
-    "/api/health": {
-      "get": {
-        "tags": [
-          "Health"
-        ],
-        "summary": "Check API health",
-        "operationId": "getHealth",
-        "responses": {
-          "200": {
-            "description": "API is running",
-            "content": {
-              "application/json": {
-                "example": {
-                  "success": true,
-                  "message": "EmPay API is running",
-                  "timestamp": "2026-08-01T09:00:00.000Z"
-                },
-                "schema": {
-                  "$ref": "#/components/schemas/HealthResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/api/auth/register": {
       "post": {
         "tags": [
@@ -81,7 +55,7 @@
         "operationId": "registerUser",
         "security": [
           {
-            "bearerAuth": []
+            "hrOfficerAuth": []
           }
         ],
         "requestBody": {
@@ -373,7 +347,7 @@
         "operationId": "getCurrentUser",
         "security": [
           {
-            "bearerAuth": []
+            "employeeAuth": []
           }
         ],
         "responses": {
@@ -639,7 +613,7 @@
         "operationId": "testEmail",
         "security": [
           {
-            "bearerAuth": []
+            "adminAuth": []
           }
         ],
         "requestBody": {
@@ -714,7 +688,7 @@
         "operationId": "listUsers",
         "security": [
           {
-            "bearerAuth": []
+            "employeeAuth": []
           }
         ],
         "parameters": [
@@ -805,7 +779,7 @@
         "operationId": "uploadAvatar",
         "security": [
           {
-            "bearerAuth": []
+            "employeeAuth": []
           }
         ],
         "requestBody": {
@@ -910,7 +884,7 @@
         "operationId": "getUser",
         "security": [
           {
-            "bearerAuth": []
+            "employeeAuth": []
           }
         ],
         "responses": {
@@ -989,7 +963,7 @@
         "operationId": "updateUser",
         "security": [
           {
-            "bearerAuth": []
+            "employeeAuth": []
           }
         ],
         "requestBody": {
@@ -1118,7 +1092,7 @@
         "operationId": "deleteUser",
         "security": [
           {
-            "bearerAuth": []
+            "adminAuth": []
           }
         ],
         "responses": {
@@ -1188,7 +1162,7 @@
         "operationId": "toggleUserActive",
         "security": [
           {
-            "bearerAuth": []
+            "adminAuth": []
           }
         ],
         "parameters": [
@@ -1263,7 +1237,7 @@
         "operationId": "markAttendance",
         "security": [
           {
-            "bearerAuth": []
+            "employeeAuth": []
           }
         ],
         "responses": {
@@ -1346,7 +1320,7 @@
         "operationId": "getMyAttendance",
         "security": [
           {
-            "bearerAuth": []
+            "employeeAuth": []
           }
         ],
         "parameters": [
@@ -1425,7 +1399,7 @@
         "operationId": "getMonthlyAttendanceSummary",
         "security": [
           {
-            "bearerAuth": []
+            "employeeAuth": []
           }
         ],
         "parameters": [
@@ -1493,7 +1467,7 @@
         "operationId": "listAllAttendance",
         "security": [
           {
-            "bearerAuth": []
+            "hrOfficerAuth": []
           }
         ],
         "parameters": [
@@ -1581,7 +1555,7 @@
         "operationId": "getTodayAttendance",
         "security": [
           {
-            "bearerAuth": []
+            "hrOfficerAuth": []
           }
         ],
         "responses": {
@@ -1655,7 +1629,7 @@
         "operationId": "listLeaveTypes",
         "security": [
           {
-            "bearerAuth": []
+            "employeeAuth": []
           }
         ],
         "responses": {
@@ -1715,7 +1689,7 @@
         "operationId": "createLeaveType",
         "security": [
           {
-            "bearerAuth": []
+            "adminAuth": []
           }
         ],
         "requestBody": {
@@ -1815,7 +1789,7 @@
         "operationId": "getMyLeaveAllocations",
         "security": [
           {
-            "bearerAuth": []
+            "employeeAuth": []
           }
         ],
         "responses": {
@@ -1881,7 +1855,7 @@
         "operationId": "getEmployeeLeaveAllocations",
         "security": [
           {
-            "bearerAuth": []
+            "hrOfficerAuth": []
           }
         ],
         "parameters": [
@@ -1955,7 +1929,7 @@
         "operationId": "upsertLeaveAllocation",
         "security": [
           {
-            "bearerAuth": []
+            "hrOfficerAuth": []
           }
         ],
         "requestBody": {
@@ -2062,7 +2036,7 @@
         "operationId": "createLeaveRequest",
         "security": [
           {
-            "bearerAuth": []
+            "employeeAuth": []
           }
         ],
         "requestBody": {
@@ -2204,7 +2178,7 @@
         "operationId": "listMyLeaveRequests",
         "security": [
           {
-            "bearerAuth": []
+            "employeeAuth": []
           }
         ],
         "responses": {
@@ -2278,7 +2252,7 @@
         "operationId": "listAllLeaveRequests",
         "security": [
           {
-            "bearerAuth": []
+            "hrOfficerAuth": []
           }
         ],
         "parameters": [
@@ -2373,7 +2347,7 @@
         "operationId": "approveLeaveRequest",
         "security": [
           {
-            "bearerAuth": []
+            "payrollOfficerAuth": []
           }
         ],
         "parameters": [
@@ -2467,7 +2441,7 @@
         "operationId": "rejectLeaveRequest",
         "security": [
           {
-            "bearerAuth": []
+            "payrollOfficerAuth": []
           }
         ],
         "parameters": [
@@ -2561,7 +2535,7 @@
         "operationId": "upsertSalaryStructure",
         "security": [
           {
-            "bearerAuth": []
+            "payrollOfficerAuth": []
           }
         ],
         "requestBody": {
@@ -2643,7 +2617,7 @@
         "operationId": "listSalaryStructures",
         "security": [
           {
-            "bearerAuth": []
+            "payrollOfficerAuth": []
           }
         ],
         "responses": {
@@ -2714,7 +2688,7 @@
         "operationId": "getSalaryStructure",
         "security": [
           {
-            "bearerAuth": []
+            "payrollOfficerAuth": []
           }
         ],
         "parameters": [
@@ -2788,7 +2762,7 @@
         "operationId": "generatePayrun",
         "security": [
           {
-            "bearerAuth": []
+            "payrollOfficerAuth": []
           }
         ],
         "requestBody": {
@@ -2903,7 +2877,7 @@
         "operationId": "listPayruns",
         "security": [
           {
-            "bearerAuth": []
+            "payrollOfficerAuth": []
           }
         ],
         "responses": {
@@ -2972,7 +2946,7 @@
         "operationId": "listPayrunPayslips",
         "security": [
           {
-            "bearerAuth": []
+            "payrollOfficerAuth": []
           }
         ],
         "parameters": [
@@ -3064,7 +3038,7 @@
         "operationId": "listMyPayslips",
         "security": [
           {
-            "bearerAuth": []
+            "employeeAuth": []
           }
         ],
         "responses": {
@@ -3148,7 +3122,7 @@
         "operationId": "getPayslip",
         "security": [
           {
-            "bearerAuth": []
+            "employeeAuth": []
           }
         ],
         "parameters": [
@@ -3249,7 +3223,7 @@
         "operationId": "downloadPayslipPdf",
         "security": [
           {
-            "bearerAuth": []
+            "employeeAuth": []
           }
         ],
         "parameters": [
@@ -3314,7 +3288,7 @@
         "operationId": "getAdminDashboard",
         "security": [
           {
-            "bearerAuth": []
+            "adminAuth": []
           }
         ],
         "responses": {
@@ -3356,7 +3330,7 @@
         "operationId": "getEmployeeDashboard",
         "security": [
           {
-            "bearerAuth": []
+            "employeeAuth": []
           }
         ],
         "responses": {
@@ -3395,7 +3369,7 @@
         "operationId": "getHrDashboard",
         "security": [
           {
-            "bearerAuth": []
+            "hrOfficerAuth": []
           }
         ],
         "responses": {
@@ -3437,7 +3411,7 @@
         "operationId": "getPayrollDashboard",
         "security": [
           {
-            "bearerAuth": []
+            "payrollOfficerAuth": []
           }
         ],
         "responses": {
@@ -3479,7 +3453,7 @@
         "operationId": "listNotifications",
         "security": [
           {
-            "bearerAuth": []
+            "employeeAuth": []
           }
         ],
         "responses": {
@@ -3543,7 +3517,7 @@
         "operationId": "markNotificationRead",
         "security": [
           {
-            "bearerAuth": []
+            "employeeAuth": []
           }
         ],
         "parameters": [
@@ -3610,7 +3584,7 @@
         "operationId": "markAllNotificationsRead",
         "security": [
           {
-            "bearerAuth": []
+            "employeeAuth": []
           }
         ],
         "responses": {
@@ -3648,7 +3622,7 @@
         "operationId": "getSettings",
         "security": [
           {
-            "bearerAuth": []
+            "employeeAuth": []
           }
         ],
         "responses": {
@@ -3713,7 +3687,7 @@
         "operationId": "updateSettings",
         "security": [
           {
-            "bearerAuth": []
+            "adminAuth": []
           }
         ],
         "requestBody": {
@@ -3802,7 +3776,7 @@
         "operationId": "getDatabaseStats",
         "security": [
           {
-            "bearerAuth": []
+            "adminAuth": []
           }
         ],
         "responses": {
@@ -3867,7 +3841,7 @@
         "operationId": "searchUsers",
         "security": [
           {
-            "bearerAuth": []
+            "employeeAuth": []
           }
         ],
         "parameters": [
@@ -3974,7 +3948,7 @@
         "operationId": "listAuditLogs",
         "security": [
           {
-            "bearerAuth": []
+            "adminAuth": []
           }
         ],
         "parameters": [
@@ -4138,14 +4112,64 @@
         },
         "x-thally-bearer-token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbGUiOiJhZG1pbiIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.KWkziz-CXBt1B8uZOUbi-phza74DQ0ubwHJjF2KPWa4PNo3Jz4yR7Pdbzd7LgyNjmqtISz199vDqrhNvyVI3jC38ZXLq27iVMQaoN2Q48CYzCQUfdV1AIANW7nLuYnu0ORDqldjw9Cvd0LixsP7f7IdR2iysZaE-VNRiHZYTBd6-lTMp7l3qikyx4l45gUfw-KesQjbczuJYVs-9Q-4pip9vv2lcMQZBCQRTFHCMoDbTVXWODF3lzaU7GNStpVOEtDJghQonrfAs1XvFz0ncuydOGO5bX_c61I2FiyZKyKASJjcCqg30FnDaTIjQeC1hG1q8jVjyD5xSlKyrtv18gg"
       }
+    },
+    "/api/health": {
+      "get": {
+        "tags": [
+          "Health"
+        ],
+        "summary": "Check API health",
+        "description": "Confirms that the service is reachable and reports the current API status.",
+        "operationId": "getHealth",
+        "responses": {
+          "200": {
+            "description": "API is running",
+            "content": {
+              "application/json": {
+                "example": {
+                  "success": true,
+                  "message": "EmPay API is running",
+                  "timestamp": "2026-08-01T09:00:00.000Z"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponse"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
     "securitySchemes": {
-      "bearerAuth": {
+      "employeeAuth": {
         "type": "http",
         "scheme": "bearer",
-        "bearerFormat": "JWT"
+        "bearerFormat": "JWT",
+        "description": "Simulated employee token for this portfolio demonstration.",
+        "x-default": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng"
+      },
+      "hrOfficerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "Simulated HR officer token for this portfolio demonstration.",
+        "x-default": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsInJvbGUiOiJocl9vZmZpY2VyIiwiaXNzIjoiZW1wYXktZGVtbyIsImF1ZCI6ImVtcGF5LWFwaSJ9.i37Vymg5nIFvyuEfsydyOSGSDyJCMbL7GxXJgAfUakTohtjQon57-nkmXQoPlzRb6rvJdhwEjhizXSF6ypkNC3oaKFZgGlcOg9o11HQbqEao_XllfyZwi5i9bCNDq0rSTTGFSb9OY1q-8l2OvtEOtyPJjIvO7xyiGnIxkWeV9ScFo7Qh_U_DzA0hUauTYUpdlvmSWfLajqFjyp-tiHN7LFgChyRPOCNAvVdLKWygFRVeTiFmAAPlHKvlh6lr8HkRDRjQhkHb870EC8zQN-iazwsKI9NlvpIAfuN6w6ZXGW4Df7eq5zxDurOtqOK1_662Ns7ZGf0om2rNBD0Zk5PLwQ"
+      },
+      "payrollOfficerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "Simulated payroll officer token for this portfolio demonstration.",
+        "x-default": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInJvbGUiOiJwYXlyb2xsX29mZmljZXIiLCJpc3MiOiJlbXBheS1kZW1vIiwiYXVkIjoiZW1wYXktYXBpIn0.CnJUMVPqMgXXUG8QfKA4-5cFVPr2KP2HXV5TQNOGZRt9xJvOfHNSJIKM24iQh1aohnQ1nCOHpZdP_z9fb3LFoKS5d8kCej2dz85WoFn31UOjqEUZE6q0nqEYDuPDyozr8GjX8QAyoOw0ttILWhN0GwYAtyfoHnNS8udYqqCLKI8DKH0TDhS3jr8Y8O-Yh0_1hUxDrz-EVSmu2oIXIAreERW-3S7xjbHist0kv8mP0nej-7qKuIfiDn5g8R2wAQggWzm7JwzhjzvHC82F_8uyz_71wpG9oOdhfyrnnOodvWpVMh6APUj1rjLN87ysA6farRCMvtnr6c9Qatq50GCp8w"
+      },
+      "adminAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "Simulated administrator token for this portfolio demonstration.",
+        "x-default": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbGUiOiJhZG1pbiIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.KWkziz-CXBt1B8uZOUbi-phza74DQ0ubwHJjF2KPWa4PNo3Jz4yR7Pdbzd7LgyNjmqtISz199vDqrhNvyVI3jC38ZXLq27iVMQaoN2Q48CYzCQUfdV1AIANW7nLuYnu0ORDqldjw9Cvd0LixsP7f7IdR2iysZaE-VNRiHZYTBd6-lTMp7l3qikyx4l45gUfw-KesQjbczuJYVs-9Q-4pip9vv2lcMQZBCQRTFHCMoDbTVXWODF3lzaU7GNStpVOEtDJghQonrfAs1XvFz0ncuydOGO5bX_c61I2FiyZKyKASJjcCqg30FnDaTIjQeC1hG1q8jVjyD5xSlKyrtv18gg"
       }
     },
     "parameters": {

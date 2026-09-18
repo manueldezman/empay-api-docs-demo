@@ -1,0 +1,60 @@
+---
+title: "OpenAPI specification"
+description: "Download or reference the complete EmPay OpenAPI specification."
+---
+
+The EmPay API follows OpenAPI 3.0.3. Use the specification to:
+
+- Generate client libraries.
+- Import the API into testing tools.
+- Integrate the API with AI agents and other developer tools.
+- Build automated documentation and contract tests.
+
+## Access the specification
+
+Choose the format that suits your workflow:
+
+<Columns cols={2}>
+  <Card title="Download YAML" icon="file-code" href="/openapi.yaml">
+    Download the complete YAML specification.
+  </Card>
+  <Card title="Download JSON" icon="braces" href="/openapi.json">
+    Download the complete JSON specification.
+  </Card>
+</Columns>
+
+## Specification details
+
+| Detail          | Value            |
+| --------------- | ---------------- |
+| OpenAPI version | 3.0.3            |
+| API version     | 1.0.0            |
+| Operations      | 49               |
+| Authentication  | JWT bearer token |
+
+## API base URL
+
+| Environment   | Base URL                                 |
+| ------------- | ---------------------------------------- |
+| Demonstration | `https://empay-api-docs-demo.vercel.app` |
+
+## For AI agents
+
+AI agents can discover and consume the API documentation through these public
+resources:
+
+| Resource               | URL                                                                                                    | Purpose                                     |
+| ---------------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------- |
+| OpenAPI specification  | [`https://empay-sample.mintlify.site/openapi.yaml`](https://empay-sample.mintlify.site/openapi.yaml)   | Complete structured API contract            |
+| `llms.txt`             | [`https://empay-sample.mintlify.site/llms.txt`](https://empay-sample.mintlify.site/llms.txt)           | Concise documentation discovery index       |
+| Full LLM documentation | [`https://empay-sample.mintlify.site/llms-full.txt`](https://empay-sample.mintlify.site/llms-full.txt) | Complete documentation in one text resource |
+
+Individual pages are also available as Markdown by appending `.md` to any page
+URL.
+
+## Quick links
+
+- [API overview](/api-reference/overview)
+- [Rate limits and API authentication](/api-reference/rate-limits-and-authentication)
+- [Error codes](/api-reference/error-codes)
+- [Quickstart](/getting-started)

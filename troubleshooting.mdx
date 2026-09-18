@@ -1,0 +1,49 @@
+---
+title: "Troubleshooting"
+description: "Diagnose authentication, authorization, validation, and request failures."
+---
+
+Start with the HTTP status and response `message`. EmPay error responses use a
+consistent shape:
+
+```json
+{
+  "success": false,
+  "message": "Invalid token."
+}
+```
+
+## The request returns `401`
+
+Confirm that the request includes `Authorization: Bearer YOUR_ACCESS_TOKEN`.
+Complete the login request first, then copy `data.token` into the header. If login
+returns `Invalid email or password.`, use `employee@empay.example` and
+`EmpayDemo123!` exactly as written.
+
+## The request returns `403`
+
+The token is valid but the user lacks permission. Check the operation description
+and [Roles and permissions](/concepts/roles-and-permissions). Use an account with
+the required role.
+
+## The request returns `400`
+
+For attendance requests, use a month from `1` to `12` and a year from `2000` to
+`2100`. The response message states both supported ranges.
+
+## The request returns `404`
+
+Confirm that the path and resource identifier match the API reference. All 49
+documented operations use `https://empay-api-docs-demo.vercel.app`.
+
+## The interactive request does not work
+
+Confirm that the request URL begins with
+`https://empay-api-docs-demo.vercel.app`. Start with the login operation, copy
+its returned token, and then retry the attendance request.
+
+## The server returns `500`
+
+Retry once to rule out a transient failure. Record the method, URL, status,
+timestamp, and sanitized response message. Do not include bearer tokens or
+personal employee data in a bug report.

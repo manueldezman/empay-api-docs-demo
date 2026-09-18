@@ -11,26 +11,28 @@ servers:
 paths:
   /api/attendance/my:
     get:
+      tags:
+        - Attendance
       summary: Get monthly attendance
-      description: Returns fictional attendance records for the selected month and year.
+      description: Returns fictional attendance records for the authenticated employee.
       operationId: getDemoAttendance
       security:
-        - bearerAuth: []
+        - employeeAuth: []
       parameters:
         - name: month
           in: query
-          description: Month to include in the simulated response. Defaults to the current month.
+          description: Month to include in the simulated response. Defaults to 8.
           schema:
             type: integer
             minimum: 1
             maximum: 12
         - name: year
           in: query
-          description: Year to include in the simulated response. Defaults to the current year.
+          description: Year to include in the simulated response. Defaults to 2026.
           schema:
             type: integer
             minimum: 2000
-            maximum: 9999
+            maximum: 2100
       responses:
         '200':
           description: Attendance fetched
@@ -40,22 +42,34 @@ paths:
                 $ref: '#/components/schemas/AttendanceResponse'
               example:
                 success: true
-                message: Attendance fetched
                 data:
                   - id: 1
-                    employee_id: 1
-                    date: '2025-06-01'
-                    check_in: '09:00:00'
-                    check_out: '17:00:00'
-                    accumulated_minutes: 0
-                    duration_minutes: 480
-                    status: present
-                    created_at: '2025-06-01T18:00:00.000Z'
+                    employee_id: 4
                     full_name: Ada Okafor
-                    email: ada@example.com
                     department: Engineering
-                    designation: Software Engineer
-                    profile_pic: https://cdn.example.com/avatars/ada.jpg
+                    date: '2026-08-03'
+                    check_in: '08:52:00'
+                    check_out: '17:08:00'
+                    status: present
+                    work_hours: 8.27
+                  - id: 2
+                    employee_id: 4
+                    full_name: Ada Okafor
+                    department: Engineering
+                    date: '2026-08-04'
+                    check_in: '09:03:00'
+                    check_out: '17:15:00'
+                    status: present
+                    work_hours: 8.2
+        '400':
+          description: The month or year is outside the supported range
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                success: false
+                message: Month must be 1-12 and year must be 2000-2100.
         '401':
           description: Missing or invalid demo bearer token
           content:
@@ -76,22 +90,21 @@ paths:
 
 components:
   securitySchemes:
-    bearerAuth:
+    employeeAuth:
       type: http
       scheme: bearer
-      description: Public token for the simulated attendance request.
-      x-default: empay_portfolio_demo
+      bearerFormat: JWT
+      description: Simulated employee token for this portfolio demonstration.
+      x-default: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng
 
   schemas:
     AttendanceResponse:
       type: object
-      required: [success, message, data]
+      required: [success, data]
       properties:
         success:
           type: boolean
           enum: [true]
-        message:
-          type: string
         data:
           type: array
           items:
@@ -102,19 +115,19 @@ components:
       required:
         - id
         - employee_id
-        - date
-        - accumulated_minutes
-        - status
-        - created_at
         - full_name
-        - email
         - department
-        - designation
+        - date
+        - status
       properties:
         id:
           type: integer
         employee_id:
           type: integer
+        full_name:
+          type: string
+        department:
+          type: string
         date:
           type: string
           format: date
@@ -124,28 +137,11 @@ components:
         check_out:
           type: string
           nullable: true
-        accumulated_minutes:
-          type: integer
-        duration_minutes:
-          type: integer
-          nullable: true
         status:
           type: string
           enum: [present, absent, half_day, on_leave]
-        created_at:
-          type: string
-          format: date-time
-        full_name:
-          type: string
-        email:
-          type: string
-          format: email
-        department:
-          type: string
-        designation:
-          type: string
-        profile_pic:
-          type: string
+        work_hours:
+          type: number
           nullable: true
 
     ErrorResponse:

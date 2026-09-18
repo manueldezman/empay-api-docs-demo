@@ -1,0 +1,53 @@
+---
+title: "Rate limits and API authentication"
+description: "Understand EmPay request limits and JWT bearer authentication."
+---
+
+EmPay uses request limits to protect service capacity and JSON Web Token (JWT)
+bearer authentication to identify users and enforce role permissions.
+
+## Current rate limits
+
+The default rate limits for API usage are as follows:
+
+| Request type            | Limit                       |
+| ----------------------- | --------------------------- |
+| General API requests    | 100 requests per 15 minutes |
+| Authentication requests | 15 requests per 15 minutes  |
+
+## Handling rate limits
+
+When a client exceeds an enforced limit, the API returns HTTP `429 Too Many
+Requests`. Wait until the request window resets before retrying.
+
+To reduce unnecessary traffic:
+
+- Cache responses that change infrequently.
+- Avoid repeatedly requesting identical data.
+- Add retry delays after a `429` response.
+
+## Using JWT authentication
+
+Authentication to the EmPay API is performed using a JWT access token sent
+through the standard HTTP `Authorization` header. Obtain the token by
+[logging in](/api-reference/authentication/log-in), then include it with every
+request to a protected endpoint:
+
+```http
+Authorization: Bearer <ACCESS_TOKEN>
+```
+
+The EmPay application issues access tokens that expire after seven days.
+
+<Danger>
+  Never publish or hard-code production JWT access tokens in public
+  documentation or source code. Treat every token as a credential and transmit
+  it only over HTTPS.
+</Danger>
+
+## Role permissions
+
+EmPay checks the authenticated user's role after validating the token. An
+authenticated user without the required role receives HTTP `403 Forbidden`.
+See [roles and permissions](/concepts/roles-and-permissions) for the available
+roles.

@@ -1,0 +1,56 @@
+---
+title: "Error codes"
+description: "Understand HTTP status codes and error responses returned by EmPay."
+---
+
+EmPay uses standard HTTP status codes and readable error messages. It does not
+invent a separate numeric error-code system.
+
+## HTTP status codes
+
+| Status | Meaning                                              |
+| ------ | ---------------------------------------------------- |
+| `200`  | The request succeeded.                               |
+| `201`  | A resource operation completed successfully.         |
+| `400`  | The request contains invalid or missing data.        |
+| `401`  | The bearer token is missing or invalid.              |
+| `403`  | The authenticated role cannot perform the operation. |
+| `404`  | The requested endpoint or resource was not found.    |
+| `405`  | The endpoint does not support the HTTP method.       |
+| `429`  | The client exceeded an enforced request limit.       |
+| `500`  | The server could not complete the request.           |
+
+## Error response format
+
+```json
+{
+  "success": false,
+  "message": "You do not have permission to perform this action."
+}
+```
+
+## Authentication errors
+
+| Condition                    | Status | Message                                              |
+| ---------------------------- | ------ | ---------------------------------------------------- |
+| Missing bearer token         | `401`  | `Access denied. No token provided.`                  |
+| Invalid bearer token         | `401`  | `Invalid token.`                                     |
+| Incorrect login details      | `401`  | `Invalid email or password.`                         |
+| Insufficient role permission | `403`  | `You do not have permission to perform this action.` |
+
+## Request errors
+
+Validation messages identify the field or constraint that failed. For example:
+
+```json
+{
+  "success": false,
+  "message": "Month must be 1-12 and year must be 2000-2100."
+}
+```
+
+Correct the request before retrying. For a `500` response, retry later and
+record the operation, request time, and response message for investigation.
+
+For guidance on resolving request failures, see the
+[Troubleshooting guide](/troubleshooting).

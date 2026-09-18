@@ -1,9 +1,31 @@
 ---
-title: "Getting Started"
-description: "This page will help you get started with the EmPay HRMS API."
+title: "Quickstart"
+description: "Send your first authenticated request to the EmPay HRMS API."
 ---
 
-Welcome to the EmPay HRMS API. The API enables developers to integrate employee management, attendance, leave, payroll, and other HR workflows into their applications.
+Send an authenticated attendance request and inspect the response. The complete
+workflow takes about five minutes.
+
+## Before you start
+
+Install `curl` if it is not available on your computer.
+
+Run the following command to check whether `curl` is installed:
+
+```bash
+curl --version
+```
+
+If the command is not recognized, [install `curl` from the official curl
+website](https://curl.se/) for your operating system before continuing.
+
+<Info>
+  **NOTE**
+
+The account credentials and access token are prefilled in the requests so you
+can begin immediately.
+
+</Info>
 
 ## Base URL
 
@@ -11,41 +33,60 @@ Welcome to the EmPay HRMS API. The API enables developers to integrate employee 
 https://empay-api-docs-demo.vercel.app
 ```
 
-## Authentication
+## Retrieve monthly attendance
 
-Protected endpoints use bearer authentication. Include the access token in the `Authorization` header of each request:
+Copy and run the following request to retrieve monthly attendance. The access
+token is already prefilled.
 
-```http
-Authorization: Bearer YOUR_ACCESS_TOKEN
+```bash
+curl --get \
+  --url https://empay-api-docs-demo.vercel.app/api/attendance/my \
+  --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng' \
+  --data-urlencode 'month=8' \
+  --data-urlencode 'year=2026'
 ```
 
-## Making requests
+## Verify the response
 
-The API uses HTTP methods such as `GET`, `POST`, `PUT`, `PATCH`, and `DELETE`. Request and response bodies use JSON, except for the payslip download endpoint, which returns a PDF file.
-
-## Error handling
-
-The API uses standard HTTP status codes to communicate request outcomes.
-
-| Status code | Status name           | Description                                                                       |
-| ----------- | --------------------- | --------------------------------------------------------------------------------- |
-| `400`       | Bad Request           | The request was malformed or contained invalid parameters.                        |
-| `401`       | Unauthorized          | The request lacks valid authentication credentials.                               |
-| `403`       | Forbidden             | The authenticated user does not have permission to access the requested resource. |
-| `404`       | Not Found             | The requested resource was not found.                                             |
-| `500`       | Internal Server Error | An unexpected error occurred on the server.                                       |
-
-Error responses use the following structure:
+Success returns HTTP `200`, `success: true`, and an array of attendance
+records:
 
 ```json
 {
-  "success": false,
-  "message": "Invalid token."
+  "success": true,
+  "data": [
+    {
+      "id": 1,
+      "employee_id": 4,
+      "full_name": "Ada Okafor",
+      "department": "Engineering",
+      "date": "2026-08-03",
+      "check_in": "08:52:00",
+      "check_out": "17:08:00",
+      "status": "present",
+      "work_hours": 8.27
+    },
+    {
+      "id": 2,
+      "employee_id": 4,
+      "full_name": "Ada Okafor",
+      "department": "Engineering",
+      "date": "2026-08-04",
+      "check_in": "09:03:00",
+      "check_out": "17:15:00",
+      "status": "present",
+      "work_hours": 8.2
+    }
+  ]
 }
 ```
 
-## Try it out
+If the response returns `401`, confirm that the header begins with `Bearer` and
+that the token has no missing characters.
 
-Use the interactive attendance reference to send a request and inspect the response.
+## Next step
 
-[Try the attendance endpoint →](/api-reference/attendance/my)
+Explore the API reference to review the available operations, request parameters,
+and response schemas.
+
+[Explore the API reference →](/api-reference/overview)

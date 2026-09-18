@@ -7,7 +7,6 @@ info:
     name: EmPay Support
     email: support@empay.com
 tags:
-  - name: Health
   - name: Authentication
   - name: Users
   - name: Attendance
@@ -18,24 +17,8 @@ tags:
   - name: Settings
   - name: Search
   - name: Audit
+  - name: Health
 paths:
-  /api/health:
-    get:
-      tags:
-        - Health
-      summary: Check API health
-      operationId: getHealth
-      responses:
-        "200":
-          description: API is running
-          content:
-            application/json:
-              example:
-                success: true
-                message: EmPay API is running
-                timestamp: 2026-08-01T09:00:00.000Z
-              schema:
-                $ref: "#/components/schemas/HealthResponse"
   /api/auth/register:
     post:
       tags:
@@ -49,7 +32,7 @@ paths:
         Creates a user account with employee details and an assigned role; requires the `admin` or `hr_officer` role.
       operationId: registerUser
       security:
-        - bearerAuth: []
+        - hrOfficerAuth: []
       requestBody:
         description: Payload supplied to this operation.
         required: true
@@ -253,7 +236,7 @@ paths:
         Returns the profile associated with the authenticated user's access token.
       operationId: getCurrentUser
       security:
-        - bearerAuth: []
+        - employeeAuth: []
       responses:
         "200":
           description: Profile fetched
@@ -434,7 +417,7 @@ paths:
         Sends a test email to verify SMTP configuration; requires the `admin` role and defaults to the authenticated user's email when `email` is omitted.
       operationId: testEmail
       security:
-        - bearerAuth: []
+        - adminAuth: []
       requestBody:
         description: Payload supplied to this operation.
         required: false
@@ -488,7 +471,7 @@ paths:
         Returns users matching the optional role, department, name, email, and active-status filters; available to all authenticated roles.
       operationId: listUsers
       security:
-        - bearerAuth: []
+        - employeeAuth: []
       parameters:
         - $ref: "#/components/parameters/RoleQuery"
         - $ref: "#/components/parameters/DepartmentQuery"
@@ -548,7 +531,7 @@ paths:
         Uploads an image and stores its URL as the authenticated user's profile picture.
       operationId: uploadAvatar
       security:
-        - bearerAuth: []
+        - employeeAuth: []
       requestBody:
         description: Payload supplied to this operation.
         required: true
@@ -618,7 +601,7 @@ paths:
         Returns a user profile by ID, while employees may access only their own profile.
       operationId: getUser
       security:
-        - bearerAuth: []
+        - employeeAuth: []
       responses:
         "200":
           description: User fetched
@@ -675,7 +658,7 @@ paths:
         Updates permitted profile fields according to the authenticated user's role; only admins may change another user's role or password.
       operationId: updateUser
       security:
-        - bearerAuth: []
+        - employeeAuth: []
       requestBody:
         description: Payload supplied to this operation.
         required: true
@@ -766,7 +749,7 @@ paths:
         Deactivates a user without deleting the database record by setting `is_active` to false; requires the `admin` role.
       operationId: deleteUser
       security:
-        - bearerAuth: []
+        - adminAuth: []
       responses:
         "200":
           description: User deactivated
@@ -817,7 +800,7 @@ paths:
         Switches a user between active and inactive states; requires the `admin` role.
       operationId: toggleUserActive
       security:
-        - bearerAuth: []
+        - adminAuth: []
       parameters:
         - $ref: "#/components/parameters/UserId"
       responses:
@@ -870,7 +853,7 @@ paths:
         Records a check-in or check-out for the authenticated user according to their attendance state for the current day.
       operationId: markAttendance
       security:
-        - bearerAuth: []
+        - employeeAuth: []
       responses:
         "200":
           description: Attendance marked
@@ -931,7 +914,7 @@ paths:
         Returns the authenticated user's attendance records for the requested month and year.
       operationId: getMyAttendance
       security:
-        - bearerAuth: []
+        - employeeAuth: []
       parameters:
         - $ref: "#/components/parameters/MonthQuery"
         - $ref: "#/components/parameters/YearQuery"
@@ -985,7 +968,7 @@ paths:
         Returns monthly attendance totals for the selected employee, defaulting to the authenticated user when `employee_id` is omitted.
       operationId: getMonthlyAttendanceSummary
       security:
-        - bearerAuth: []
+        - employeeAuth: []
       parameters:
         - $ref: "#/components/parameters/EmployeeIdQuery"
         - $ref: "#/components/parameters/MonthQuery"
@@ -1029,7 +1012,7 @@ paths:
         Returns employee attendance for a month with optional department and employee filters; requires an administrative, HR, or payroll role.
       operationId: listAllAttendance
       security:
-        - bearerAuth: []
+        - hrOfficerAuth: []
       parameters:
         - $ref: "#/components/parameters/MonthQuery"
         - $ref: "#/components/parameters/YearQuery"
@@ -1087,7 +1070,7 @@ paths:
         Returns attendance records for the current day; requires an administrative, HR, or payroll role.
       operationId: getTodayAttendance
       security:
-        - bearerAuth: []
+        - hrOfficerAuth: []
       responses:
         "200":
           description: Today's attendance fetched
@@ -1140,7 +1123,7 @@ paths:
         Returns the configured leave categories and their default annual day allowances.
       operationId: listLeaveTypes
       security:
-        - bearerAuth: []
+        - employeeAuth: []
       responses:
         "200":
           description: Leave types fetched
@@ -1181,7 +1164,7 @@ paths:
         Creates a leave category with its default annual allowance; requires the `admin` role.
       operationId: createLeaveType
       security:
-        - bearerAuth: []
+        - adminAuth: []
       requestBody:
         description: Payload supplied to this operation.
         required: true
@@ -1253,7 +1236,7 @@ paths:
         Returns leave allocations intended for the authenticated user; the current route passes a missing employee parameter to the service.
       operationId: getMyLeaveAllocations
       security:
-        - bearerAuth: []
+        - employeeAuth: []
       responses:
         "200":
           description: Allocations fetched when the route implementation is corrected
@@ -1299,7 +1282,7 @@ paths:
         Returns leave balances allocated to the selected employee; requires the `admin` or `hr_officer` role.
       operationId: getEmployeeLeaveAllocations
       security:
-        - bearerAuth: []
+        - hrOfficerAuth: []
       parameters:
         - $ref: "#/components/parameters/EmployeeIdPath"
       responses:
@@ -1349,7 +1332,7 @@ paths:
         Creates or updates an employee's yearly allocation for a leave type; requires the `admin` or `hr_officer` role.
       operationId: upsertLeaveAllocation
       security:
-        - bearerAuth: []
+        - hrOfficerAuth: []
       requestBody:
         description: Payload supplied to this operation.
         required: true
@@ -1427,7 +1410,7 @@ paths:
         Submits a dated leave request for the authenticated employee after validating the date range and available balance.
       operationId: createLeaveRequest
       security:
-        - bearerAuth: []
+        - employeeAuth: []
       requestBody:
         description: Payload supplied to this operation.
         required: true
@@ -1532,7 +1515,7 @@ paths:
         Returns leave requests submitted by the authenticated employee.
       operationId: listMyLeaveRequests
       security:
-        - bearerAuth: []
+        - employeeAuth: []
       responses:
         "200":
           description: Requests fetched
@@ -1586,7 +1569,7 @@ paths:
         Returns leave requests across employees with optional status, department, and date filters; requires an administrative, HR, or payroll role.
       operationId: listAllLeaveRequests
       security:
-        - bearerAuth: []
+        - hrOfficerAuth: []
       parameters:
         - name: status
           in: query
@@ -1653,7 +1636,7 @@ paths:
         Approves a pending leave request and records the payroll officer who reviewed it; requires the `payroll_officer` role.
       operationId: approveLeaveRequest
       security:
-        - bearerAuth: []
+        - payrollOfficerAuth: []
       parameters:
         - $ref: "#/components/parameters/ResourceId"
       responses:
@@ -1720,7 +1703,7 @@ paths:
         Rejects a pending leave request with an optional reason and records the reviewer; requires the `payroll_officer` role.
       operationId: rejectLeaveRequest
       security:
-        - bearerAuth: []
+        - payrollOfficerAuth: []
       parameters:
         - $ref: "#/components/parameters/ResourceId"
       responses:
@@ -1787,7 +1770,7 @@ paths:
         Creates or updates an employee's salary components and effective date; requires the `admin` or `payroll_officer` role.
       operationId: upsertSalaryStructure
       security:
-        - bearerAuth: []
+        - payrollOfficerAuth: []
       requestBody:
         description: Payload supplied to this operation.
         required: true
@@ -1847,7 +1830,7 @@ paths:
         Returns salary structures for all employees; requires the `admin` or `payroll_officer` role.
       operationId: listSalaryStructures
       security:
-        - bearerAuth: []
+        - payrollOfficerAuth: []
       responses:
         "200":
           description: Salary structures fetched
@@ -1897,7 +1880,7 @@ paths:
         Returns the salary structure assigned to the selected employee; requires the `admin` or `payroll_officer` role.
       operationId: getSalaryStructure
       security:
-        - bearerAuth: []
+        - payrollOfficerAuth: []
       parameters:
         - $ref: "#/components/parameters/EmployeeIdPath"
       responses:
@@ -1949,7 +1932,7 @@ paths:
         Generates or recalculates the pay run and employee payslips for the supplied month and year; requires the `payroll_officer` role.
       operationId: generatePayrun
       security:
-        - bearerAuth: []
+        - payrollOfficerAuth: []
       requestBody:
         description: Payload supplied to this operation.
         required: true
@@ -2029,7 +2012,7 @@ paths:
         Returns generated pay runs ordered by payroll period; requires the `admin` or `payroll_officer` role.
       operationId: listPayruns
       security:
-        - bearerAuth: []
+        - payrollOfficerAuth: []
       responses:
         "200":
           description: Pay runs fetched
@@ -2077,7 +2060,7 @@ paths:
         Returns all employee payslips generated for the selected pay run; requires the `admin` or `payroll_officer` role.
       operationId: listPayrunPayslips
       security:
-        - bearerAuth: []
+        - payrollOfficerAuth: []
       parameters:
         - $ref: "#/components/parameters/ResourceId"
       responses:
@@ -2145,7 +2128,7 @@ paths:
         Returns payslips belonging to the authenticated employee.
       operationId: listMyPayslips
       security:
-        - bearerAuth: []
+        - employeeAuth: []
       responses:
         "200":
           description: Payslips fetched
@@ -2209,7 +2192,7 @@ paths:
         Returns one payslip by ID, while employees may access only their own payslips.
       operationId: getPayslip
       security:
-        - bearerAuth: []
+        - employeeAuth: []
       parameters:
         - $ref: "#/components/parameters/ResourceId"
       responses:
@@ -2284,7 +2267,7 @@ paths:
         Generates and downloads a payslip as a PDF file, while employees may download only their own payslips.
       operationId: downloadPayslipPdf
       security:
-        - bearerAuth: []
+        - employeeAuth: []
       parameters:
         - $ref: "#/components/parameters/ResourceId"
       responses:
@@ -2329,7 +2312,7 @@ paths:
         Returns organization-wide workforce, attendance, leave, payroll, and recent-activity metrics; requires the `admin` role.
       operationId: getAdminDashboard
       security:
-        - bearerAuth: []
+        - adminAuth: []
       responses:
         "200":
           description: Admin dashboard data fetched
@@ -2361,7 +2344,7 @@ paths:
         Returns personal attendance, leave, payslip, notification, and profile information for the authenticated employee.
       operationId: getEmployeeDashboard
       security:
-        - bearerAuth: []
+        - employeeAuth: []
       responses:
         "200":
           description: Employee dashboard data fetched
@@ -2391,7 +2374,7 @@ paths:
         Returns workforce, attendance, leave, and recent-joiner metrics for HR operations; requires the `admin` or `hr_officer` role.
       operationId: getHrDashboard
       security:
-        - bearerAuth: []
+        - hrOfficerAuth: []
       responses:
         "200":
           description: HR dashboard data fetched
@@ -2423,7 +2406,7 @@ paths:
         Returns payroll totals, pay-run status, salary coverage, and recent payslip metrics; requires the `admin` or `payroll_officer` role.
       operationId: getPayrollDashboard
       security:
-        - bearerAuth: []
+        - payrollOfficerAuth: []
       responses:
         "200":
           description: Payroll dashboard data fetched
@@ -2455,7 +2438,7 @@ paths:
         Returns notifications addressed to the authenticated user, including their read status.
       operationId: listNotifications
       security:
-        - bearerAuth: []
+        - employeeAuth: []
       responses:
         "200":
           description: Notifications fetched
@@ -2499,7 +2482,7 @@ paths:
         Marks one notification belonging to the authenticated user as read.
       operationId: markNotificationRead
       security:
-        - bearerAuth: []
+        - employeeAuth: []
       parameters:
         - $ref: "#/components/parameters/ResourceId"
       responses:
@@ -2545,7 +2528,7 @@ paths:
         Marks every unread notification belonging to the authenticated user as read.
       operationId: markAllNotificationsRead
       security:
-        - bearerAuth: []
+        - employeeAuth: []
       responses:
         "200":
           description: All notifications marked as read
@@ -2574,7 +2557,7 @@ paths:
         Returns the current application settings as key-value pairs.
       operationId: getSettings
       security:
-        - bearerAuth: []
+        - employeeAuth: []
       responses:
         "200":
           description: Settings fetched
@@ -2619,7 +2602,7 @@ paths:
         Stores each supplied key as an application setting; requires the `admin` role.
       operationId: updateSettings
       security:
-        - bearerAuth: []
+        - adminAuth: []
       requestBody:
         description: Payload supplied to this operation.
         required: true
@@ -2681,7 +2664,7 @@ paths:
         Returns database size, connection, and table statistics; requires the `admin` role.
       operationId: getDatabaseStats
       security:
-        - bearerAuth: []
+        - adminAuth: []
       responses:
         "200":
           description: Database statistics fetched
@@ -2725,7 +2708,7 @@ paths:
         Searches users by name or email and returns no matches when the query is shorter than two characters.
       operationId: searchUsers
       security:
-        - bearerAuth: []
+        - employeeAuth: []
       parameters:
         - name: q
           in: query
@@ -2796,7 +2779,7 @@ paths:
         Returns paginated audit events with optional action, entity, user, and date filters; requires the `admin` role.
       operationId: listAuditLogs
       security:
-        - bearerAuth: []
+        - adminAuth: []
       parameters:
         - name: user_id
           in: query
@@ -2909,12 +2892,50 @@ paths:
                 success: false
                 message: Failed to fetch audit logs
       x-thally-bearer-token: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbGUiOiJhZG1pbiIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.KWkziz-CXBt1B8uZOUbi-phza74DQ0ubwHJjF2KPWa4PNo3Jz4yR7Pdbzd7LgyNjmqtISz199vDqrhNvyVI3jC38ZXLq27iVMQaoN2Q48CYzCQUfdV1AIANW7nLuYnu0ORDqldjw9Cvd0LixsP7f7IdR2iysZaE-VNRiHZYTBd6-lTMp7l3qikyx4l45gUfw-KesQjbczuJYVs-9Q-4pip9vv2lcMQZBCQRTFHCMoDbTVXWODF3lzaU7GNStpVOEtDJghQonrfAs1XvFz0ncuydOGO5bX_c61I2FiyZKyKASJjcCqg30FnDaTIjQeC1hG1q8jVjyD5xSlKyrtv18gg
+  /api/health:
+    get:
+      tags:
+        - Health
+      summary: Check API health
+      description: Confirms that the service is reachable and reports the current API status.
+      operationId: getHealth
+      responses:
+        "200":
+          description: API is running
+          content:
+            application/json:
+              example:
+                success: true
+                message: EmPay API is running
+                timestamp: 2026-08-01T09:00:00.000Z
+              schema:
+                $ref: "#/components/schemas/HealthResponse"
 components:
   securitySchemes:
-    bearerAuth:
+    employeeAuth:
       type: http
       scheme: bearer
       bearerFormat: JWT
+      description: Simulated employee token for this portfolio demonstration.
+      x-default: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJlbXBsb3llZSIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.eeZsZ8ubtiGiqnaNKZF0zXgR3hZBEgQ8MQN17l3Z6G9IP4Ku3_yWUaNHeO4GDMbUfsmv-3f9mKv2g8YsqN8aJAgSBQdXdbrUjGIEDPEaoPFolkl28f2V3eH2PyHJAuwgbZ9Tec1OmA-f88d8ELD4Aoe5Gji_q-WDJ3SXcW4l36RiP9ito7AhPRZx9nCgYrqCblACwyMKJfaukLVQR_icGoxJrWxZN1Yufz9sLTJMuy6NjG3oaRhHFNnT9go3ZpHlowkhgGZWajnUCYbpYrCaBFhVO_kyzmvyJ7BOxO7UlAevM2GMBx57Hd106CkCFC84n5Qve4JnbUkuX8PfoYwKng
+    hrOfficerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Simulated HR officer token for this portfolio demonstration.
+      x-default: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsInJvbGUiOiJocl9vZmZpY2VyIiwiaXNzIjoiZW1wYXktZGVtbyIsImF1ZCI6ImVtcGF5LWFwaSJ9.i37Vymg5nIFvyuEfsydyOSGSDyJCMbL7GxXJgAfUakTohtjQon57-nkmXQoPlzRb6rvJdhwEjhizXSF6ypkNC3oaKFZgGlcOg9o11HQbqEao_XllfyZwi5i9bCNDq0rSTTGFSb9OY1q-8l2OvtEOtyPJjIvO7xyiGnIxkWeV9ScFo7Qh_U_DzA0hUauTYUpdlvmSWfLajqFjyp-tiHN7LFgChyRPOCNAvVdLKWygFRVeTiFmAAPlHKvlh6lr8HkRDRjQhkHb870EC8zQN-iazwsKI9NlvpIAfuN6w6ZXGW4Df7eq5zxDurOtqOK1_662Ns7ZGf0om2rNBD0Zk5PLwQ
+    payrollOfficerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Simulated payroll officer token for this portfolio demonstration.
+      x-default: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInJvbGUiOiJwYXlyb2xsX29mZmljZXIiLCJpc3MiOiJlbXBheS1kZW1vIiwiYXVkIjoiZW1wYXktYXBpIn0.CnJUMVPqMgXXUG8QfKA4-5cFVPr2KP2HXV5TQNOGZRt9xJvOfHNSJIKM24iQh1aohnQ1nCOHpZdP_z9fb3LFoKS5d8kCej2dz85WoFn31UOjqEUZE6q0nqEYDuPDyozr8GjX8QAyoOw0ttILWhN0GwYAtyfoHnNS8udYqqCLKI8DKH0TDhS3jr8Y8O-Yh0_1hUxDrz-EVSmu2oIXIAreERW-3S7xjbHist0kv8mP0nej-7qKuIfiDn5g8R2wAQggWzm7JwzhjzvHC82F_8uyz_71wpG9oOdhfyrnnOodvWpVMh6APUj1rjLN87ysA6farRCMvtnr6c9Qatq50GCp8w
+    adminAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Simulated administrator token for this portfolio demonstration.
+      x-default: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbGUiOiJhZG1pbiIsImlzcyI6ImVtcGF5LWRlbW8iLCJhdWQiOiJlbXBheS1hcGkifQ.KWkziz-CXBt1B8uZOUbi-phza74DQ0ubwHJjF2KPWa4PNo3Jz4yR7Pdbzd7LgyNjmqtISz199vDqrhNvyVI3jC38ZXLq27iVMQaoN2Q48CYzCQUfdV1AIANW7nLuYnu0ORDqldjw9Cvd0LixsP7f7IdR2iysZaE-VNRiHZYTBd6-lTMp7l3qikyx4l45gUfw-KesQjbczuJYVs-9Q-4pip9vv2lcMQZBCQRTFHCMoDbTVXWODF3lzaU7GNStpVOEtDJghQonrfAs1XvFz0ncuydOGO5bX_c61I2FiyZKyKASJjcCqg30FnDaTIjQeC1hG1q8jVjyD5xSlKyrtv18gg
   parameters:
     ResourceId:
       name: id

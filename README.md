@@ -23,13 +23,25 @@ The Vercel deployment is a simulated portfolio environment. It does not connect 
 .
 ├── openapi.yaml                 # Complete EmPay HRMS API specification
 ├── demo-openapi.yaml            # Specification for the interactive demo
-├── getting-started.mdx          # API onboarding guide
+├── introduction.mdx             # Product overview
+├── concepts/                    # Architecture and role-based access
+├── guides/                      # Task-oriented workflow guides
+├── getting-started.mdx          # Quickstart with a prefilled request
+├── troubleshooting.mdx          # Failure diagnosis and resolution
 ├── api-reference/               # Custom API reference pages
 ├── api/attendance/my.js         # Simulated Vercel API endpoint
 ├── docs.json                    # Mintlify site and navigation configuration
 ├── scripts/validate-docs.mjs    # Project-specific content checks
 └── .github/workflows/           # Continuous documentation validation
 ```
+
+The site is organized into four tabs:
+
+- **Overview** — product introduction, architecture, and roles and permissions.
+- **Getting Started** — quickstart and the leave and payroll workflows.
+- **API Reference** — API fundamentals plus an operation reference generated
+  from `openapi.yaml` tags, and an interactive attendance demonstration.
+- **Change Logs** — documentation updates.
 
 ## Run locally
 
@@ -61,7 +73,8 @@ npm run validate
 This command checks:
 
 - OpenAPI validity with Redocly
-- Endpoint descriptions and navigation coverage
+- Endpoint descriptions, tag order, navigation coverage, and that every
+  operation's prefilled playground token is authorized by the simulated API
 - Mintlify configuration and broken links
 - Formatting with Prettier
 
@@ -69,7 +82,14 @@ GitHub Actions runs the same validation on pushes to `main` and on pull requests
 
 ## Interactive demo
 
-The **Get my attendance records** reference page can send a real HTTP request to the simulated Vercel endpoint. A fixed portfolio token is provided only for this demonstration. The response contains fictional attendance data and does not require access to the original application backend.
+Every operation in the reference opens an interactive request builder that sends
+real HTTP requests to the simulated Vercel endpoint. Each operation prefills the
+demonstration bearer token whose role the operation accepts, so requests are
+authorized without copying credentials by hand, and request bodies and query
+parameters are prefilled from the specification examples.
+
+The **Get monthly attendance** reference page works the same way. All responses
+contain fictional data and do not depend on the original application backend.
 
 ## Built with
 

@@ -1,0 +1,47 @@
+---
+title: "Generate a payroll run"
+description: "Configure salary data, generate a monthly payroll run, and inspect its payslips."
+---
+
+Generate a payroll run after every included employee has an effective salary
+structure. This workflow requires a `payroll_officer` token unless an individual
+operation states otherwise.
+
+## 1. Save a salary structure
+
+```bash
+curl --request POST \
+  --url https://empay-api-docs-demo.vercel.app/api/payroll/salary-structure \
+  --header 'Authorization: Bearer YOUR_ACCESS_TOKEN' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "employee_id": 42,
+    "basic_salary": 250000,
+    "hra_percent": 40,
+    "special_allowance": 25000,
+    "effective_from": "2026-08-01"
+  }'
+```
+
+Confirm that the response contains the employee ID and effective date you sent.
+
+## 2. Generate the pay run
+
+```bash
+curl --request POST \
+  --url https://empay-api-docs-demo.vercel.app/api/payroll/payrun/generate \
+  --header 'Authorization: Bearer YOUR_ACCESS_TOKEN' \
+  --header 'Content-Type: application/json' \
+  --data '{"month": 8, "year": 2026}'
+```
+
+Success returns a `payrun_id` and `payslips_generated_count`. Repeating this
+operation for the same period recalculates that pay run.
+
+## 3. Inspect payslips
+
+Use the returned ID with `GET /api/payroll/payruns/{id}/payslips`. Employees can
+retrieve their own payslips through `GET /api/payroll/payslips/my`.
+
+If generation returns `Month and year are required`, send both numeric values.
+A `403` response means the current token does not have the required role.
