@@ -100,11 +100,6 @@
     }
   },
   "fonts": {
-    "heading": {
-      "family": "Geist"
-    },
-    "body": {
-      "family": "Geist"
-    }
+    "family": "Geist"
   }
 }
