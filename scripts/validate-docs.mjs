@@ -4,10 +4,10 @@ import { parse } from "yaml";
 
 const require = createRequire(import.meta.url);
 const { findOperation } = require("../lib/demo-operations.js");
+const { TOKENS } = require("../lib/demo-auth.js");
 
 const methods = new Set(["get", "post", "put", "patch", "delete"]);
 const mainSpec = parse(readFileSync("openapi.yaml", "utf8"));
-const demoSpec = parse(readFileSync("demo-openapi.yaml", "utf8"));
 const docsConfig = JSON.parse(readFileSync("docs.json", "utf8"));
 const introductionPage = readFileSync("introduction.mdx", "utf8");
 const systemOverviewPage = readFileSync("concepts/system-overview.mdx", "utf8");
@@ -54,36 +54,35 @@ if (errorFields.join(",") !== "success,message") {
   fail(`Unexpected shared error fields: ${errorFields.join(", ")}.`);
 }
 
-const roleByScheme = new Map([
-  ["employeeAuth", "employee"],
-  ["hrOfficerAuth", "hr_officer"],
-  ["payrollOfficerAuth", "payroll_officer"],
-  ["adminAuth", "admin"],
-]);
-
-const securitySchemes = mainSpec.components.securitySchemes ?? {};
-
-if (
-  Object.keys(securitySchemes).join(",") !== [...roleByScheme.keys()].join(",")
-) {
+// Credentials are documented as Authorization header parameters, never as
+// security schemes, so the reference renders a Headers section without
+// printing a default token next to the field.
+if (mainSpec.components.securitySchemes) {
   fail(
-    `Expected security schemes ${[...roleByScheme.keys()].join(", ")}; found ${Object.keys(securitySchemes).join(", ") || "none"}.`,
+    "openapi.yaml must not declare securitySchemes; credentials belong in Authorization header parameters.",
   );
 }
 
-for (const [name, role] of roleByScheme) {
-  const scheme = securitySchemes[name];
+const roleFromToken = (value) => {
+  const payload = value?.replace(/^Bearer\s+/, "").split(".")[1];
 
-  if (
-    scheme.type !== "http" ||
-    scheme.scheme !== "bearer" ||
-    !scheme["x-default"]
-  ) {
-    fail(
-      `${name} must be an HTTP bearer scheme with x-default so the playground prefills the ${role} token.`,
-    );
+  if (!payload) {
+    return null;
   }
-}
+
+  try {
+    const claims = JSON.parse(Buffer.from(payload, "base64url").toString());
+    return typeof claims.role === "string" ? claims.role : null;
+  } catch {
+    return null;
+  }
+};
+
+const authorizationHeaders = (operation) =>
+  (operation.parameters ?? []).filter(
+    (parameter) =>
+      parameter?.in === "header" && parameter.name === "Authorization",
+  );
 
 // Every operation must be runnable from the playground: the prefilled role has
 // to satisfy the simulated API, and public operations must stay public.
@@ -91,34 +90,54 @@ const samplePath = (path) => path.replace(/\{[^}]+\}/g, "sample");
 const prefilledMismatches = [];
 
 for (const { path, method, operation } of operations) {
-  const requirement = operation.security ?? [];
   const simulated = findOperation(method.toUpperCase(), samplePath(path));
+  const headers = authorizationHeaders(operation);
 
   if (!simulated) {
     fail(`No simulated operation matches ${method.toUpperCase()} ${path}.`);
   }
 
-  if (requirement.length === 0) {
-    if (simulated.roles) {
+  if (!simulated.roles) {
+    if (headers.length > 0) {
       prefilledMismatches.push(
-        `${method.toUpperCase()} ${path} is public but requires ${simulated.roles.join("/")}`,
+        `${method.toUpperCase()} ${path} is public but documents an Authorization header`,
       );
     }
     continue;
   }
 
-  if (requirement.length !== 1) {
+  if (headers.length !== 1) {
     fail(
-      `${method.toUpperCase()} ${path} must reference exactly one security scheme.`,
+      `${method.toUpperCase()} ${path} must document exactly one Authorization header parameter.`,
     );
   }
 
-  const schemeName = Object.keys(requirement[0])[0];
-  const role = roleByScheme.get(schemeName);
+  const [header] = headers;
+  const prefilled = header.schema?.["x-default"];
 
-  if (!role) {
+  if (header.required !== true || !header.description?.trim()) {
     fail(
-      `${method.toUpperCase()} ${path} references unknown scheme ${schemeName}.`,
+      `${method.toUpperCase()} ${path} must mark the Authorization header required and describe it.`,
+    );
+  }
+
+  if (typeof prefilled !== "string" || !prefilled.startsWith("Bearer ")) {
+    fail(
+      `${method.toUpperCase()} ${path} must prefill a Bearer token in the Authorization header schema.`,
+    );
+  }
+
+  const role = roleFromToken(prefilled);
+
+  if (!role || !TOKENS[role]) {
+    fail(
+      `${method.toUpperCase()} ${path} prefills an unknown demo role token.`,
+    );
+  }
+
+  if (prefilled !== `Bearer ${TOKENS[role]}`) {
+    fail(
+      `${method.toUpperCase()} ${path} prefills a token that is not the demo ${role} token.`,
     );
   }
 
@@ -154,11 +173,6 @@ if (actualTags.join(",") !== expectedTags.join(",")) {
   fail(
     `Expected tag order ${expectedTags.join(", ")}; found ${actualTags.join(", ") || "none"}.`,
   );
-}
-
-const demoPath = demoSpec.paths?.["/api/attendance/my"]?.get;
-if (!demoPath || demoSpec.servers?.[0]?.url !== serverUrl) {
-  fail("The attendance demo operation or its deployed server is missing.");
 }
 
 const redirects = docsConfig.redirects ?? [];
@@ -209,7 +223,6 @@ const expectedStructure = {
       "api-reference/rate-limits-and-authentication",
       "api-reference/error-codes",
     ],
-    "Interactive demo": ["api-reference/attendance/my"],
     // Generated directly from openapi.yaml, so it must not list operations.
     Endpoints: null,
   },

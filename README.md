@@ -22,14 +22,13 @@ The Vercel deployment is a simulated portfolio environment. It does not connect 
 ```text
 .
 ├── openapi.yaml                 # Complete EmPay HRMS API specification
-├── demo-openapi.yaml            # Specification for the interactive demo
 ├── introduction.mdx             # Product overview
 ├── concepts/                    # Architecture and role-based access
 ├── guides/                      # Task-oriented workflow guides
 ├── getting-started.mdx          # Quickstart with a prefilled request
 ├── troubleshooting.mdx          # Failure diagnosis and resolution
 ├── api-reference/               # Custom API reference pages
-├── api/attendance/my.js         # Simulated Vercel API endpoint
+├── api/                         # Simulated Vercel API endpoints
 ├── docs.json                    # Mintlify site and navigation configuration
 ├── scripts/validate-docs.mjs    # Project-specific content checks
 └── .github/workflows/           # Continuous documentation validation

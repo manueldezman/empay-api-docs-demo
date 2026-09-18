@@ -78,10 +78,6 @@
             ]
           },
           {
-            "group": "Interactive demo",
-            "pages": ["api-reference/attendance/my"]
-          },
-          {
             "group": "Endpoints",
             "openapi": "openapi.yaml"
           }
