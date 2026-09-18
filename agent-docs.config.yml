@@ -1,0 +1,35 @@
+# Agent-friendliness checks for the canonical EmPay documentation origin.
+# Run with: npm run test:agent-docs
+#
+# page-size-html is intentionally excluded. Its only offenders are the raw
+# /openapi.json and /openapi.yaml artifacts, which must stay published for
+# agents. Every real documentation page renders well under the limit in
+# Markdown (verified max ~10K characters).
+url: https://empay-sample.mintlify.app
+
+checks:
+  - llms-txt-exists
+  - llms-txt-valid
+  - llms-txt-size
+  - llms-txt-links-resolve
+  - llms-txt-links-markdown
+  - llms-txt-directive-html
+  - llms-txt-directive-md
+  - markdown-url-support
+  - content-negotiation
+  - rendering-strategy
+  - page-size-markdown
+  - content-start-position
+  - tabbed-content-serialization
+  - section-header-quality
+  - markdown-code-fence-validity
+  - http-status-codes
+  - redirect-behavior
+  - llms-txt-coverage
+  - markdown-content-parity
+  - cache-header-hygiene
+  - auth-gate-detection
+  - auth-alternative-access
+
+options:
+  samplingStrategy: deterministic

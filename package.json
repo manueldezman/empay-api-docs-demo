@@ -9,15 +9,18 @@
     "validate:openapi": "redocly lint openapi.yaml --extends=spec",
     "validate:content": "node scripts/validate-docs.mjs",
     "validate:mintlify": "mint validate && mint broken-links",
-    "format:check": "prettier --check docs.json package.json \"*.mdx\" \"api-reference/**/*.mdx\" \"concepts/**/*.mdx\" \"guides/**/*.mdx\" \"api/**/*.js\" \"lib/**/*.js\" \"tests/**/*.js\" \"scripts/**/*.mjs\" \".github/**/*.yml\""
+    "format:check": "prettier --check docs.json package.json agent-docs.config.yml \"*.mdx\" \"api-reference/**/*.mdx\" \"concepts/**/*.mdx\" \"guides/**/*.mdx\" \"api/**/*.js\" \"lib/**/*.js\" \"tests/**/*.js\" \"tests/**/*.ts\" \"scripts/**/*.mjs\" \".github/**/*.yml\"",
+    "test:agent-docs": "vitest run tests/agent-docs.test.ts"
   },
   "engines": {
     "node": ">=20.17.0"
   },
   "devDependencies": {
     "@redocly/cli": "2.43.2",
+    "afdocs": "0.20.0",
     "mint": "4.2.771",
     "prettier": "3.9.6",
+    "vitest": "5.0.1",
     "yaml": "2.9.0"
   }
 }

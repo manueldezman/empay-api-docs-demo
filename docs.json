@@ -2,6 +2,7 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
   "name": "EmPay HRMS API",
+  "description": "REST API reference and workflow guides for the EmPay HRMS workforce platform, covering authentication, employees, attendance, leave, payroll, dashboards, notifications, settings, search, audit, and health.",
   "colors": {
     "primary": "#E8390E",
     "light": "#E8390E",
@@ -87,6 +88,14 @@
         "tab": "Change Logs",
         "pages": ["changelog"]
       }
+    ]
+  },
+  "markdown": {
+    "instructions": [
+      "The canonical documentation origin is https://empay-sample.mintlify.app. Use it for every page, llms.txt, llms-full.txt, and OpenAPI reference.",
+      "Request Markdown with the .md URL suffix or an Accept: text/markdown header instead of scraping HTML pages.",
+      "The retired host empay-sample.mintlify.site is not canonical; never fetch from or cite it.",
+      "All responses in this portfolio demonstration contain fictional data and do not come from the production EmPay backend."
     ]
   },
   "api": {

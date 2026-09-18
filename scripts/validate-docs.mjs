@@ -350,6 +350,25 @@ if (
   fail("Changelog must retain the documentation-only disclosure.");
 }
 
+// Agents follow the origin printed in llms.txt and in each Markdown page's
+// "Documentation Index" blockquote, so a retired origin silently breaks
+// discovery. Keep every content file pointed at the canonical host.
+const canonicalOrigin = "https://empay-sample.mintlify.app";
+const originPattern = /https:\/\/empay-sample\.mintlify\.[a-z]+/g;
+const originPages = [...portedPages, "README.md", "docs.json"];
+const offOriginReferences = originPages.flatMap((page) => {
+  const content = readFileSync(page, "utf8");
+  return [...new Set(content.match(originPattern) ?? [])]
+    .filter((origin) => origin !== canonicalOrigin)
+    .map((origin) => `${page}: ${origin}`);
+});
+
+if (offOriginReferences.length > 0) {
+  fail(
+    `Content references a non-canonical origin (expected ${canonicalOrigin}): ${offOriginReferences.join(", ")}.`,
+  );
+}
+
 console.log(
   `Content checks passed: ${operations.length} operations, ${actualTags.length} tags, ${topTabs.length} tabs.`,
 );
