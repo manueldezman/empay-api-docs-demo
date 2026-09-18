@@ -107,5 +107,8 @@
       "defaults": "required",
       "prefill": true
     }
+  },
+  "fonts": {
+    "family": "Geist"
   }
 }
