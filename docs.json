@@ -98,5 +98,13 @@
       "defaults": "required",
       "prefill": true
     }
+  },
+  "fonts": {
+    "heading": {
+      "family": "Geist"
+    },
+    "body": {
+      "family": "Geist"
+    }
   }
 }
